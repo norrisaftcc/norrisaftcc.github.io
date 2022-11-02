@@ -6,10 +6,11 @@ dev blog: [https://norrisaftcc.github.io/dev-blog](https://norrisaftcc.github.io
 pre-installed GitHub Jekyll Themes: [https://pages.github.com/themes/](https://pages.github.com/themes/)
 
 Posts:
-<ul>
+--
   {% for post in site.posts %}
-    <li>
-      <a href="{{ post.url }}">{{ post.title }}</a>
-    </li>
+
+  [{{ post.url }}]({{ post.title }})
+
   {% endfor %}
-</ul>
+--
+
