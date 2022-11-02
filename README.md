@@ -5,12 +5,10 @@ dev blog: [https://norrisaftcc.github.io/dev-blog](https://norrisaftcc.github.io
 
 pre-installed GitHub Jekyll Themes: [https://pages.github.com/themes/](https://pages.github.com/themes/)
 
-Posts:
---
-  {% for post in site.posts %}
 
-  [{{ post.url }}]({{ post.title }})
+Here are a list of projects I'm working on:
+# Project 1
+This is info for Project 1.
 
-  {% endfor %}
---
-
+# Project 2
+This is info for Project 2.
