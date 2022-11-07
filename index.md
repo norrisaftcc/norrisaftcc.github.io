@@ -13,6 +13,10 @@ Here are a list of projects I'm working on:
 	<li><a href="https://github.com/norrisaftcc/CTS285_FA22_Sandbox">CTS 285 Sandbox</a> - sample libraries with examples.</li>
 </ul>
 
+# Userful Links
+- [Markdown Tutorials](https://www.w3schools.io/file/markdown-introduction)
+- [GitHub Pages Quickstart](https://pages.github.com)
+
 # My Blog
 <ul>
 	{% for posts in site.posts %}
