@@ -7,8 +7,8 @@ pre-installed GitHub Jekyll Themes: [https://pages.github.com/themes/](https://p
 
 
 Here are a list of projects I'm working on:
-# Project 1
-This is info for Project 1.
+<ul>
+	<li><a href="https://github.com/norrisaftcc/linkloadervn">LinkLoaderVN</a>a> - a simple visual novel prototype.</li>
+	<li><a href="https://github.com/norrisaftcc/CTS285_FA22_Sandbox">CTS 285 Sandbox</a> - sample libraries with examples.</li>
+</ul>
 
-# Project 2
-This is info for Project 2.
