@@ -13,18 +13,26 @@ Here are a list of projects I'm working on:
 	<li><a href="https://github.com/norrisaftcc/CTS285_FA22_Sandbox">CTS 285 Sandbox</a> - sample libraries with examples.</li>
 </ul>
 
-# Userful Links
+# Useful Links
 - [Markdown Tutorials](https://www.w3schools.io/file/markdown-introduction)
 - [GitHub Pages Quickstart](https://pages.github.com)
 
-# My Blog
-<ul>
-	{% for posts in site.posts %}
-	<li>
-		<a href="{{ post.url }}">{{ post.title }} </a>
-	</li>
-	{% endfor %}
-</ul>
+# An Example CTS285 Layout
+If your webpage has the information below on it, then you're in good shape.
+
+## Description
+A brief description and summary of the project -- what is it supposed to do, what languages did you use, etc.
+
+## User Stories
+You can either:
+- list the stories in a simple list
+- link to the Project board (Kanban board) where you have the stories listed
+
+## Any working code, transcripts of program runs, etc.
+Any additional information you wish to include.
+
+## Diagrams
+For now, just the Context Diagram (Diagram Zero).
 
 
 
