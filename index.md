@@ -1,4 +1,8 @@
 # norrisaftcc.github.io
+
+# VTuber Name page
+<a href="vtuber.html">The VTuber Page</a>
+
 GitHub Pages site
 
 dev blog: [https://norrisaftcc.github.io/dev-blog](https://norrisaftcc.github.io/dev-blog)
