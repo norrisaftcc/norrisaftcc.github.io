@@ -9,6 +9,8 @@ Don't miss out on the fun - join [VTuber Name] on her streams and let her take y
 
 ## What does VTuber Name look like?
 
+<img src="vtuber1.png" width="400"></img>
+
 VTuber Name is an anime-style avatar with long, wavy hair in a variety of colors. She typically wears a bright and colorful outfit that reflects her upbeat and fun-loving personality. She has a cheerful face and big, expressive eyes that will draw you into her world.
 
 
