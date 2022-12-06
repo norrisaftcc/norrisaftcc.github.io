@@ -34,5 +34,8 @@ Any additional information you wish to include.
 ## Diagrams
 For now, just the Context Diagram (Diagram Zero).
 
-
+### More information
+- list 1
+- list 2
+- list 3
 
