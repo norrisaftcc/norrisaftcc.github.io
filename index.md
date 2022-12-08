@@ -1,9 +1,9 @@
 # norrisaftcc.github.io
 
-# VTuber Name page
-<a href="vtuber.html">The VTuber Page</a>
+## [VTuber Name] page
+<a href="vtuber.html">The VTuber Page</a> - text-davinci-003 and DALL-E 2 debut a new original character (do not steal)
 
-GitHub Pages site
+## GitHub Pages site
 
 dev blog: [https://norrisaftcc.github.io/dev-blog](https://norrisaftcc.github.io/dev-blog)
 
@@ -20,6 +20,11 @@ Here are a list of projects I'm working on:
 # Useful Links
 - [Markdown Tutorials](https://www.w3schools.io/file/markdown-introduction)
 - [GitHub Pages Quickstart](https://pages.github.com)
+
+# Information for CTI 110
+- Remember, you'll want to build on your skills by taking more programming classes! CSC 134, CSC 121, CSC 151 are good next steps.
+- Al Sweigart's books are free online and a good place to keep working on Python.
+https://inventwithpython.com/ and I recommend this book specifically: https://inventwithpython.com/invent4thed/
 
 # An Example CTS285 Layout
 If your webpage has the information below on it, then you're in good shape.
