@@ -1,5 +1,8 @@
 # norrisaftcc.github.io
 
+## New Example Page 
+coming soon!
+
 ## [VTuber Name] page
 <a href="vtuber.html">The VTuber Page</a> - text-davinci-003 and DALL-E 2 debut a new original character (do not steal)
 
