@@ -1,0 +1,16 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background-color: #f5f5f5; /* off white background */
+}
+
+nav {
+  background-color: #000080; /* dark blue background */
+}
+
+nav a {
+  color: orange; /* orange text color */
+}
