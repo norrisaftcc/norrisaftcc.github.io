@@ -3,8 +3,12 @@
 ## New Example Page 
 <a href="cti110.html">CTI 110 Cool Examples</a> go here.
 
-## [VTuber Name] page
-<a href="vtuber.html">The VTuber Page</a> - text-davinci-003 and DALL-E 2 debut a new original character (do not steal)
+## The Terrible AI-Generated Projects List
+Every year, beginning in 2022, we create a terrible idea using generative AI. 
+### Grate Guard
+[https://norrisaftcc.github.io/grate-guard](https://norrisaftcc.github.io/grate-guard)A phone case that's also a cheese grater!
+### [VTuber Name] page
+<a href="vtuber.html">The VTuber Page</a> - text-davinci-003 and DALL-E 2 debut a new original character (do not steal). This was from before the days of ChatGPT.
 
 ## GitHub Pages site
 
