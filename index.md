@@ -5,11 +5,12 @@
 
 ## The Terrible AI-Generated Projects List
 Every year, beginning in 2022, we create a terrible idea using generative AI. 
+
 ### Brush-N-Tune (2024)
-[https://norrisaftcc.github.com/brush-n-tune](https://norrisaftcc.github.com/brush-n-tune)
-### Grate Guard
+[https://norrisaftcc.github.io/brush-n-tune](https://norrisaftcc.github.io/brush-n-tune)
+### Grate Guard (2023)
 [https://norrisaftcc.github.io/grate-guard](https://norrisaftcc.github.io/grate-guard)A phone case that's also a cheese grater!
-### [VTuber Name] page
+### [VTuber Name] page (2022)
 <a href="vtuber.html">The VTuber Page</a> - text-davinci-003 and DALL-E 2 debut a new original character (do not steal). This was from before the days of ChatGPT.
 
 ## GitHub Pages site
