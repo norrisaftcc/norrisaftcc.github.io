@@ -1,5 +1,7 @@
 # Brush-N-Tune: The Toothbrush that Rocks Your Gums
 
+[Brush-N-Tune](https://norrisaftcc.github.io/brush-n-tune/brush-n-tune1.jpg)
+
 Introducing the "Brush-N-Tune," the toothbrush that syncs with your Spotify playlist! Our patented technology scans your teeth and gums, providing you with personalized brushing data, while simultaneously streaming your favorite tunes directly into your ear canals. Oh, and did we mention that it may or may not comply with copyright laws?
 
 ## Features
