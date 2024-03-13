@@ -1,5 +1,8 @@
 # norrisaftcc.github.io
 
+## Latest Post
+[https://norrisaftcc.github.io/2024pd](March 2024 PD - Working with LLMs) - Discusses new options for the first half of 2024 such as Claude 3, Gemini, and Poe.
+
 ## New Example Page 
 <a href="cti110.html">CTI 110 Cool Examples</a> go here.
 
