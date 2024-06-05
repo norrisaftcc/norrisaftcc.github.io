@@ -1,10 +1,10 @@
 # norrisaftcc.github.io
 
 ## Latest Post
-In Summer 2024, I'm teaching [https://norrisaftcc.github.io/usingllms101/](Using LLMs 101). This link will lead you to all course resources.
+In Summer 2024, I'm teaching <a href="https://norrisaftcc.github.io/usingllms101/">(Using LLMs 101)</a>. This link will lead you to all course resources.
 
 ## Spring 2024
-[https://norrisaftcc.github.io/2024pd/](March 2024 PD - Working with LLMs) - Discusses new options for the first half of 2024 such as Claude 3, Gemini, and Poe.
+<A href="https://norrisaftcc.github.io/2024pd/">(March 2024 PD - Working with LLMs) </a>- Discusses new options for the first half of 2024 such as Claude 3, Gemini, and Poe.
 
 ## New Example Page 
 <a href="cti110.html">CTI 110 Cool Examples</a> go here.
