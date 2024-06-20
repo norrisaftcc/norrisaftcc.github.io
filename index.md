@@ -2,6 +2,7 @@
 
 ## Latest Post
 In Summer 2024, I'm teaching <a href="https://norrisaftcc.github.io/usingllms101/">(Using LLMs 101)</a>. This link will lead you to all course resources.
+- On 6/20/24, I added Evil Kinevil's resume (semi-fictional) to the site. 
 
 ## Spring 2024
 <A href="https://norrisaftcc.github.io/2024pd/">(March 2024 PD - Working with LLMs) </a>- Discusses new options for the first half of 2024 such as Claude 3, Gemini, and Poe.
