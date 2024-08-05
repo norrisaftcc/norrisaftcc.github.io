@@ -1,11 +1,12 @@
 ## index.md
 
-Rather than spend 5 minutes setting up an index page, I've dumped all the resources here.
-PDF versions:
-(March 2024 AI Reference Sheet)[March 2024 AI Reference Sheet.pdf]
-(March 2024 AI Reference Sheet Appendix 1 - Dillinger for PDFs)[March 2024 AI Reference Sheet Appendix 1 - Dillinger for PDFs.pdf]
+# August 2024: My Dinner with Claude
 
-# References (Mar 24) AI Tools
+When live, the presentation slides will be available here. 
+Feel free to download and follow along!
+
+
+# References (2024) AI Tools
 Your best bet is to try a few of these tools and see what you think. They are listed in no particular order. 
 ## ChatGPT
 - **URL:** [https://openai.com/gpt](https://openai.com/gpt)
