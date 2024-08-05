@@ -6,7 +6,7 @@ When live, the presentation slides will be available here.
 Feel free to download and follow along!
 
 
-# References (2024) AI Tools
+# Current AI Tools in 2024
 Your best bet is to try a few of these tools and see what you think. They are listed in no particular order. 
 ## ChatGPT
 - **URL:** [https://openai.com/gpt](https://openai.com/gpt)
