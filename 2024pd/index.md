@@ -1,5 +1,3 @@
-## index.md
-
 # August 2024: My Dinner with Claude
 
 When live, the presentation slides will be available here. 
