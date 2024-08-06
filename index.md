@@ -1,6 +1,10 @@
 # norrisaftcc.github.io
 
 ## Latest Post
+August 2024 Professional Development: <A href="https://norrisaftcc.github.io/2024pd/">("My Dinner with Claude")
+
+
+## Summer 2024
 In Summer 2024, I'm teaching <a href="https://norrisaftcc.github.io/usingllms101/">(Using LLMs 101)</a>. This link will lead you to all course resources.
 - On 6/20/24, I added Evil Kinevil's <a href="evil_resume.html">resume</a> (semi-fictional) to the site. The original markdown file is <a href="evil_resume.md">here</a>.
 

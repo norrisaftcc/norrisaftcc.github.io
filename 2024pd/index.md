@@ -1,7 +1,7 @@
 # August 2024: My Dinner with Claude
 
-**URL:** [Presentation slides - Download](AI_Fundamentals_My Dinner_with_Claude.pdf)
-Feel free to download and follow along!
+- **URL:** [Presentation slides - Download](AI_Fundamentals_My Dinner_with_Claude.pdf)
+- Feel free to download and follow along!
 
 
 # Current AI Tools in 2024
