@@ -9,4 +9,6 @@ Here's some content.
 Here's a list.
 - one
 - two
--three
+- three
+
+That's all!
