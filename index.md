@@ -32,8 +32,5 @@ Combining the power of language and numbers!
 
 Join us in this exciting educational journey!
 
-[Learn More]
 
----
 
-*Note: This Markdown version doesn't include interactive elements like the "Next" and "Previous" buttons, as these are typically handled by presentation software when using Markdown for slides.*
