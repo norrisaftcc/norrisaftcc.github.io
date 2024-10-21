@@ -1,3 +1,9 @@
+# October 2024: Women's Giving Circle
+
+- "Keep Your Fork -- There's Pi!"
+- A brief exploration of pi.ai, and other Large Language Models.
+
+
 # August 2024: My Dinner with Claude
 
 - **URL:** [Presentation slides - Download](AI_Fundamentals_My Dinner_with_Claude.pdf)
