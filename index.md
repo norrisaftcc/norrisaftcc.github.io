@@ -1,7 +1,10 @@
 # norrisaftcc.github.io
 
 ## Latest Post
-October 2024: Creative Brief for CTS285. <a href="https://norrisaftcc.github.io/peoples_calc/">The People's Calculator</a>
+October 2024: Women's Giving Circle: <A href="https://norrisaftcc.github.io/2024pd/">("Keep Your Fork -- There's Pi!")
+
+Creative Brief for CTS285. <a href="https://norrisaftcc.github.io/peoples_calc/">The People's Calculator</a>
+
 August 2024 Professional Development: <A href="https://norrisaftcc.github.io/2024pd/">("My Dinner with Claude")
 
 
