@@ -1,6 +1,8 @@
 # norrisaftcc.github.io
 
 ## Latest Post
+November 2024: <a href="/dr_norris/index.html">Remembering Dr. Larry Norris.</a>
+
 October 2024: Women's Giving Circle: <A href="https://norrisaftcc.github.io/2024pd/">("Keep Your Fork -- There's Pi!")
 
 Creative Brief for CTS285. <a href="https://norrisaftcc.github.io/peoples_calc/">The People's Calculator</a>
