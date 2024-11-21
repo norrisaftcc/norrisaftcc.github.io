@@ -93,3 +93,5 @@ Depending on your LLM, the artifact (typically a web page) will be separate from
 Remember that this is a collaborative process between you, the AI, and family members. Take time to reflect on each addition and modification. The goal is to create a dignified, warm, and accurate memorial that truly celebrates the person's life and legacy.
 
 While AI can help with structure and writing, the personal touches and family memories make the memorial meaningful. Don't hesitate to take breaks during the process and return with fresh perspectives or additional information.
+
+As a real, grieving person who couldn't yet face writing a memorial, having a workflow to guide me was a comfort. I hope that it can provide some comfort to others in the future.
