@@ -6,6 +6,8 @@ This guide emerged from a real collaboration between a family member and an AI a
 
 ## Initial Setup and Approach
 
+You can probably just copy this entire document in as a prompt, or take the parts that are relevant to you. 
+
 Begin by setting clear expectations with your AI assistant. Our key opening instruction was:
 "The goal here is to create artifacts celebrating a person's life. Do not use generic condolences; instead, consider asking questions about how to best remember and celebrate their life."
 
