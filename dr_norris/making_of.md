@@ -88,6 +88,10 @@ Depending on your LLM, the artifact (typically a web page) will be separate from
 5. Memorial contribution information
 6. Final review and refinement
 
+## Publishing the memorial
+
+While the document can be provided to a third party for publication, Github Pages is a free option that is easily approachable. 
+
 ## Final Notes
 
 Remember that this is a collaborative process between you, the AI, and family members. Take time to reflect on each addition and modification. The goal is to create a dignified, warm, and accurate memorial that truly celebrates the person's life and legacy.
