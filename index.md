@@ -1,7 +1,7 @@
 # norrisaftcc.github.io
 
 ## Latest Post
-November 2024: <a href="/dr_norris/index.html">Remembering Dr. Larry Norris.</a>
+November 2024: For Dad: <a href="/dr_norris/">Remembering Dr. Larry Norris</a>
 
 October 2024: Women's Giving Circle: <A href="https://norrisaftcc.github.io/2024pd/">("Keep Your Fork -- There's Pi!")
 
