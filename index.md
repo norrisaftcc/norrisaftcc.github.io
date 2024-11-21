@@ -3,6 +3,8 @@
 ## Latest Post
 November 2024: For Dad: <a href="/dr_norris/">Remembering Dr. Larry Norris</a>
 
+Claude.ai was invaluable in creating the above document. Instructions if you need to do the same: <a href="/dr_norris/making_of.html" target="_blank">
+
 October 2024: Women's Giving Circle: <A href="https://norrisaftcc.github.io/2024pd/">("Keep Your Fork -- There's Pi!")
 
 Creative Brief for CTS285. <a href="https://norrisaftcc.github.io/peoples_calc/">The People's Calculator</a>
