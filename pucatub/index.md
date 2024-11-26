@@ -1,6 +1,7 @@
 # Welcome to Pucatub!
 
-<img src="speedster_blaze.jpeg">
+<img src="speedster_blaze.jpeg" width="400">
+The VTuber mascot "Speedster Blaze" welcomes you to Pucatub...
 
 Get ready to rev your engines and dive into the thrilling world of **Pucatub**! 
 
