@@ -20,11 +20,13 @@ In Summer 2024, I'm teaching <a href="https://norrisaftcc.github.io/usingllms101
 <A href="https://norrisaftcc.github.io/2024pd/">(March 2024 PD - Working with LLMs) </a>- Discusses new options for the first half of 2024 such as Claude 3, Gemini, and Poe.
 
 ## New Example Page 
-<a href="cti110.html">CTI 110 Cool Examples</a> go here.
+<a href="cti110.html">CTI 110 Cool Examples</a> go here. Mostly, this consists of Terrible AI-Generated Products...
 
 ## The Terrible AI-Generated Projects List
 Every year, beginning in 2022, we create a terrible idea using generative AI. 
 
+### Pucatub Racing Club! (2024)
+[https://norrisaftcc.github.io/pucatub](https://norrisaftcc.github.io/pucatub)It's a mascot! It's a gacha game! It's snacks! It's Pucatub.
 ### Brush-N-Tune (2024)
 [https://norrisaftcc.github.io/brush-n-tune](https://norrisaftcc.github.io/brush-n-tune)
 ### Grate Guard (2023)
