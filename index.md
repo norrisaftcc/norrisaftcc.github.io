@@ -1,20 +1,28 @@
 # norrisaftcc.github.io
 
 ## Latest Post
+
+### Jan 14 2025
+Current highest priority task is to get the CSC Capstone collaborating smoothly with Graphic Design students!
+Towards this goal, we're getting something (hopefully) pretty special set up)
+
+----
+
+## 2024 Posts
+
 November 2024: For Dad: <a href="/dr_norris/">Remembering Dr. Larry Norris</a>
 
 Claude.ai was invaluable in creating the above document. Instructions if you need to do the same: <a href="/dr_norris/making_of.html" target="_blank">Creating a Memorial with AI Assistance</a>
 
-October 2024: Women's Giving Circle: <A href="https://norrisaftcc.github.io/2024pd/">("AI with Pi and Beyond")
 
-Creative Brief for CTS285. <a href="https://norrisaftcc.github.io/peoples_calc/">The People's Calculator</a>
+Creative Brief for CTS285. <a href="https://norrisaftcc.github.io//projects/peoples_calc/">The People's Calculator</a>
 
-August 2024 Professional Development: <A href="https://norrisaftcc.github.io/2024pd/">("My Dinner with Claude")
+August 2024 Professional Development: <A href="https://norrisaftcc.github.io/_posts/2024/2024pd/">("My Dinner with Claude")
 
 
 ## Summer 2024
-In Summer 2024, I'm teaching <a href="https://norrisaftcc.github.io/usingllms101/">(Using LLMs 101)</a>. This link will lead you to all course resources.
-- On 6/20/24, I added Evil Kinevil's <a href="evil_resume.html">resume</a> (semi-fictional) to the site. The original markdown file is <a href="evil_resume.md">here</a>.
+In Summer 2024, I'm teaching <a href="https://norrisaftcc.github.io/_posts/2024/usingllms101/">(Using LLMs 101)</a>. This link will lead you to all course resources.
+- On 6/20/24, I added Evil Kinevil's <a href="projects/misc/evil_resume.html">resume</a> (semi-fictional) to the site. The original markdown file is <a href="evil_resume.md">here</a>.
 
 ## Spring 2024
 <A href="https://norrisaftcc.github.io/2024pd/">(March 2024 PD - Working with LLMs) </a>- Discusses new options for the first half of 2024 such as Claude 3, Gemini, and Poe.
@@ -26,17 +34,17 @@ In Summer 2024, I'm teaching <a href="https://norrisaftcc.github.io/usingllms101
 Every year, beginning in 2022, we create a terrible idea using generative AI. 
 
 ### Pucatub Racing Club! (2024)
-[https://norrisaftcc.github.io/pucatub](https://norrisaftcc.github.io/pucatub) It's a mascot! It's a gacha game! It's snacks! It's Pucatub. (Brought to you by the Doritos Pope)
+[https://norrisaftcc.github.io/projects/pucatub](https://norrisaftcc.github.io/projects/pucatub) It's a mascot! It's a gacha game! It's snacks! It's Pucatub. (Brought to you by the Doritos Pope)
 ### Brush-N-Tune (2024)
-[https://norrisaftcc.github.io/brush-n-tune](https://norrisaftcc.github.io/brush-n-tune) Is your toothbrush processing DMCA requests? Why not!?
+[https://norrisaftcc.github.io/projects/brush-n-tune](https://norrisaftcc.github.io/projects/brush-n-tune) Is your toothbrush processing DMCA requests? Why not!?
 ### Grate Guard (2023)
-[https://norrisaftcc.github.io/grate-guard](https://norrisaftcc.github.io/grate-guard) A phone case that's also a cheese grater!
+[https://norrisaftcc.github.io/projects/grate-guard](https://norrisaftcc.github.io/projects/grate-guard) A phone case that's also a cheese grater!
 ### [VTuber Name] page (2022)
-<a href="vtuber.html">The VTuber Page</a> - text-davinci-003 and DALL-E 2 debut a new original character (do not steal). This was from before the days of ChatGPT.
+<a href="/_posts_2023/vtuber.html">The VTuber Page</a> - text-davinci-003 and DALL-E 2 debut a new original character (do not steal). This was from before the days of ChatGPT.
 
 ## GitHub Pages site
 
-dev blog: [https://norrisaftcc.github.io/dev-blog](https://norrisaftcc.github.io/dev-blog)
+dev blog: [https://norrisaftcc.github.io/dev-blog](https://norrisaftcc.github.io/dev-blog) (not yet active)
 
 pre-installed GitHub Jekyll Themes: [https://pages.github.com/themes/](https://pages.github.com/themes/)
 
@@ -44,6 +52,7 @@ pre-installed GitHub Jekyll Themes: [https://pages.github.com/themes/](https://p
 # My Projects
 Here are a list of projects I'm working on:
 <ul>
+	<li>Collaboration tools for 289/Graphic Design (more to come)
 	<li><a href="https://github.com/norrisaftcc/linkloadervn">LinkLoaderVN</a> - a simple visual novel prototype.</li>
 	<li><a href="https://github.com/norrisaftcc/CTS285_FA22_Sandbox">CTS 285 Sandbox</a> - sample libraries with examples.</li>
 </ul>
