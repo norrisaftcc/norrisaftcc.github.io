@@ -6,6 +6,7 @@
 Current highest priority task is to get the CSC Capstone collaborating smoothly with Graphic Design students!
 Towards this goal, we're getting something (hopefully) pretty special set up)
 
+Thanks for your patience if you have other projects in the queue.
 ----
 
 ## 2024 Posts
@@ -15,7 +16,7 @@ November 2024: For Dad: <a href="/dr_norris/">Remembering Dr. Larry Norris</a>
 Claude.ai was invaluable in creating the above document. Instructions if you need to do the same: <a href="/dr_norris/making_of.html" target="_blank">Creating a Memorial with AI Assistance</a>
 
 
-Creative Brief for CTS285. <a href="https://norrisaftcc.github.io//projects/peoples_calc/">The People's Calculator</a>
+Creative Brief for CTS285. <a href="https://norrisaftcc.github.io/projects/peoples_calc/">The People's Calculator</a>
 
 August 2024 Professional Development: <A href="https://norrisaftcc.github.io/_posts/2024/2024pd/">("My Dinner with Claude")
 
