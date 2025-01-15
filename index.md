@@ -6,7 +6,11 @@
 Current highest priority task is to get the CSC Capstone collaborating smoothly with Graphic Design students!
 Towards this goal, we're getting something (hopefully) pretty special set up)
 
+This year, I'm doing a capstone project too!
+<a href="/dr_norris/mementoshare.html">MementoShare</a>
+
 Thanks for your patience if you have other projects in the queue.
+
 ----
 
 ## 2024 Posts
