@@ -5,10 +5,14 @@ Because I wish it had existed when my father was still here. So I'm making it fo
 Interactive Wireframe Demo (WIP):
 https://claude.site/artifacts/e83e03a8-86cb-4de1-b2bb-c4cd3b552e72
 
-# What is MementoShare?
-No one should have to bury a family member. But they do.
+# The Problem 
+No one should have to bury a family member. But they will have to someday.
 
-No one should have to make a memorial web page for a recently deceased family member. So they won't.
+No one should have to make a memorial web page for a recently deceased family member. So someday ... maybe nobody will have to.
+
+We had VHS interviews of my grandmother -- fascinating stories from the Great Depression. Irreplaceable. The tapes no longer work, or are lost.
+
+# The Solution
 
 With MementoShare, moments become memories. It's social media for the family -- a share site where they can add pictures and funny stories, add sticker comments, and track their family tree.
 
