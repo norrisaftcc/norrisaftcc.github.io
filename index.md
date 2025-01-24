@@ -2,6 +2,11 @@
 
 ## Latest Post
 
+We're raising llamas now
+
+<script type="text/javascript">  (function(d, t) {      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];      v.onload = function() {        window.voiceflow.chat.load({          verify: { projectID: '6793fbfb52bfdd46f63863f5' },          url: 'https://general-runtime.voiceflow.com',          versionID: 'production'        });      }      v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);  })(document, 'script');</script>
+
+
 ### Jan 14 2025
 Current highest priority task is to get the CSC Capstone collaborating smoothly with Graphic Design students!
 Towards this goal, we're getting something (hopefully) pretty special set up)
