@@ -4,10 +4,13 @@
 ## Latest Post
 
 We're raising "Smart LLaMas" now.
-```Search-Managed Augmented Retrieval and Transformation with Large Language Models```
-but the emojis make it cooler
-## 🎓🦙 
 
+Search-Managed Augmented Retrieval and Transformation with Large Language Models
+
+but the emojis make it cooler
+
+## 🎓🦙 
+<a href="genna.html">Go pet Genna! She's not shy!</a>
 
 
 ### Jan 14 2025
