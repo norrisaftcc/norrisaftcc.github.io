@@ -1,11 +1,13 @@
-<body>
+
 # norrisaftcc.github.io
 
 ## Latest Post
 
-We're raising llamas now
+We're raising "Smart LLaMas" now.
+```Search-Managed Augmented Retrieval and Transformation with Large Language Models```
+but the emojis make it cooler
+## 🎓🦙 
 
-<script type="text/javascript">  (function(d, t) {      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];      v.onload = function() {        window.voiceflow.chat.load({          verify: { projectID: '6793fbfb52bfdd46f63863f5' },          url: 'https://general-runtime.voiceflow.com',          versionID: 'production'        });      }      v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);  })(document, 'script');</script>
 
 
 ### Jan 14 2025
@@ -114,4 +116,4 @@ For now, just the Context Diagram (Diagram Zero).
       v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
   })(document, 'script');
 </script>
-</body>
+
