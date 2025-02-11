@@ -1,3 +1,7 @@
+package edu.faytechcc.numberprocessor;
+
+import javax.swing.JOptionPane;
+
 public class NumberProcessor {
     /**
      * Processes a string input and attempts to convert it to an integer.
