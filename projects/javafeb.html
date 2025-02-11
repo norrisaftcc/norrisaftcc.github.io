@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { 
+            font-family: system-ui; 
+            max-width: 800px; 
+            margin: 2rem auto; 
+            padding: 0 1rem;
+            line-height: 1.6;
+        }
+        pre { 
+            background: #f5f5f5; 
+            padding: 1rem; 
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+        .example, .analogy, .important-note { 
+            border-left: 4px solid #0066cc;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            background: #f8f9fa;
+        }
+        .analogy {
+            border-color: #28a745;
+        }
+        .important-note {
+            border-color: #dc3545;
+        }
+        h2 {
+            margin-top: 2rem;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Understanding Number Processing & Method Overloading</h1>
+
+    <div>
+      <p>Your starter source code <a href="Input.java>Input.java</a></p>
+    </div>
+    <h2>The Big Picture: Why Are We Learning This?</h2>
+    <p>In real-world programming, we often need to handle different types of data that users input into our programs. Think about a banking application: sometimes users need to enter whole numbers (like the number of shares to buy), and sometimes they need decimals (like dollar amounts). Our program needs to handle both situations gracefully.</p>
+
+    <div class="analogy">
+        <h3>Real World Analogy</h3>
+        <p>Think of method overloading like a hotel's front desk. The desk clerk can "process" different types of requests: checking in with just a name, checking in with a name and reservation number, or checking in with a name and special requirements. It's the same action (checking in), but it handles different types of information differently.</p>
+    </div>
+
+    <h2>Method Overloading: One Name, Many Behaviors</h2>
+    <p>Method overloading is a powerful feature in Java that allows us to create multiple methods with the same name but different parameters. This makes our code more intuitive to use because we can use a single, meaningful name for related operations.</p>
+
+    <p>In our program, we're using two versions of a method called "process":</p>
+    <div class="example">
+        <pre>
+// Version 1: Handles just integers
+process("123")
+
+// Version 2: Can handle both integers and decimals
+process("3.14", true)</pre>
+        <p>Java knows which version to use based on what we give it. If we provide just a String, it uses Version 1. If we provide a String and a boolean, it uses Version 2. This is called "method signature" - Java looks at both the method name AND its parameters to decide which version to use.</p>
+    </div>
+
+    <h2>Understanding JavaDoc: Your Code's Documentation</h2>
+    <p>JavaDoc is like writing instructions for other programmers (including your future self!). Let's break down the parts:</p>
+
+    <div class="example">
+        <pre>
+/**
+ * @param input The string to be converted
+ * @return A string message indicating success/failure
+ */</pre>
+        <p><code>@param</code> tells us what each parameter is for. Think of it like labeling ingredients in a recipe.</p>
+        <p><code>@return</code> explains what we get back after the method runs, like describing what the finished dish should look like.</p>
+    </div>
+
+    <h2>Input Validation: Protecting Our Program</h2>
+    <p>When we accept user input, we need to check for several potential problems:</p>
+
+    <div class="important-note">
+        <p>Always verify:</p>
+        <p>1. Is the input empty or null? Users might just hit "OK" without typing anything.</p>
+        <p>2. Is the input actually a number? Users might type "abc" or "12.3.4".</p>
+        <p>3. Is the number in the right format? A whole number shouldn't have decimals if we're expecting an integer.</p>
+    </div>
+
+    <h2>Exception Handling: Gracefully Handling Errors</h2>
+    <p>When converting strings to numbers, things can go wrong. Instead of crashing, our program should catch these problems and handle them gracefully. This is where try-catch blocks come in:</p>
+
+    <div class="example">
+        <pre>
+try {
+    int number = Integer.parseInt(userInput);
+    // Success! We can use the number
+} catch (NumberFormatException e) {
+    // Something went wrong - handle it nicely
+}</pre>
+    </div>
+
+    <h2>Test Cases: Proving Our Code Works</h2>
+    <p>Testing isn't just about making sure things work - it's about making sure things fail in the right way when they should. Here are the scenarios we need to test:</p>
+
+    <pre>
+// Happy Path Tests (Should Succeed):
+"123"           → "Processed integer: 123"
+"3.14", true    → "Processed double: 3.14"
+
+// Error Cases (Should Fail Gracefully):
+"abc"           → "Error: Not a valid number"
+""              → "Error: Input cannot be empty"
+"3.14" (when expecting integer) → "Error: Not a valid integer"</pre>
+
+    <h2>Common Mistakes to Watch For</h2>
+    <p>When implementing this program, there are several situations that often trip up new programmers:</p>
+    
+    <p>First, forgetting to check for null or empty input before trying to process it. This can cause a NullPointerException, which we want to avoid.</p>
+    
+    <p>Second, assuming all number conversions will work. Always wrap number conversions in try-catch blocks to handle invalid input gracefully.</p>
+    
+    <p>Third, mixing up integer and double conversions. Remember that every integer is a valid double, but not every double is a valid integer. For example, 3.14 can't be directly converted to an integer without losing information.</p>
+
+    <h2>Further Learning</h2>
+    <p>Once you understand these concepts, you can extend them to handle more complex situations. For example:</p>
+    <p>- Adding more overloaded methods to handle different number formats</p>
+    <p>- Creating methods that can process multiple numbers at once</p>
+    <p>- Adding validation for number ranges (like ensuring numbers are positive)</p>
+</body>
+</html>
