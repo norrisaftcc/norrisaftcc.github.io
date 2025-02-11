@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { 
+            font-family: system-ui; 
+            max-width: 800px; 
+            margin: 2rem auto; 
+            padding: 0 1rem;
+            line-height: 1.6;
+        }
+        pre { 
+            background: #f5f5f5; 
+            padding: 1rem; 
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+        .example, .thinking-point, .connection { 
+            border-left: 4px solid #0066cc;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            background: #f8f9fa;
+        }
+        .thinking-point {
+            border-color: #28a745;
+        }
+        .connection {
+            border-color: #dc3545;
+        }
+        h2 {
+            margin-top: 2rem;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Building a Number Processor: Part 2</h1>
+
+    <div class="connection">
+        <h3>Connecting to Part 1</h3>
+        <p>In Part 1, we built a method that could convert text input into whole numbers. We learned about:</p>
+        <p>• Input validation (checking for null and empty strings)</p>
+        <p>• Converting strings to numbers with parseInt()</p>
+        <p>• Using try-catch to handle conversion errors</p>
+        <p>Today, we'll expand our program's capabilities while introducing a powerful Java feature: method overloading.</p>
+    </div>
+
+    <h2>Why Do We Need Method Overloading?</h2>
+    
+    <p>Imagine you're designing a calculator app. Users might want to work with both whole numbers (like 42) and decimal numbers (like 3.14). We could create different method names:</p>
+
+    <div class="example">
+        <pre>
+processInteger("42");
+processDecimal("3.14");</pre>
+        <p>But this means remembering different names for very similar operations. Method overloading lets us use the same name for related operations that just work slightly differently:</p>
+        <pre>
+process("42");         // Handle as integer
+process("3.14", true); // Handle as decimal</pre>
+    </div>
+
+    <h2>How Java Chooses Which Method to Use</h2>
+    
+    <p>When you have multiple methods with the same name, Java looks at what you're giving the method to decide which version to use. It's like having multiple doors to the same building - which door you use depends on what you're carrying:</p>
+
+    <div class="example">
+        <pre>
+// Just a String? Use the first method:
+process("123")
+
+// A String AND a boolean? Use the second method:
+process("123", true)</pre>
+        <p>Java calls this combination of method name and parameter types a "method signature". Each method must have a unique signature.</p>
+    </div>
+
+    <h2>Expanding Our Number Processing</h2>
+    
+    <p>Our new overloaded method needs to handle both integers and decimals. This means using Double.parseDouble() when appropriate:</p>
+
+    <div class="thinking-point">
+        <h3>Key Decisions to Make</h3>
+        <p>When implementing the new method, consider:</p>
+        <p>1. If isDouble is true, should we accept whole numbers like "123"?</p>
+        <p>2. If isDouble is false, how should we handle decimal inputs?</p>
+        <p>3. How can our error messages help guide users to enter the right type of number?</p>
+    </div>
+
+    <h2>Making Our Code More Robust</h2>
+    
+    <p>With two methods handling numbers differently, we need to think carefully about our error messages. Compare these approaches:</p>
+
+    <div class="example">
+        <h3>Basic Error Messages:</h3>
+        <pre>
+"Not a valid number"  // Generic but not helpful</pre>
+        
+        <h3>More Helpful Messages:</h3>
+        <pre>
+"Please enter a whole number (like 42)"
+"Please enter a decimal number (like 3.14)"</pre>
+        <p>The second approach helps users understand exactly what we're expecting.</p>
+    </div>
+
+    <h2>Your Task</h2>
+    
+    <p>Implement the new process(String input, boolean isDouble) method. Your implementation should:</p>
+    <p>1. Reuse the input validation logic we developed in Part 1</p>
+    <p>2. Use the isDouble parameter to decide how to parse the number</p>
+    <p>3. Provide clear, helpful error messages</p>
+
+    <div class="thinking-point">
+        <h3>Looking Ahead</h3>
+        <p>As you work on this, consider:</p>
+        <p>What other number types might we want to handle? (Hint: Very large numbers? Negative numbers only?)</p>
+        <p>How might we modify our code to handle multiple numbers at once?</p>
+        <p>These questions point toward more advanced Java concepts we'll explore in future lessons...</p>
+    </div>
+
+    <h2>Testing Your Implementation</h2>
+    
+    <p>A robust implementation should handle all these cases gracefully:</p>
+
+    <div class="example">
+        <pre>
+process("123", true)   // Valid as both integer and double
+process("3.14", true)  // Valid as double only
+process("3.14", false) // Should be rejected (not an integer)
+process("abc", true)   // Invalid for either type
+process("", true)      // Empty input handling</pre>
+    </div>
+</body>
+</html>
