@@ -3,7 +3,7 @@
 
 ## Latest Post
 ## Feb 2025
-For CSC151: <a href="projects/javafeb.html>Feb 11-13, Discussing Input Formats</a>
+For CSC151: <a href="projects/javafeb.html">Feb 11-13, Discussing Input Formats</a>
 
 ## Jan 2025
 We're raising "Smart LLaMas" now.
