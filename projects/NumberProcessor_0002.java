@@ -3,11 +3,14 @@
  */
 
 package edu.faytechcc.numberprocessor;
+
+
 import javax.swing.JOptionPane;
 /**
  *
  * @author norrisa8373
  */
+
 public class NumberProcessor {
     /**
      * Processes a string input and attempts to convert it to an integer.
@@ -24,26 +27,43 @@ public class NumberProcessor {
 
 
     public static void main(String[] args) {
+        // Program will guess a number we think of from 1 to 100
+        
+        
         // Make an object out of this, so we can call our functions
         NumberProcessor processor = new NumberProcessor();
         
         // Test Case 1: Ask for a number
-        // input is always a string
-        String userInput = JOptionPane.showInputDialog("Enter a whole number:");
-        
-        // now convert it into a number
-        Integer result = processor.process(userInput);
-        // Finally, show what we did
-        if (result == -1) {
-            JOptionPane.showMessageDialog(null,"That's not an Integer");
-        }
-        else {
-            JOptionPane.showMessageDialog(null, result);
-        }
+        Integer num1 = processor.getInteger();
         // Test Case 2: What happens with invalid input?
-        userInput = JOptionPane.showInputDialog("Try entering something that isn't a whole number:");
-        result = processor.process(userInput);
-        JOptionPane.showMessageDialog(null, result);
+        //userInput = JOptionPane.showInputDialog("Try entering something that isn't a whole number:");
+        //result = processor.process(userInput);
+        //JOptionPane.showMessageDialog(null, result);
+    }
+    
+    /**
+     * Function: getInteger() - gets an Integer
+     * will repeat politely until the user finally gives us a valid int
+     * @return answer - the Integer the user typed
+     */
+    public Integer getInteger() {
+        Integer answer = -1; // the number the user types
+        while (answer == -1) {
+            // Process: Ask for number, validate it, move on
+            // input is always a string
+            String userInput = JOptionPane.showInputDialog("Enter an integer:");
+            // now convert it into a number
+            answer = this.process(userInput); // use ourselves (this)
+            // Finally, show what we did
+            if (answer == -1) {
+                JOptionPane.showMessageDialog(null,"That's not an Integer, please try again.");
+            }
+            else {
+                // Debug message
+                JOptionPane.showMessageDialog(null, "You entered: " + answer);
+            }
+        }
+        return answer;  
     }
     
     public Integer process(String input) {
