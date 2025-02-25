@@ -1,6 +1,6 @@
 # Lunch and Learn: AI PD
 
-Slides (link to be added)
+Slides - <a href="25febaipd.pdf">PDF</a>
 
 # Llamas To Pet:
 - Claude.ai
