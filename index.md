@@ -3,6 +3,9 @@
 
 ## Latest Post
 ## Feb 2025
+
+Feb Lunch and Learn: <a href="projects/25febaipd.html">AI: Bits, bytes, bits, and bobs</a>
+
 For CSC151: <a href="projects/javafeb.html">Feb 11-13, Discussing Input Formats</a>
 
 ## Jan 2025
