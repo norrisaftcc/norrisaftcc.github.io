@@ -8,7 +8,7 @@
 Part 2! <a href="projects/25may_ai.html">Bits, Bytes...</a>
 
 ## Apr 2025
-<a href="textadv_25apr.html">Text Adventure C++</a>
+<a href="projects/textadv_25apr.html">Text Adventure C++</a>
 
 ## Feb 2025
 
