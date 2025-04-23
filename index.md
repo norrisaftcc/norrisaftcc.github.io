@@ -6,6 +6,10 @@
 ## May 2025
 
 Part 2! <a href="projects/25may_ai.html">Bits, Bytes...</a>
+
+## Apr 2025
+<a href="textadv_25apr.html">Text Adventure C++</a>
+
 ## Feb 2025
 
 Feb Lunch and Learn: <a href="projects/25febaipd.html">AI: Bits, bytes, bits, and bobs</a>
