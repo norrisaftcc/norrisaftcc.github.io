@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Adventure Game Tutorial: Teaching Parallel Arrays</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1, h2, h3 {
+            color: #2a4d69;
+        }
+        h1 {
+            border-bottom: 2px solid #4b86b4;
+            padding-bottom: 10px;
+        }
+        h2 {
+            margin-top: 30px;
+            border-bottom: 1px solid #adcbe3;
+            padding-bottom: 5px;
+        }
+        pre {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            border-left: 3px solid #4b86b4;
+            color: #333;
+            page-break-inside: avoid;
+            font-family: monospace;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 1.6em;
+            max-width: 100%;
+            overflow: auto;
+            padding: 1em 1.5em;
+            display: block;
+            word-wrap: break-word;
+        }
+        .highlight {
+            background-color: #e7eff6;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        .container {
+            background-color: white;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        .keyword {
+            color: #0033b3;
+            font-weight: bold;
+        }
+        .string {
+            color: #067d17;
+        }
+        .comment {
+            color: #8c8c8c;
+            font-style: italic;
+        }
+        .code-annotation {
+            color: #7d1006;
+            font-weight: bold;
+        }
+        .note {
+            background-color: #e7f3fe;
+            border-left: 6px solid #2196F3;
+            margin: 20px 0;
+            padding: 16px;
+        }
+        .timeline {
+            display: flex;
+            overflow-x: auto;
+            margin: 30px 0;
+            padding-bottom: 20px;
+        }
+        .timeline-item {
+            min-width: 200px;
+            max-width: 200px;
+            margin-right: 10px;
+            background-color: #4b86b4;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .timeline-item h3 {
+            color: white;
+            margin-top: 0;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #4b86b4;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Text Adventure Game Tutorial: Teaching Parallel Arrays</h1>
+        <p>This tutorial will guide you through creating a text adventure game in C++ using parallel arrays. This project is designed for first-year programming students to teach array manipulation, indexing, and game design concepts.</p>
+        
+        <div class="note">
+            <strong>Note to Students:</strong> You are encouraged to use AI tools like Claude to help you understand concepts or debug your code. However, make sure you're implementing the code yourself to truly learn the concepts!
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Understanding Parallel Arrays</h2>
+        
+        <p>Parallel arrays are multiple arrays where <span class="highlight">the same index in each array refers to the same entity</span>. It's like having a table with rows and columns, but each column is stored in its own separate array.</p>
+        
+        <table>
+            <tr>
+                <th>Index</th>
+                <th>Array1</th>
+                <th>Array2</th>
+                <th>Array3</th>
+            </tr>
+            <tr>
+                <td>0</td>
+                <td>Value1A</td>
+                <td>Value1B</td>
+                <td>Value1C</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Value2A</td>
+                <td>Value2B</td>
+                <td>Value2C</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Value3A</td>
+                <td>Value3B</td>
+                <td>Value3C</td>
+            </tr>
+        </table>
+        
+        <h3>In Our Game Design:</h3>
+        <ul>
+            <li>The player is represented as "room 0" in all arrays</li>
+            <li>Actual rooms start at index 1</li>
+            <li>Items have their own parallel arrays with locations tracked</li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <h2>Project Evolution Timeline</h2>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>Iteration 1</h3>
+                <p>"The Basics"</p>
+                <ul>
+                    <li>Room navigation</li>
+                    <li>Player as "room 0"</li>
+                    <li>Basic commands</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <h3>Iteration 2</h3>
+                <p>"The Collector"</p>
+                <ul>
+                    <li>Item interactions</li>
+                    <li>Verb-noun commands</li>
+                    <li>Multiple items per room</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <h3>Iteration 3</h3>
+                <p>"The Interactor"</p>
+                <ul>
+                    <li>Item interactions</li>
+                    <li>State tracking</li>
+                    <li>Special actions</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <h3>Iteration 4</h3>
+                <p>"The Container"</p>
+                <ul>
+                    <li>Containers</li>
+                    <li>Items inside items</li>
+                    <li>Puzzles</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <h3>Iteration 5</h3>
+                <p>"The Ultimate"</p>
+                <ul>
+                    <li>Locks and keys</li>
+                    <li>Win conditions</li>
+                    <li>Simple NPCs</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Iteration 1: Basic Navigation</h2>
+        
+        <h3>Core Implementation Details:</h3>
+        <p>We'll start with parallel arrays for rooms and items:</p>
+        
+        <h4>Room Arrays:</h4>
+        <pre>
+<span class="comment">// ROOM ARRAYS</span>
+<span class="keyword">vector</span>&lt;<span class="keyword">string</span>&gt; room_names = {
+    <span class="string">"Player"</span>,          <span class="comment">// Index 0 = Player (not a room)</span>
+    <span class="string">"Entrance Hall"</span>, 
+    <span class="string">"Kitchen"</span>, 
+    <span class="string">"Living Room"</span>, 
+    <span class="string">"Secret Passage"</span>
+};
+
+<span class="keyword">vector</span>&lt;<span class="keyword">string</span>&gt; room_descriptions = {
+    <span class="string">"That's you!"</span>,     <span class="comment">// Player description</span>
+    <span class="string">"A grand entrance with marble floors and a chandelier."</span>,
+    <span class="string">"A small kitchen with an old stove and sink."</span>,
+    <span class="string">"A cozy room with a fireplace and comfortable chairs."</span>,
+    <span class="string">"A narrow, dark passage hidden behind a bookshelf."</span>
+};
+
+<span class="comment">// Exits: N, E, S, W (-1 means no exit)</span>
+<span class="keyword">vector</span>&lt;<span class="keyword">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; room_exits = {
+    {-1, -1, -1, -1},  <span class="comment">// Player (not a location)</span>
+    {-1, 3, 2, -1},    <span class="comment">// Entrance: No N, E to Living Room, S to Kitchen, No W</span>
+    {1, -1, -1, -1},   <span class="comment">// Kitchen: N to Entrance, No other exits</span>
+    {-1, 4, -1, 1},    <span class="comment">// Living Room: No N, E to Secret Passage, No S, W to Entrance</span>
+    {-1, -1, -1, 3}    <span class="comment">// Secret Passage: No N, No E, No S, W to Living Room</span>
+};</pre>
+
+        <h4>Item Arrays:</h4>
+        <pre>
+<span class="comment">// ITEM ARRAYS</span>
+<span class="keyword">vector</span>&lt;<span class="keyword">string</span>&gt; item_names = {
+    <span class="string">"rusty key"</span>,
+    <span class="string">"flashlight"</span>,
+    <span class="string">"apple"</span>, 
+    <span class="string">"knife"</span>,
+    <span class="string">"old book"</span>,
+    <span class="string">"letter"</span>
+};
+
+<span class="comment">// Location of each item (0=player, 1-4=rooms)</span>
+<span class="keyword">vector</span>&lt;<span class="keyword">int</span>&gt; item_locs = {
+    1,  <span class="comment">// rusty key in Entrance Hall</span>
+    1,  <span class="comment">// flashlight in Entrance Hall</span>
+    2,  <span class="comment">// apple in Kitchen</span>
+    2,  <span class="comment">// knife in Kitchen</span>
+    3,  <span class="comment">// old book in Living Room</span>
+    3   <span class="comment">// letter in Living Room</span>
+};</pre>
+        
+        <h3>Displaying Room and Items</h3>
+        <pre>
+<span class="comment">// Display current room info</span>
+cout << <span class="string">"You are in the "</span> << room_names[currentRoom] << endl;
+cout << room_descriptions[currentRoom] << endl;
+
+<span class="comment">// Display items in this room</span>
+cout << <span class="string">"You see: "</span>;
+<span class="keyword">bool</span> foundItems = <span class="keyword">false</span>;
+<span class="keyword">for</span> (<span class="keyword">int</span> i = 0; i < item_locs.size(); i++) {
+    <span class="keyword">if</span> (item_locs[i] == currentRoom) {
+        <span class="keyword">if</span> (foundItems) cout << <span class="string">", "</span>;
+        cout << item_names[i];
+        foundItems = <span class="keyword">true</span>;
+    }
+}
+<span class="keyword">if</span> (!foundItems) cout << <span class="string">"nothing of interest"</span>;
+cout << endl;
+
+<span class="comment">// Display inventory</span>
+cout << <span class="string">"Inventory: "</span>;
+<span class="keyword">bool</span> hasItems = <span class="keyword">false</span>;
+<span class="keyword">for</span> (<span class="keyword">int</span> i = 0; i < item_locs.size(); i++) {
+    <span class="keyword">if</span> (item_locs[i] == 0) { <span class="comment">// 0 = player inventory</span>
+        <span class="keyword">if</span> (hasItems) cout << <span class="string">", "</span>;
+        cout << item_names[i];
+        hasItems = <span class="keyword">true</span>;
+    }
+}
+<span class="keyword">if</span> (!hasItems) cout << <span class="string">"empty"</span>;
+cout << endl;</pre>
+        
+        <h3>Movement Commands</h3>
+        <pre>
+<span class="comment">// Process movement commands</span>
+<span class="keyword">if</span> (command == <span class="string">"north"</span> || command == <span class="string">"n"</span>) {
+    <span class="keyword">if</span> (room_exits[currentRoom][0] != -1)
+        currentRoom = room_exits[currentRoom][0];
+    <span class="keyword">else</span>
+        cout << <span class="string">"You can't go that way."</span> << endl;
+}
+<span class="keyword">else if</span> (command == <span class="string">"east"</span> || command == <span class="string">"e"</span>) {
+    <span class="keyword">if</span> (room_exits[currentRoom][1] != -1)
+        currentRoom = room_exits[currentRoom][1];
+    <span class="keyword">else</span>
+        cout << <span class="string">"You can't go that way."</span> << endl;
+}</pre>
+        
+        <div class="note">
+            <strong>Key Point:</strong> Notice how changing <code>currentRoom</code> to a new value effectively moves the player through the game world.
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Iteration 2: Item Interactions</h2>
+        
+        <h3>Adding Item Descriptions</h3>
+        <pre>
+<span class="comment">// Add item descriptions</span>
+<span class="keyword">vector</span>&lt;<span class="keyword">string</span>&gt; item_descriptions = {
+    <span class="string">"An old rusty key that might open something."</span>,
+    <span class="string">"A working flashlight with fresh batteries."</span>,
+    <span class="string">"A shiny red apple that looks delicious."</span>,
+    <span class="string">"A sharp kitchen knife."</span>,
+    <span class="string">"A dusty book with strange symbols on the cover."</span>,
+    <span class="string">"A sealed envelope with elegant handwriting."</span>
+};</pre>
+        
+        <h3>Command Parsing</h3>
+        <pre>
+<span class="comment">// Command parsing (add near the command input section)</span>
+<span class="keyword">string</span> input, verb, noun;
+cout << <span class="string">"> "</span>;
+getline(cin, input);           <span class="comment">// Get the whole line</span>
+stringstream ss(input);        <span class="comment">// Create a string stream</span>
+ss >> verb;                   <span class="comment">// Extract first word as verb</span>
+ss >> noun;                   <span class="comment">// Extract second word as noun</span></pre>
+        
+        <h3>Take Command</h3>
+        <pre>
+<span class="keyword">if</span> (verb == <span class="string">"take"</span> && !noun.empty()) {
+    <span class="keyword">bool</span> found = <span class="keyword">false</span>;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = 0; i < item_names.size(); i++) {
+        <span class="comment">// If item matches name and is in current room</span>
+        <span class="keyword">if</span> (item_names[i] == noun && item_locs[i] == currentRoom) {
+            <span class="comment">// Move to inventory (location 0)</span>
+            item_locs[i] = 0;
+            cout << <span class="string">"You take the "</span> << item_names[i] << <span class="string">"."</span> << endl;
+            found = <span class="keyword">true</span>;
+            <span class="keyword">break</span>;
+        }
+    }
+    <span class="keyword">if</span> (!found) cout << <span class="string">"You don't see that here."</span> << endl;
+}</pre>
+        
+        <h3>Drop Command</h3>
+        <pre>
+<span class="keyword">else if</span> (verb == <span class="string">"drop"</span> && !noun.empty()) {
+    <span class="keyword">bool</span> found = <span class="keyword">false</span>;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = 0; i < item_names.size(); i++) {
+        <span class="comment">// If item matches name and is in inventory</span>
+        <span class="keyword">if</span> (item_names[i] == noun && item_locs[i] == 0) {
+            <span class="comment">// Move to current room</span>
+            item_locs[i] = currentRoom;
+            cout << <span class="string">"You drop the "</span> << item_names[i] << <span class="string">"."</span> << endl;
+            found = <span class="keyword">true</span>;
+            <span class="keyword">break</span>;
+        }
+    }
+    <span class="keyword">if</span> (!found) cout << <span class="string">"You don't have that."</span> << endl;
+}</pre>
+        
+        <h3>Examine Command</h3>
+        <pre>
+<span class="keyword">else if</span> (verb == <span class="string">"examine"</span> || verb == <span class="string">"look"</span>) {
+    <span class="keyword">if</span> (noun.empty()) {
+        <span class="comment">// Look at room again</span>
+        cout << room_descriptions[currentRoom] << endl;
+    } <span class="keyword">else</span> {
+        <span class="comment">// Look at specific item</span>
+        <span class="keyword">bool</span> found = <span class="keyword">false</span>;
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = 0; i < item_names.size(); i++) {
+            <span class="comment">// If item matches name and is in current room or inventory</span>
+            <span class="keyword">if</span> (item_names[i] == noun && 
+                (item_locs[i] == currentRoom || item_locs[i] == 0)) {
+                cout << item_descriptions[i] << endl;
+                found = <span class="keyword">true</span>;
+                <span class="keyword">break</span>;
+            }
+        }
+        <span class="keyword">if</span> (!found) cout << <span class="string">"You don't see that here."</span> << endl;
+    }
+}</pre>
+        
+        <div class="note">
+            <strong>Key Point:</strong> Notice how a single value change (<code>item_locs[i] = 0</code>) moves an item from a room to inventory. This demonstrates the power of parallel arrays!
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Coding Challenges</h2>
+        
+        <p>Here are some challenges to help you extend your text adventure game:</p>
+        
+        <h3>Challenge 1: Room Map</h3>
+        <p>Create a simple visual map of the rooms that displays when the player types "map".</p>
+        
+        <h3>Challenge 2: Item Weight</h3>
+        <p>Add a new parallel array called <code>item_weights</code> and implement a weight limit for the player.</p>
+        
+        <h3>Challenge 3: Item Uses</h3>
+        <p>Implement a "use [item]" command that performs special actions for certain items.</p>
+        
+        <h3>Challenge 4: Room State</h3>
+        <p>Add a <code>room_states</code> array to track conditions like "light/dark" or "locked/unlocked".</p>
+    </div>
+
+    <div class="container">
+        <h2>AI Prompting Tips</h2>
+        
+        <p>Remember, you're encouraged to use AI tools like Claude to help you understand concepts. Here are some effective prompts:</p>
+        
+        <ul>
+            <li>"Help me understand how the parallel arrays work together in the text adventure game."</li>
+            <li>"Can you help debug this specific function in my text adventure?"</li>
+            <li>"How would I implement a map command in my text adventure game?"</li>
+            <li>"What's wrong with my code for picking up items?"</li>
+        </ul>
+        
+        <p>Avoid asking the AI to "write the complete code for me" - instead, focus on understanding the concepts!</p>
+    </div>
+
+    <div class="container">
+        <h2>Full Source Code: Iteration 1</h2>
+        
+        <pre>
+<span class="keyword">#include</span> <span class="string">&lt;iostream&gt;</span>
+<span class="keyword">#include</span> <span class="string">&lt;string&gt;</span>
+<span class="keyword">#include</span> <span class="string">&lt;vector&gt;</span>
+<span class="keyword">using namespace</span> std;
+
+<span class="keyword">int</span> main() {
+    <span class="comment">// ROOM ARRAYS</span>
+    <span class="keyword">vector</span>&lt;<span class="keyword">string</span>&gt; room_names = {
+        <span class="string">"Player"</span>,          <span class="comment">// Index 0 = Player (not a room)</span>
+        <span class="string">"Entrance Hall"</span>, 
+        <span class="string">"Kitchen"</span>, 
+        <span class="string">"Living Room"</span>, 
+        <span class="string">"Secret Passage"</span>
+    };
+    
+    <span class="keyword">vector</span>&lt;<span class="keyword">string</span>&gt; room_descriptions = {
+        <span class="string">"That's you!"</span>,     <span class="comment">// Player description</span>
+        <span class="string">"A grand entrance with marble floors and a chandelier."</span>,
+        <span class="string">"A small kitchen with an old stove and sink."</span>,
+        <span class="string">"A cozy room with a fireplace and comfortable chairs."</span>,
+        <span class="string">"A narrow, dark passage hidden behind a bookshelf."</span>
+    };
+    
+    <span class="comment">// Exits: N, E, S, W (-1 means no exit)</span>
+    <span class="keyword">vector</span>&lt;<span class="keyword">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; room_exits = {
+        {-1, -1, -1, -1},  <span class="comment">// Player (not a location)</span>
+        {-1, 3, 2, -1},    <span class="comment">// Entrance: No N, E to Living Room, S to Kitchen, No W</span>
+        {1, -1, -1, -1},   <span class="comment">// Kitchen: N to Entrance, No other exits</span>
+        {-1, 4, -1, 1},    <span class="comment">// Living Room: No N, E to Secret Passage, No S, W to Entrance</span>
+        {-1, -1, -1, 3}    <span class="comment">// Secret Passage: No N, No E, No S, W to Living Room</span>
+    };
+    
+    <span class="comment">// ITEM ARRAYS</span>
+    <span class="keyword">vector</span>&lt;<span class="keyword">string</span>&gt; item_names = {
+        <span class="string">"rusty key"</span>,
+        <span class="string">"flashlight"</span>,
+        <span class="string">"apple"</span>, 
+        <span class="string">"knife"</span>,
+        <span class="string">"old book"</span>,
+        <span class="string">"letter"</span>
+    };
+    
+    <span class="comment">// Location of each item (0=player, 1-4=rooms)</span>
+    <span class="comment">// Initially distributed in different rooms</span>
+    <span class="keyword">vector</span>&lt;<span class="keyword">int</span>&gt; item_locs = {
+        1,  <span class="comment">// rusty key in Entrance Hall</span>
+        1,  <span class="comment">// flashlight in Entrance Hall</span>
+        2,  <span class="comment">// apple in Kitchen</span>
+        2,  <span class="comment">// knife in Kitchen</span>
+        3,  <span class="comment">// old book in Living Room</span>
+        3   <span class="comment">// letter in Living Room</span>
+    };
+    
+    <span class="comment">// Player starts in the entrance hall (room 1)</span>
+    <span class="keyword">int</span> currentRoom = 1;
+    
+    <span class="comment">// Game loop</span>
+    <span class="keyword">while</span> (<span class="keyword">true</span>) {
+        cout << <span class="string">"\n----------------------------------------\n"</span>;
+        
+        <span class="comment">// Display current room info</span>
+        cout << <span class="string">"You are in the "</span> << room_names[currentRoom] << endl;
+        cout << room_descriptions[currentRoom] << endl;
+        
+        <span class="comment">// Display items in this room</span>
+        cout << <span class="string">"You see: "</span>;
+        <span class="keyword">bool</span> foundItems = <span class="keyword">false</span>;
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = 0; i < item_locs.size(); i++) {
+            <span class="keyword">if</span> (item_locs[i] == currentRoom) {
+                <span class="keyword">if</span> (foundItems) cout << <span class="string">", "</span>;
+                cout << item_names[i];
+                foundItems = <span class="keyword">true</span>;
+            }
+        }
+        <span class="keyword">if</span> (!foundItems) cout << <span class="string">"nothing of interest"</span>;
+        cout << endl;
+        
+        <span class="comment">// Display inventory</span>
+        cout << <span class="string">"Inventory: "</span>;
+        <span class="keyword">bool</span> hasItems = <span class="keyword">false</span>;
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = 0; i < item_locs.size(); i++) {
+            <span class="keyword">if</span> (item_locs[i] == 0) { <span class="comment">// 0 = player inventory</span>
+                <span class="keyword">if</span> (hasItems) cout << <span class="string">", "</span>;
+                cout << item_names[i];
+                hasItems = <span class="keyword">true</span>;
+            }
+        }
+        <span class="keyword">if</span> (!hasItems) cout << <span class="string">"empty"</span>;
+        cout << endl;
+        
+        <span class="comment">// Display available exits</span>
+        cout << <span class="string">"Exits: "</span>;
+        <span class="keyword">if</span> (room_exits[currentRoom][0] != -1) cout << <span class="string">"North "</span>;
+        <span class="keyword">if</span> (room_exits[currentRoom][1] != -1) cout << <span class="string">"East "</span>;
+        <span class="keyword">if</span> (room_exits[currentRoom][2] != -1) cout << <span class="string">"South "</span>;
+        <span class="keyword">if</span> (room_exits[currentRoom][3] != -1) cout << <span class="string">"West "</span>;
+        cout << endl;
+        
+        <span class="comment">// Get player command</span>
+        <span class="keyword">string</span> command;
+        cout << <span class="string">"> "</span>;
+        cin >> command;
+        
+        <span class="comment">// Process movement commands</span>
+        <span class="keyword">if</span> (command == <span class="string">"north"</span> || command == <span class="string">"n"</span>) {
+            <span class="keyword">if</span> (room_exits[currentRoom][0] != -1)
+                currentRoom = room_exits[currentRoom][0];
+            <span class="keyword">else</span>
+                cout << <span class="string">"You can't go that way."</span> << endl;
+        }
+        <span class="keyword">else if</span> (command == <span class="string">"east"</span> || command == <span class="string">"e"</span>) {
+            <span class="keyword">if</span> (room_exits[currentRoom][1] != -1)
+                currentRoom = room_exits[currentRoom][1];
+            <span class="keyword">else</span>
+                cout << <span class="string">"You can't go that way."</span> << endl;
+        }
+        <span class="keyword">else if</span> (command == <span class="string">"south"</span> || command == <span class="string">"s"</span>) {
+            <span class="keyword">if</span> (room_exits[currentRoom][2] != -1)
+                currentRoom = room_exits[currentRoom][2];
+            <span class="keyword">else</span>
+                cout << <span class="string">"You can't go that way."</span> << endl;
+        }
+        <span class="keyword">else if</span> (command == <span class="string">"west"</span> || command == <span class="string">"w"</span>) {
+            <span class="keyword">if</span> (room_exits[currentRoom][3] != -1)
+                currentRoom = room_exits[currentRoom][3];
+            <span class="keyword">else</span>
+                cout << <span class="string">"You can't go that way."</span> << endl;
+        }
+        <span class="keyword">else if</span> (command == <span class="string">"quit"</span>) {
+            <span class="keyword">break</span>;
+        }
+        <span class="keyword">else</span> {
+            cout << <span class="string">"I don't understand that command."</span> << endl;
+        }
+    }
+    
+    cout << <span class="string">"Thanks for playing!"</span> << endl;
+    <span class="keyword">return</span> 0;
+}</pre>
+    </div>
+
+    <div class="container">
+        <h2>Resources</h2>
+        
+        <ul>
+            <li><a href="#" target="_blank">Download the complete C++ source code</a></li>
+            <li><a href="#" target="_blank">Map of the example game world</a></li>
+            <li><a href="#" target="_blank">Extension ideas for your game</a></li>
+        </ul>
+        
+        <p>Have fun teaching parallel arrays through text adventures!</p>
+    </div>
+</body>
+</html>
