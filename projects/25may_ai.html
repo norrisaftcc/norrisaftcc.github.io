@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI in Academia: A Practical Conversation</title>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --accent-color: #bb86fc;
+            --secondary-color: #03dac6;
+            --section-bg: #1e1e1e;
+            --code-bg: #2d2d2d;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 1px solid #333;
+        }
+        
+        h1 {
+            color: var(--accent-color);
+            margin-bottom: 0.5em;
+        }
+        
+        h2 {
+            color: var(--secondary-color);
+            margin-top: 1.5em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 0.3em;
+        }
+        
+        h3 {
+            color: var(--accent-color);
+            margin-top: 1.2em;
+        }
+        
+        p, li {
+            margin-bottom: 1em;
+        }
+        
+        a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: var(--code-bg);
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        
+        pre {
+            background-color: var(--code-bg);
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        blockquote {
+            border-left: 4px solid var(--accent-color);
+            margin-left: 0;
+            padding-left: 20px;
+            font-style: italic;
+        }
+        
+        .meme-divider {
+            margin: 60px 0;
+            text-align: center;
+            background-color: var(--section-bg);
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .meme-divider img {
+            max-width: 100%;
+            border-radius: 4px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+        
+        .meme-caption {
+            margin-top: 10px;
+            font-style: italic;
+            opacity: 0.8;
+        }
+        
+        .activity {
+            background-color: var(--section-bg);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .note {
+            background-color: rgba(187, 134, 252, 0.1);
+            border-left: 4px solid var(--accent-color);
+            padding: 10px 15px;
+            margin: 20px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+        
+        th {
+            background-color: var(--section-bg);
+            color: var(--accent-color);
+        }
+        
+        tr:hover {
+            background-color: rgba(3, 218, 198, 0.1);
+        }
+        
+        footer {
+            margin-top: 60px;
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid #333;
+            font-size: 0.9em;
+        }
+        
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: var(--bg-color);
+            padding: 10px 0;
+            border-bottom: 1px solid #333;
+            z-index: 1000;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin: 0 15px;
+            margin-bottom: 5px;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            h2 {
+                font-size: 1.5em;
+            }
+            
+            nav li {
+                margin: 0 10px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#intro">Intro</a></li>
+            <li><a href="#section1">Academic Integrity</a></li>
+            <li><a href="#section2">Prompt Engineering</a></li>
+            <li><a href="#section3">Privacy</a></li>
+            <li><a href="#conclusion">Conclusion</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1>AI in Academia: A Practical Conversation</h1>
+            <p>A guide to using AI tools in higher education</p>
+        </header>
+
+        <section id="intro">
+            <h2>Introduction</h2>
+            
+            <div class="note">
+                <p><em>[PRESENTER NOTE: At this point, "accidentally" display this text instead of your slides]</em></p>
+                <pre>
+> SYSTEM: Generate an engaging introduction about AI in academia
+> CLAUDE: I've prepared four versions of the introduction. Would you like formal, 
+> casual, humorous, or technical?
+> HUMAN: Just pick one and make it good. This is tomorrow and I'm tired.
+> CLAUDE: Got it. Here's a balanced approach that should work well...</pre>
+                <p><em>[Look surprised, then laugh]</em></p>
+            </div>
+
+            <p>Well... I guess that answers the question of whether I used AI to make this presentation! Let's call that our first lesson in "Things Not To Do."</p>
+            
+            <div class="meme-divider">
+                <img src="placeholder-meme1.jpg" alt="How it started/How it's going meme">
+                <div class="meme-caption">Insert "How it started/How it's going" meme here</div>
+            </div>
+            
+            <p>Hey everyone - thanks for being here today. Quick confession: this is actually version 12 of this presentation. The previous 11 kept getting more complex and theoretical until I realized: we don't need another academic lecture on AI. We need a conversation about how we actually use these tools in our everyday work.</p>
+            
+            <p>So I'm going to share what I've learned so far, but I'd also love to hear from you during our discussion time. What are you curious about? What's working? What's frustrating?</p>
+            
+            <p>As someone still figuring this out myself:</p>
+            <ol>
+                <li>I'm experimenting with these tools almost daily</li>
+                <li>I've had 6 successes, 12 failures, and about 83 "interesting learning experiences" (I made that number up, but it feels right)</li>
+                <li>I'm here to help you avoid my mistakes and learn from what actually works</li>
+            </ol>
+            
+            <p>Today we'll talk about three things:</p>
+            <ul>
+                <li>How AI is changing academic integrity (and what we can do about it)</li>
+                <li>How to actually talk to these AI tools effectively</li>
+                <li>How to use AI for administrative tasks without compromising confidentiality</li>
+            </ul>
+        </section>
+        
+        <div class="meme-divider">
+            <img src="placeholder-meme2.jpg" alt="AI teaching meme">
+            <div class="meme-caption">Insert funny AI education meme here</div>
+        </div>
+
+        <section id="section1">
+            <h2>Section I: Academic Integrity and AI</h2>
+            
+            <h3>The Reality Check: AI Detection Limitations</h3>
+            
+            <p><em>[Lower voice conspiratorially]</em></p>
+            
+            <p>Let's address the elephant in the room: AI detection tools are imperfect. Here's why:</p>
+            
+            <p><strong>The Truth About "Catching" AI-Generated Content:</strong></p>
+            <ul>
+                <li>Running AI text through Grammarly often disguises AI patterns</li>
+                <li>Making small manual edits breaks detection algorithms</li>
+                <li>Asking AI to "write like a B student" creates more human-like errors</li>
+                <li>Detection technologies lag behind generation capabilities</li>
+                <li>Even GPTZero and Turnitin have significant false positives/negatives</li>
+            </ul>
+            
+            <div class="meme-divider">
+                <img src="sonic-crayon-drawing.jpg" alt="Sonic crayon drawing AI image">
+                <div class="meme-caption">Sonic crayon drawing AI image</div>
+            </div>
+            
+            <div class="meme-divider">
+                <img src="ai-detection-meme.jpg" alt="AI detection vs reality meme">
+                <div class="meme-caption">Insert "AI detection vs reality" meme here</div>
+            </div>
+            
+            <p><em>[Normal voice]</em></p>
+            
+            <p>But here's the thing – trying to police AI use is like digital whack-a-mole. What if we pivoted entirely?</p>
+            
+            <h3>Embracing AI Collaboration: A More Practical Approach</h3>
+            
+            <p>The more productive question isn't "How do we catch AI users?" but rather:</p>
+            <ol>
+                <li><strong>What skills must remain human?</strong> (critical thinking, personal reflection, original insight)</li>
+                <li><strong>What tasks can we comfortably delegate?</strong> (drafting, outlining, research summaries)</li>
+                <li><strong>How do we assess learning in an AI-enhanced world?</strong></li>
+            </ol>
+            
+            <p><strong>Example: The Transparent Assignment Design</strong></p>
+            
+            <p>Instead of:</p>
+            <pre>Write a 5-page analysis of Hamlet's character development.</pre>
+            
+            <p>Consider:</p>
+            <pre>Use an AI tool to generate an initial character analysis of Hamlet.
+Then, critically evaluate this analysis, identifying three specific
+areas where you disagree with or would expand upon the AI's
+interpretation, citing specific evidence from the text.
+Document your AI interaction by submitting the prompt(s) you used.</pre>
+            
+            <h3>Interactive Activity: Assignment Transformation</h3>
+            
+            <div class="activity">
+                <p>Let's practice transforming traditional assignments into AI-collaborative learning experiences:</p>
+                <ol>
+                    <li>Break into small groups by discipline</li>
+                    <li>Take a standard assignment from your field</li>
+                    <li>Redesign it to:
+                        <ul>
+                            <li>Make AI use explicit and permitted</li>
+                            <li>Require human critical thinking and evaluation</li>
+                            <li>Include documentation of AI collaboration</li>
+                            <li>Focus assessment on what humans do best</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+            
+            <h3>The Human-AI Division of Labor</h3>
+            
+            <p><strong>Tasks Better Delegated to AI:</strong></p>
+            <ul>
+                <li>Initial drafting and outlines</li>
+                <li>Summarizing straightforward content</li>
+                <li>Generating practice questions</li>
+                <li>Providing background information</li>
+                <li>Formatting and citation checking</li>
+            </ul>
+            
+            <p><strong>Tasks That Should Remain Human:</strong></p>
+            <ul>
+                <li>Making conceptual connections</li>
+                <li>Applying theories to personal experience</li>
+                <li>Ethical judgment and reasoning</li>
+                <li>Creative innovation and original insights</li>
+                <li>Critical evaluation of AI outputs</li>
+            </ul>
+        </section>
+        
+        <div class="meme-divider">
+            <img src="placeholder-meme3.jpg" alt="Expectation vs reality of prompt engineering">
+            <div class="meme-caption">Insert "expectation vs reality of prompt engineering" meme here</div>
+        </div>
+
+        <section id="section2">
+            <h2>Section II: Talking to AI (Without Sounding Like a Robot)</h2>
+            
+            <h3>The Three-Part Conversation Starter</h3>
+            
+            <p>When you're talking to AI, think of it like meeting someone new at a conference. You want to:</p>
+            
+            <ol>
+                <li><strong>Introduce yourself:</strong> "I'm teaching a first-year biology lab..."</li>
+                <li><strong>Set expectations:</strong> "I need help creating clear instructions for..."</li>
+                <li><strong>Explain your goal:</strong> "...so my students can complete the procedure safely."</li>
+            </ol>
+            
+            <p>It's not rocket science - it's just good communication!</p>
+            
+            <h3>Let's See This in Action</h3>
+            
+            <p><strong>Boring Prompt:</strong></p>
+            <pre>How do I make a better rubric?</pre>
+            
+            <p><strong>Conversation Starter:</strong></p>
+            <pre>Hi there! I'm teaching public speaking to first-year students who get super 
+nervous about presenting. Could you help me create a rubric that's encouraging 
+but still has clear standards? I want them to know exactly what an A speech 
+looks like compared to a C speech.</pre>
+            
+            <p>Let me show you what each version gets you...</p>
+            
+            <p><em>[Show comparison of outputs]</em></p>
+            
+            <p>Did you notice how much better the second response is? The AI has context now. It knows:</p>
+            <ul>
+                <li>Who your students are (first-years)</li>
+                <li>What challenges they face (nervousness)</li>
+                <li>What you're trying to accomplish (clarity + encouragement)</li>
+            </ul>
+            
+            <h3>Your Turn: Let's Practice Together</h3>
+            
+            <div class="activity">
+                <p>Grab a partner and try this:</p>
+                <ol>
+                    <li>Think of something you need help with in your work</li>
+                    <li>Write a basic one-line request</li>
+                    <li>Now rewrite it using our three-part approach</li>
+                    <li>Compare what you come up with</li>
+                </ol>
+                <p><em>[Group activity - 3 minutes]</em></p>
+                <p>Now let's hear some examples... Who wants to share?</p>
+                <p><em>[Take 2-3 examples from the audience]</em></p>
+            </div>
+        </section>
+        
+        <div class="meme-divider">
+            <img src="placeholder-meme4.jpg" alt="What AI companies say vs what they do with your data">
+            <div class="meme-caption">Insert "What AI companies say vs what they do with your data" meme here</div>
+        </div>
+
+        <section id="section3">
+            <h2>Section III: The Privacy Thing (Because We All Have Secrets)</h2>
+            
+            <h3>What Happens in Claude, Doesn't Always Stay in Claude</h3>
+            
+            <p>Let's talk about what might keep you up at night: privacy concerns.</p>
+            
+            <p>Quick question for you all: By show of hands, who has used ChatGPT or Claude for something work-related in the past month?</p>
+            
+            <p><em>[Wait for hands]</em></p>
+            
+            <p>Now, who has read the terms of service to see what happens to the information you share?</p>
+            
+            <p><em>[Usually fewer hands - laugh]</em></p>
+            
+            <p>Here's the reality check: Many public AI tools can store and learn from your inputs. That recommendation letter with a student's personal details? That sensitive departmental planning document? They might not stay private.</p>
+            
+            <h3>The Recommendation Letter Dilemma</h3>
+            
+            <p>Let me show you two ways to approach this:</p>
+            
+            <p><strong>The Oversharing Way:</strong></p>
+            <pre>Write a recommendation letter for Jane Smith, my student with a 3.8 GPA who 
+has been accepted to Stanford Medical School but struggled with organic chemistry
+and has anxiety issues that affected her performance in my class.</pre>
+            
+            <p><strong>The Smart Way:</strong></p>
+            <pre>Help me draft a recommendation letter template for a pre-med student. 
+I'll explain that they overcame specific academic challenges while 
+maintaining strong overall performance. Give me placeholders where I should 
+add personal details myself.</pre>
+            
+            <p>See the difference? The second approach gives you a useful template without exposing anyone's private information.</p>
+            
+            <h3>Quick Poll: What's Most Sensitive in Your Role?</h3>
+            
+            <div class="activity">
+                <p>Let's take a quick poll using your phones:</p>
+                <p>[QR code for simple poll]</p>
+                
+                <p>What types of sensitive information do you work with most often?</p>
+                <ul>
+                    <li>Student academic records/performance</li>
+                    <li>Personal/health information</li>
+                    <li>Internal planning/strategy documents</li>
+                    <li>Faculty evaluation materials</li>
+                    <li>Research data with confidentiality requirements</li>
+                    <li>Other (please specify)</li>
+                </ul>
+                
+                <p><em>[Review results together]</em></p>
+                <p>Interesting! This gives us a sense of where we need to be most careful.</p>
+            </div>
+        </section>
+        
+        <div class="meme-divider">
+            <img src="placeholder-meme5.jpg" alt="How it started vs how it's going vs where we're headed">
+            <div class="meme-caption">Insert "How it started vs how it's going vs where we're headed" meme here</div>
+        </div>
+
+        <section id="conclusion">
+            <h2>What's Next? A Conversation About Tomorrow</h2>
+            
+            <p><em>[Note to self: This is getting meta - version 12 of the presentation is discussing what happens next!]</em></p>
+            
+            <p>So, what did we learn today?</p>
+            
+            <ol>
+                <li><strong>Fighting AI use is probably a losing battle</strong> - but we can adapt our teaching</li>
+                <li><strong>Talking to AI is just having a good conversation</strong> - be clear about what you need</li>
+                <li><strong>Privacy matters</strong> - be thoughtful about what you share</li>
+            </ol>
+            
+            <p>But I'd like to end with some questions for us all to consider:</p>
+            
+            <h3>Questions Worth Asking</h3>
+            
+            <ul>
+                <li>What aspects of your work should always remain human?</li>
+                <li>What tasks are you happy to delegate to AI?</li>
+                <li>How do we help our students navigate this new world?</li>
+                <li>What skills will matter most in five years?</li>
+            </ul>
+            
+            <p>I don't have perfect answers to these questions. Nobody does yet. But I think they're conversations worth having together.</p>
+            
+            <h3>One Final Thought</h3>
+            
+            <blockquote>
+                <p>The writer Douglas Adams once said: "We are stuck with technology when what we really want is just stuff that works."</p>
+            </blockquote>
+            
+            <p>Maybe that's our job now - figuring out how to make AI work for education, not the other way around.</p>
+            
+            <p>What do you think?</p>
+            
+            <p><em>[Open for discussion]</em></p>
+            
+            <h3>Want to Keep Learning?</h3>
+            
+            <p>If you're interested in exploring more:</p>
+            <ul>
+                <li>Our teaching center offers monthly AI workshops</li>
+                <li>The library has created a great AI research guide</li>
+                <li>I'm happy to share these slides and resources</li>
+                <li>And yes, you can always ask Claude yourself!</li>
+            </ul>
+            
+            <p>My email is on the screen - I'd love to continue this conversation. Thanks for being here today!</p>
+            
+            <hr>
+            
+            <h3>For Reference: AI Tools Cheat Sheet</h3>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tool</th>
+                        <th>Good For</th>
+                        <th>Not So Great For</th>
+                        <th>My Take</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Claude</strong></td>
+                        <td>• Reading documents<br>• Thoughtful responses<br>• Normal-sounding text</td>
+                        <td>• Coding help<br>• Latest information</td>
+                        <td>My current favorite - it feels most like talking to a helpful colleague</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ChatGPT</strong></td>
+                        <td>• Coding<br>• Quick answers<br>• Creative ideas</td>
+                        <td>• Long documents<br>• Nuanced topics</td>
+                        <td>The Swiss Army knife - does everything pretty well</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Copilot</strong></td>
+                        <td>• Microsoft integration<br>• Simple answers<br>• Quick help</td>
+                        <td>• Complex tasks<br>• Deeper analysis</td>
+                        <td>Great if you live in Microsoft Office</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Gemini</strong></td>
+                        <td>• Google integration<br>• Image understanding</td>
+                        <td>• Consistent quality</td>
+                        <td>Still catching up to the others</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <p><em>The best tool? The one you actually use.</em></p>
+            
+            <hr>
+            
+            <h2>Version Notes</h2>
+            
+            <p><strong>v1-v11:</strong> Various iterations with increasing complexity and pretentiousness quotient. 📈</p>
+            
+            <p><strong>v12:</strong> Complete structural reorganization. Dropped meal metaphors. Added fourth-wall-breaking meta-joke. 🍽️➡️💬</p>
+            
+            <p><strong>v13:</strong> Added placeholders for memes and drawings. 🖼️</p>
+            
+            <p><strong>v14:</strong> Reduced pretentiousness, increased conversational tone. 🗣️</p>
+            
+            <p><strong>v15:</strong> Added audience interaction elements. 👋</p>
+            
+            <p><strong>v16:</strong> Streamlined tool comparison section. 🔧</p>
+            
+            <p><strong>v17:</strong> Enhanced meta-commentary about version development. 🤔</p>
+            
+            <p><strong>v18:</strong> Added version notes thanks Claude. 🤖</p>
+            
+            <p><strong>v19:</strong> Added emojis and dark mode optimization. 🌙</p>
+            
+            <p><em>"If the slides get weird, just roll with it. That's part of the AI experience."</em></p>
+        </section>
+
+        <footer>
+            <p>Created with the assistance of Claude 3.7 Sonnet | <span id="currentYear"></span></p>
+            <script>document.getElementById('currentYear').textContent = new Date().getFullYear();</script>
+        </footer>
+    </div>
+</body>
+</html>
