@@ -2,6 +2,10 @@
 # norrisaftcc.github.io
 
 ## Latest Post
+
+## May 2025
+
+Part 2! <a href="projects/25may_ai.html">Bits, Bytes...</a>
 ## Feb 2025
 
 Feb Lunch and Learn: <a href="projects/25febaipd.html">AI: Bits, bytes, bits, and bobs</a>
