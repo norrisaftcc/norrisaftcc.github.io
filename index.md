@@ -6,9 +6,11 @@
 
 Welcome to the latest ["Terrible AI Product" page](projects/cashincinerator3000/) -- Cash Incinerator 3000!
 
+Thanks Claude for updating and refreshing this page.
+
 ## May 2025
 
-We had Part 2 of our AI Lunch and Learn at the Library! [Bits, Bytes...](projects/25may_ai.html)
+We had Part 2 of the Library AI Lunch & Learn! [Bits, Bytes...](projects/25may_ai.html)
 
 ## Apr 2025
 [Text Adventure C++](projects/textadv_25apr.html)
