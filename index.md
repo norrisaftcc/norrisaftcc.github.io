@@ -3,9 +3,17 @@
 
 ## Latest Post
 
+# Project Release Notes
+
+This is version 1.0 of our student project for CSC 134. The application demonstrates our understanding of programming fundamentals using JavaScript and HTML/CSS. We've implemented a basic calculator with standard arithmetic operations and memory functions.
+
+Our team worked collaboratively using GitHub for version control. The main challenges included implementing proper error handling and ensuring the calculator works consistently across different browsers. We've tested the application on Chrome, Firefox, and Edge.
+
+Future improvements could include adding scientific calculator functions, keyboard support, and a more responsive design for mobile devices. We welcome any feedback from users to help us improve the application in future updates.
+
 ## May 2025
 
-Part 2! <a href="projects/25may_ai.html">Bits, Bytes...</a>
+We had Part 2! <a href="projects/25may_ai.html">Bits, Bytes...</a>
 
 ## Apr 2025
 <a href="projects/textadv_25apr.html">Text Adventure C++</a>
