@@ -5,7 +5,7 @@
 
 # Project Release Notes
 
-Welcome to the latest <a href="projects/cashincinerator3000/>"Terrible AI Product" page</a> -- Cash Incinerator 3000!
+Welcome to the latest <a href="projects/cashincinerator3000/">"Terrible AI Product" page</a> -- Cash Incinerator 3000!
 
 ## May 2025
 
