@@ -1,4 +1,5 @@
 # PokeSense
+<img src="presentation/fieldtrip_with_pokemon.png" width="400">
 
 ## Presentation
 [PokeSense Presentation](presentation/index.html)
