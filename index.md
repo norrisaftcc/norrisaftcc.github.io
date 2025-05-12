@@ -6,6 +6,8 @@
 
 Welcome to the latest ["Terrible AI Product" page](projects/cashincinerator3000/) -- Cash Incinerator 3000!
 
+A less terrible project, which works, is [PokeSense](projects/pokesense/), a demo for the Pokemon API.
+
 Thanks Claude for updating and refreshing this page.
 
 ## May 2025

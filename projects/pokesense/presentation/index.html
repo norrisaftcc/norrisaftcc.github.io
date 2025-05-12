@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokeSense - Team Presentation</title>
+    <style>
+        :root {
+            --primary: #EE8130; /* Fire type color */
+            --secondary: #6390F0; /* Water type color */
+            --tertiary: #7AC74C; /* Grass type color */
+            --accent: #F7D02C; /* Electric type color */
+            --dark: #2E3436;
+            --light: #F8F9FA;
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .presentation {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        
+        .slide {
+            display: none;
+            padding: 2rem;
+            flex: 1;
+            overflow-y: auto;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .slide.active {
+            display: block;
+        }
+        
+        .slide-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        h1, h2, h3 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+        
+        .logo {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        .controls {
+            display: flex;
+            padding: 1rem 2rem;
+            background-color: var(--dark);
+            color: white;
+            justify-content: space-between;
+        }
+        
+        .btn {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+        
+        .btn:hover {
+            background-color: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        .btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .navigation {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .slide-indicator {
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .team-member {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+        
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .team-member h3 {
+            margin-top: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 0.5rem;
+        }
+        
+        .team-type {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            background-color: var(--tertiary);
+            color: white;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem;
+        }
+        
+        code {
+            background-color: #f5f5f5;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+        
+        pre {
+            background-color: #f5f5f5;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+        
+        .team-image {
+            max-width: 100%;
+            margin-bottom: 1.5rem;
+        }
+        
+        .type {
+            display: inline-block;
+            padding: 0.3rem 0.6rem;
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        
+        .type-normal { background-color: #A8A77A; }
+        .type-fire { background-color: #EE8130; }
+        .type-water { background-color: #6390F0; }
+        .type-electric { background-color: #F7D02C; color: black; }
+        .type-grass { background-color: #7AC74C; }
+        .type-ice { background-color: #96D9D6; }
+        .type-fighting { background-color: #C22E28; }
+        .type-poison { background-color: #A33EA1; }
+        .type-ground { background-color: #E2BF65; }
+        .type-flying { background-color: #A98FF3; }
+        .type-psychic { background-color: #F95587; }
+        .type-bug { background-color: #A6B91A; }
+        .type-rock { background-color: #B6A136; }
+        .type-ghost { background-color: #735797; }
+        .type-dragon { background-color: #6F35FC; }
+        .type-dark { background-color: #705746; }
+        .type-steel { background-color: #B7B7CE; }
+        .type-fairy { background-color: #D685AD; }
+        
+        .sprint {
+            border-left: 4px solid var(--primary);
+            padding-left: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .sprint h3 {
+            display: flex;
+            align-items: center;
+        }
+        
+        .sprint h3::before {
+            content: "";
+            width: 15px;
+            height: 15px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            margin-right: 10px;
+            margin-left: -22px;
+        }
+        
+        .quote {
+            font-style: italic;
+            border-left: 3px solid var(--accent);
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background-color: #ddd;
+            border-radius: 4px;
+            margin: 5px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background-color: var(--primary);
+            transition: width 0.5s ease;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .fieldtrip-image {
+            border-radius: 8px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            margin: 1rem 0;
+        }
+
+        .caption {
+            text-align: center;
+            font-style: italic;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation">
+        <header>
+            <div class="logo">PokeSense</div>
+            <div>CTS285 Fall 20xx Team Project</div>
+        </header>
+        
+        <!-- Slide 1: Title -->
+        <section id="slide1" class="slide active">
+            <div class="slide-content">
+                <div style="text-align: center; margin: 2rem 0;">
+                    <h1 style="font-size: 3rem; margin-bottom: 0.5rem;">PokeSense</h1>
+                    <p style="font-size: 1.5rem; margin-top: 0;">A Comprehensive Pokémon Management System</p>
+                    <div style="margin: 2rem 0;">
+                        <span class="type type-fire">API Integration</span>
+                        <span class="type type-water">Data Storage</span>
+                        <span class="type type-electric">Collection Management</span>
+                        <span class="type type-grass">User Interface</span>
+                    </div>
+                    <p>Presented by Team PokeSense</p>
+                </div>
+                <div class="card">
+                    <h2>Project Overview</h2>
+                    <p>PokeSense is a comprehensive Pokémon management application designed for Professor Oak's Research Lab. The system allows researchers to search, collect, and analyze Pokémon data through an intuitive interface with direct integration to the PokeAPI.</p>
+                    <p>Our application demonstrates a clean separation between GUI, business logic, and data layers while providing a rich user experience for Pokémon enthusiasts and researchers alike.</p>
+                </div>
+
+                <!-- Added the new fieldtrip image here -->
+                <div style="text-align: center; margin-top: 2rem;">
+                    <img src="pokesense_logo.png" alt="PokeSense Logo" class="fieldtrip-image" style="max-width: 500px;">
+                    <p class="caption">Team PokeSense logo</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Slide 2: The Problem -->
+        <section id="slide2" class="slide">
+            <div class="slide-content">
+                <h2>The Problem</h2>
+                <div class="two-column">
+                    <div>
+                        <p>Professor Oak's Pokémon Research Lab faces significant challenges in their daily operations:</p>
+                        <ul>
+                            <li>Researchers waste hours manually looking up Pokémon information</li>
+                            <li>Paper-based system is inefficient and prone to loss</li>
+                            <li>No way to analyze Pokémon data effectively</li>
+                            <li>Difficult to share knowledge between researchers</li>
+                            <li>Field research data often gets lost or damaged</li>
+                        </ul>
+                        <div class="quote">
+                            "Our analog record-keeping can't keep pace with discovery. Without a modern solution, valuable research insights are being lost, and new trainers lack the guidance they need."
+                            <br><strong>— Professor Oak</strong>
+                        </div>
+                    </div>
+                    <div>
+                        <img src="team_w_instructor.png" alt="Professor Oak explaining the problem to the team" style="width: 100%;">
+                        <p style="text-align: center; font-style: italic; font-size: 0.9rem;">Professor Oak explaining the challenges to team members</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Slide 3: Our Solution -->
+        <section id="slide3" class="slide">
+            <div class="slide-content">
+                <h2>Our Solution: PokeSense</h2>
+                <p>A comprehensive Pokémon management system that:</p>
+                
+                <div class="two-column">
+                    <div class="card">
+                        <h3>Key Features</h3>
+                        <ul>
+                            <li>Instant access to the complete Pokémon database</li>
+                            <li>Personal collections with notes and favorites</li>
+                            <li>Intuitive visualization of Pokémon data</li>
+                            <li>Persistent storage with easy retrieval</li>
+                            <li>User-friendly interface for researchers</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Technical Highlights</h3>
+                        <ul>
+                            <li>PokeAPI integration with caching</li>
+                            <li>Clean separation of concerns (MVC pattern)</li>
+                            <li>Multiple interfaces (GUI, console)</li>
+                            <li>Comprehensive test coverage</li>
+                            <li>Documentation and examples</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3>Implementation Success</h3>
+                    <p>Since implementing PokeSense, Professor Oak's lab has reported:</p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+                        <div style="flex: 1; min-width: 200px;">
+                            <h4>73%</h4>
+                            <p>Reduction in time spent looking up Pokémon information</p>
+                        </div>
+                        <div style="flex: 1; min-width: 200px;">
+                            <h4>100%</h4>
+                            <p>Elimination of lost research notes</p>
+                        </div>
+                        <div style="flex: 1; min-width: 200px;">
+                            <h4>45%</h4>
+                            <p>Increase in collaborative research projects</p>
+                        </div>
+                        <div style="flex: 1; min-width: 200px;">
+                            <h4>92%</h4>
+                            <p>Adoption rate among researchers</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Slide 4: Meet the Team -->
+        <section id="slide4" class="slide">
+            <div class="slide-content">
+                <h2>Meet the Team</h2>
+                
+                <img src="team_charts_cropped.png" alt="The PokeSense Team" class="team-image">
+                
+                <div class="team-grid">
+                    <div class="team-member">
+                        <span class="team-type" style="background-color: var(--primary);">Project Lead</span>
+                        <h3>Ash</h3>
+                        <p><strong>Responsibility:</strong> Architecture, integration, and project oversight</p>
+                        <p><strong>Strengths:</strong> Leadership, determination, strategic planning</p>
+                        <p><strong>Signature Tool:</strong> Git & Project Management</p>
+                    </div>
+                    
+                    <div class="team-member">
+                        <span class="team-type" style="background-color: var(--secondary);">Technical Architect</span>
+                        <h3>Misty</h3>
+                        <p><strong>Responsibility:</strong> Business logic and PokeAPI integration</p>
+                        <p><strong>Strengths:</strong> Problem-solving, API design, data modeling</p>
+                        <p><strong>Signature Tool:</strong> Python Core & API Integration</p>
+                    </div>
+                    
+                    <div class="team-member">
+                        <span class="team-type" style="background-color: var(--tertiary);">Frontend Developer</span>
+                        <h3>Brock</h3>
+                        <p><strong>Responsibility:</strong> UI design and Streamlit implementation</p>
+                        <p><strong>Strengths:</strong> UX/UI design, frontend development, user empathy</p>
+                        <p><strong>Signature Tool:</strong> Streamlit & Data Visualization</p>
+                    </div>
+                    
+                    <div class="team-member">
+                        <span class="team-type" style="background-color: var(--accent); color: black;">Quality Assurance</span>
+                        <h3>Serena</h3>
+                        <p><strong>Responsibility:</strong> Data layer and testing</p>
+                        <p><strong>Strengths:</strong> Quality control, persistence, attention to detail</p>
+                        <p><strong>Signature Tool:</strong> Testing & Storage Implementation</p>
+                    </div>
+                </div>
+                
+                <div class="quote">
+                    "Capturing data to understand the world of Pokémon—one entry at a time!"
+                    <br><strong>— Team PokeSense Motto</strong>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Slide 5: Architecture -->
+        <section id="slide5" class="slide">
+            <div class="slide-content">
+                <h2>Architecture</h2>
+                
+                <div class="card">
+                    <h3>Three-Tier Architecture</h3>
+                    <p>PokeSense follows a clean separation of concerns with three distinct layers:</p>
+                    
+                    <pre style="text-align: center;">
+┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+│     GUI     │ ↔  │    Logic    │ ↔  │    Data     │
+│  (Streamlit)│    │   (Core)    │    │  (Storage)  │
+└─────────────┘    └─────────────┘    └─────────────┘
+     Brock            Misty             Serena
+   (Frontend)      (Business Logic)    (Data Layer)
+                                          
+                      Ash
+                 (Project Lead &
+                  Integration)
+</pre>
+                </div>
+                
+                <div class="two-column">
+                    <div class="card">
+                        <h3>Component Breakdown</h3>
+                        <ul>
+                            <li><strong>Presentation Layer (Brock)</strong>: Streamlit web interface and console tools</li>
+                            <li><strong>Business Logic Layer (Misty)</strong>: PokeAPI integration, Pokemon collections, and operations</li>
+                            <li><strong>Data Layer (Serena)</strong>: Storage interfaces, JSON implementation, and data validation</li>
+                            <li><strong>Integration (Ash)</strong>: Cross-component communication and project structure</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Directory Structure</h3>
+                        <pre>tool-pokeapi/
+├── core/                 # Core functionality
+│   ├── models.py         # Data models
+│   ├── storage.py        # Storage implementation
+│   ├── operations.py     # Collection operations
+│   └── pokeapi_service.py # API integration
+├── interfaces/
+│   └── streamlit_app/    # Streamlit interface
+├── examples/             # Example scripts
+├── tests/                # Unit tests
+└── docs/                 # Documentation</pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Slide 6: Development Process -->
+        <section id="slide6" class="slide">
+            <div class="slide-content">
+                <h2>Development Process</h2>
+                
+                <!-- Added field trip image with dragon-type mascot -->
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <img src="fieldtrip_with_pokemon.png" alt="Team with dragon-type mascot" class="fieldtrip-image" style="max-width: 600px;">
+                    <p class="caption">Our team bonding with a dragon-type mascot during development sprints</p>
+                </div>
+                
+                <div class="card">
+                    <h3>Round-Robin Development Approach</h3>
+                    <p>We implemented a round-robin approach to ensure all team members gained experience across the full stack:</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Week</th>
+                                <th>Ash</th>
+                                <th>Misty</th>
+                                <th>Brock</th>
+                                <th>Serena</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Integration</td>
+                                <td>API</td>
+                                <td>UI</td>
+                                <td>Data</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Data</td>
+                                <td>Integration</td>
+                                <td>API</td>
+                                <td>UI</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>UI</td>
+                                <td>Data</td>
+                                <td>Integration</td>
+                                <td>API</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>API</td>
+                                <td>UI</td>
+                                <td>Data</td>
+                                <td>Integration</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h3>Development Sprints</h3>
+                
+                <div class="sprint">
+                    <h3>Sprint 1: Foundation (1 week)</h3>
+                    <p><strong>Goal:</strong> Establish core architecture and basic API integration</p>
+                    <p><strong>Key Deliverables:</strong></p>
+                    <ul>
+                        <li>Project structure and documentation</li>
+                        <li>Pokemon data model definition</li>
+                        <li>Basic PokeAPI integration</li>
+                        <li>Initial test framework</li>
+                    </ul>
+                    <p><strong>Primary Contributor:</strong> Ash & Misty</p>
+                </div>
+                
+                <div class="sprint">
+                    <h3>Sprint 2: Core Functionality (1 week)</h3>
+                    <p><strong>Goal:</strong> Implement storage and collection operations</p>
+                    <p><strong>Key Deliverables:</strong></p>
+                    <ul>
+                        <li>Storage interface and JSON implementation</li>
+                        <li>Pokemon collection operations (CRUD)</li>
+                        <li>Command-line MVP demo</li>
+                        <li>Unit tests for core components</li>
+                    </ul>
+                    <p><strong>Primary Contributor:</strong> Serena & Ash</p>
+                </div>
+                
+                <div class="sprint">
+                    <h3>Sprint 3: User Interface (1 week)</h3>
+                    <p><strong>Goal:</strong> Create Streamlit interface and collection management</p>
+                    <p><strong>Key Deliverables:</strong></p>
+                    <ul>
+                        <li>Streamlit web application</li>
+                        <li>Pokemon search and display</li>
+                        <li>Collection management features</li>
+                        <li>Type badges and stat visualization</li>
+                    </ul>
+                    <p><strong>Primary Contributor:</strong> Brock & Misty</p>
+                </div>
+                
+                <div class="sprint">
+                    <h3>Sprint 4: Refinement (1 week)</h3>
+                    <p><strong>Goal:</strong> Polish UI, complete documentation, and add final features</p>
+                    <p><strong>Key Deliverables:</strong></p>
+                    <ul>
+                        <li>Featured Pokemon display (Pikachu)</li>
+                        <li>Comprehensive test suite</li>
+                        <li>Final documentation and examples</li>
+                        <li>Presentation materials</li>
+                    </ul>
+                    <p><strong>Primary Contributor:</strong> All team members</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Slide 7: Key Features Showcase -->
+        <section id="slide7" class="slide">
+            <div class="slide-content">
+                <h2>Key Features Showcase</h2>
+                
+                <div class="two-column">
+                    <div class="card">
+                        <h3>PokeAPI Integration</h3>
+                        <p>Seamless integration with the PokeAPI to retrieve comprehensive Pokemon data:</p>
+                        <pre>
+# Search for Pokémon
+results = PokeApiService.search_pokemon("pikachu")
+
+# Get Pokémon details
+details = PokeApiService.get_pokemon_details("pikachu")
+
+# Create Pokémon object
+pokemon = PokeApiService.create_pokemon_from_api_data(details)
+</pre>
+                        <p><strong>Implemented by:</strong> Misty</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Data Persistence</h3>
+                        <p>Flexible storage system with JSON implementation:</p>
+                        <pre>
+# Initialize storage
+storage = JsonStorage("pokemon_collection.json")
+
+# Create collection
+collection = PokemonCollection(storage)
+
+# Add, retrieve, update, and delete operations
+collection.add_pokemon(pokemon)
+collection.get_pokemon(pokemon_id)
+collection.update_pokemon(pokemon)
+collection.delete_pokemon(pokemon_id)
+</pre>
+                        <p><strong>Implemented by:</strong> Serena</p>
+                    </div>
+                </div>
+                
+                <div class="two-column">
+                    <div class="card">
+                        <h3>User Interface</h3>
+                        <p>Intuitive Streamlit interface with rich visualization:</p>
+                        <ul>
+                            <li>Responsive grid layout for Pokemon cards</li>
+                            <li>Type-based color coding for easy identification</li>
+                            <li>Progress bars for visualizing Pokemon stats</li>
+                            <li>Expandable sections for detailed information</li>
+                        </ul>
+                        <p><strong>Implemented by:</strong> Brock</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Pokemon Model</h3>
+                        <p>Comprehensive data model for Pokemon with validation:</p>
+                        <pre>
+@dataclass
+class Pokemon:
+    name: str
+    pokemon_id: int
+    types: List[str]
+    sprites: Dict[str, str]
+    height: int
+    weight: int
+    stats: List[Dict[str, any]]
+    abilities: List[str]
+    moves: List[str]
+    favorite: bool = False
+    notes: str = ""
+    id: str = field(default_factory=lambda: str(uuid4()))
+    date_added: datetime = field(default_factory=datetime.now)
+</pre>
+                        <p><strong>Implemented by:</strong> Ash</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Slide 8: Testing and Quality -->
+        <section id="slide8" class="slide">
+            <div class="slide-content">
+                <h2>Testing and Quality Assurance</h2>
+                
+                <div class="card">
+                    <h3>Comprehensive Test Suite</h3>
+                    <p>We implemented extensive testing to ensure code quality and reliability:</p>
+                    <div class="two-column">
+                        <div>
+                            <h4>Unit Tests by Component</h4>
+                            <ul>
+                                <li><code>test_models.py</code>: Pokemon data model validation</li>
+                                <li><code>test_storage.py</code>: Storage operations</li>
+                                <li><code>test_operations.py</code>: Collection management</li>
+                                <li><code>test_pokeapi_service.py</code>: API integration</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>Testing Approach</h4>
+                            <ul>
+                                <li>Mock-based testing for API calls</li>
+                                <li>Temporary file handling for storage tests</li>
+                                <li>Edge case coverage for validation</li>
+                                <li>Coverage reporting with HTML output</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="two-column">
+                    <div class="card">
+                        <h3>Coverage Targets</h3>
+                        <p>Our test suite maintains high coverage across components:</p>
+                        
+                        <div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span>Core Models</span>
+                                <span>100%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%;"></div>
+                            </div>
+                            
+                            <div style="display: flex; justify-content: space-between;">
+                                <span>Storage Layer</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 95%;"></div>
+                            </div>
+                            
+                            <div style="display: flex; justify-content: space-between;">
+                                <span>Business Logic</span>
+                                <span>92%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 92%;"></div>
+                            </div>
+                            
+                            <div style="display: flex; justify-content: space-between;">
+                                <span>API Integration</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Quality Assurance Process</h3>
+                        <p>Led by Serena, our QA process includes:</p>
+                        <ul>
+                            <li><strong>Automated Tests</strong>: Run on every code change</li>
+                            <li><strong>Code Reviews</strong>: Every PR requires approval</li>
+                            <li><strong>Documentation</strong>: Required for all new features</li>
+                            <li><strong>Type Hinting</strong>: Used throughout the codebase</li>
+                            <li><strong>Error Handling</strong>: Graceful recovery from failures</li>
+                        </ul>
+                        <div class="quote">
+                            "Our thorough testing approach ensures that PokeSense remains reliable even as we add new features."
+                            <br><strong>— Serena, QA Lead</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Slide 9: Demo and Future Work -->
+        <section id="slide9" class="slide">
+            <div class="slide-content">
+                <h2>Demo and Future Work</h2>
+                
+                <div class="card">
+                    <h3>Live Demo Highlights</h3>
+                    <p>Our live demo showcases:</p>
+                    <ol>
+                        <li>Starting the application with featured Pokemon (Pikachu)</li>
+                        <li>Searching for Pokemon by name</li>
+                        <li>Viewing detailed Pokemon information</li>
+                        <li>Adding Pokemon to a personal collection</li>
+                        <li>Managing favorites and custom notes</li>
+                    </ol>
+                </div>
+                
+                <div class="two-column">
+                    <div class="card">
+                        <h3>Run It Yourself</h3>
+                        <p>To run PokeSense on your own machine:</p>
+                        <pre>
+# Clone the repository
+git clone https://github.com/CTS285_FA22/tool-pokeapi.git
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the Streamlit web interface
+cd interfaces/streamlit_app
+streamlit run pokeapi_app.py
+
+# Or try the MVP console demo
+cd examples
+python pokemvp.py
+</pre>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Future Enhancements</h3>
+                        <p>Planned features for future releases:</p>
+                        <ul>
+                            <li>Team building with type coverage analysis</li>
+                            <li>Evolutionary chain visualization</li>
+                            <li>Advanced filtering by stats</li>
+                            <li>Mobile responsive design</li>
+                            <li>Dark mode support</li>
+                            <li>Internationalization</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="quote" style="margin-top: 1.5rem;">
+                    "Understanding Pokémon is the work of a lifetime. The better our tools, the deeper our understanding can grow. What began as simple classification has evolved into a rich exploration of the incredible diversity of Pokémon. PokeSense isn't just software—it's the future of Pokémon research."
+                    <br><strong>— Professor Oak</strong>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Slide 10: Thank You -->
+        <section id="slide10" class="slide">
+            <div class="slide-content" style="text-align: center;">
+                <h1 style="font-size: 3rem; margin: 2rem 0;">Thank You!</h1>
+                <p style="font-size: 1.5rem; margin-bottom: 3rem;">Any questions?</p>
+                
+                <!-- <img src="fieldtrip_with_pokemon.png" alt="Team PokeSense with dragon mascot" class="fieldtrip-image" style="max-width: 400px; margin-bottom: 2rem;"> -->
+                <!-- Experimenting with video -->
+                 <video width="400" height="400" controls>
+                    <source src="outtake_team_mascot2.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video> 
+                
+                <div class="card">
+                    <h3>Team PokeSense</h3>
+                    <p><strong>Ash</strong> - Project Lead</p>
+                    <p><strong>Misty</strong> - Technical Architect</p>
+                    <p><strong>Brock</strong> - Frontend Developer</p>
+                    <p><strong>Serena</strong> - Quality Assurance</p>
+                    <p><strong>Charizard</strong> - Team Mascot</p>
+                </div>
+                
+                <div class="card" style="margin-top: 2rem;">
+                    <h3>GitHub Repository</h3>
+                    <p>github.com/CTS285_FA22/tool-pokeapi</p>
+                </div>
+                
+                <div style="margin-top: 2rem;">
+                    <span class="type type-electric">Gotta Catch 'Em All!</span>
+                </div>
+            </div>
+        </section>
+        
+        <div class="controls">
+            <button id="prev-btn" class="btn" disabled>Previous</button>
+            <div class="slide-indicator">Slide <span id="current-slide">1</span> of <span id="total-slides">10</span></div>
+            <button id="next-btn" class="btn">Next</button>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const currentSlideSpan = document.getElementById('current-slide');
+            const totalSlidesSpan = document.getElementById('total-slides');
+            
+            let currentSlide = 1;
+            const totalSlides = slides.length;
+            
+            totalSlidesSpan.textContent = totalSlides;
+            
+            // Function to update slide visibility
+            function updateSlides() {
+                slides.forEach((slide, index) => {
+                    if (index + 1 === currentSlide) {
+                        slide.classList.add('active');
+                    } else {
+                        slide.classList.remove('active');
+                    }
+                });
+                
+                currentSlideSpan.textContent = currentSlide;
+                
+                // Update button states
+                prevBtn.disabled = currentSlide === 1;
+                nextBtn.disabled = currentSlide === totalSlides;
+            }
+            
+            // Event listeners for buttons
+            prevBtn.addEventListener('click', () => {
+                if (currentSlide > 1) {
+                    currentSlide--;
+                    updateSlides();
+                }
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                if (currentSlide < totalSlides) {
+                    currentSlide++;
+                    updateSlides();
+                }
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft' && !prevBtn.disabled) {
+                    prevBtn.click();
+                } else if (e.key === 'ArrowRight' && !nextBtn.disabled) {
+                    nextBtn.click();
+                }
+            });
+            
+            // Initialize
+            updateSlides();
+        });
+    </script>
+</body>
+</html>
