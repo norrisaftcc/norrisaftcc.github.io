@@ -2,6 +2,10 @@
 
 ## Latest Post
 
+# CSC 134 Spring Demos
+
+You can find links to many of the CSC 134 demos in [the CSC134-25SP repo.](https://github.com/norrisaftcc/CSC-134_25SP/)
+
 # Project Release Notes
 
 Welcome to the latest ["Terrible AI Product" page](projects/cashincinerator3000/) -- Cash Incinerator 3000!
