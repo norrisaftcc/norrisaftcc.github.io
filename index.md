@@ -4,7 +4,7 @@
 
 # CSC 134 Spring Demos
 
-You can find links to many of the CSC 134 demos in [the CSC134-25SP repo.](https://github.com/norrisaftcc/CSC-134_25SP/)
+You can find links to many of the CSC 134 demos in [the CSC134-25SP repo README.](https://github.com/norrisaftcc/CSC-134_25SP/blob/main/README.md)
 
 # Project Release Notes
 
