@@ -2,6 +2,13 @@
 
 ## Latest Post
 
+# Summer of VITA
+  🚀 **Currently Building**: [claude-conduit](https://github.com/norrisaftcc/tool-claude-conduit) - An HTTP bridge connecting Claude Code to Model Context Protocol servers with
+  a plugin ecosystem. Features AI personas like "Friday" (research specialist) and "Vita" (Socratic reasoning), plus sophisticated workflow management. Built with FLOW
+  methodology and VIBE principles!
+
+Also project managing VITA, so that's new.
+
 # CSC 134 Spring Demos
 
 You can find links to many of the CSC 134 demos in [the CSC134-25SP repo README.](https://github.com/norrisaftcc/CSC-134_25SP/blob/main/README.md)
