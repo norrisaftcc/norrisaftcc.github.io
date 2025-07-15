@@ -2,7 +2,7 @@
 
 ## Latest Post (August 2025)
 Do you have a moment for a game? Or a story?
-[Fayetteville Go! -- Join us!](https://norrisaftcc.github.io/fayettevillego/)
+[Fayetteville Go!](https://norrisaftcc.github.io/fayettevillego)
 
 # Summer of VITA
 project managing VITA, so that's new. June was a lot of fun!
