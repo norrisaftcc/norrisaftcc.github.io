@@ -1,13 +1,10 @@
 # norrisaftcc.github.io
 
 ## Latest Post
+Do you have a moment for a story?
 
 # Summer of VITA
-  🚀 **Currently Building**: [claude-conduit](https://github.com/norrisaftcc/tool-claude-conduit) - An HTTP bridge connecting Claude Code to Model Context Protocol servers with
-  a plugin ecosystem. Features AI personas like "Friday" (research specialist) and "Vita" (Socratic reasoning), plus sophisticated workflow management. Built with FLOW
-  methodology and VIBE principles!
-
-Also project managing VITA, so that's new.
+project managing VITA, so that's new.
 
 # CSC 134 Spring Demos
 
