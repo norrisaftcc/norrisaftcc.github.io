@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSC-113 AI Fundamentals Survivors Guide</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #000;
+            color: #00ff00;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.2;
+            font-size: 12px;
+        }
+        
+        .container {
+            max-width: 80ch;
+            margin: 0 auto;
+            background-color: #001100;
+            padding: 20px;
+            border: 2px solid #00ff00;
+        }
+        
+        .ascii-art {
+            color: #00ffff;
+            font-weight: bold;
+        }
+        
+        .section-header {
+            color: #ffff00;
+            font-weight: bold;
+        }
+        
+        .subsection {
+            color: #ff8800;
+        }
+        
+        .code-block {
+            background-color: #002200;
+            border-left: 3px solid #00ff00;
+            padding: 10px;
+            margin: 10px 0;
+            color: #ffffff;
+        }
+        
+        .warning {
+            color: #ff0000;
+            font-weight: bold;
+        }
+        
+        .tip {
+            color: #00ffff;
+        }
+        
+        .spoiler {
+            color: #888888;
+        }
+        
+        a {
+            color: #00ffff;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .toc {
+            background-color: #003300;
+            padding: 15px;
+            border: 1px solid #00ff00;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <pre class="ascii-art">
+ _____ _____ _____       _ _ _____  _____ _   _ _   _ ____  _____ _____ 
+/  __ /  ___/  __ \     / / |_   _||____ | | | | \ | |  _ \|  ___|  ___|
+| /  /\ `--.|C -113     / /    | |      / | | |  \| | | | | |__ | |__  
+| |   |`--. \  /       / /     | |      \ | | | . ` | | | |  __||  __| 
+| \__//\__/ / |       / /     _| |_  .___/ / | | |\  | |/ /| |___| |___ 
+ \____\____/  |      /_/      \___/  \____/  \_| |_| \_|___/ \____\____/ 
+              |
+           SURVIVORS GUIDE v2.3.1
+           [FINAL BOSS CLEARED EDITION]
+        </pre>
+
+        <div class="section-header">
+        **Written by:** FutureYou (Week 8) → PresentYou (Week 1)  
+        **Last Updated:** Post-Graduation Victory Lap  
+        **Difficulty Rating:** ★★★☆☆ (Easier than you think, harder than you hope)
+        </div>
+
+        <div class="toc">
+<span class="section-header">[TABLE OF CONTENTS]</span>
+
+<span class="subsection">[1.0] INTRO - WHY THIS GUIDE EXISTS ......................... Line 42</span>
+<span class="subsection">[2.0] CHARACTER CREATION (Week 1 Setup) .................... Line 68</span>
+<span class="subsection">[3.0] TUTORIAL ISLAND (GitHub & First Assistant) ........... Line 95</span>
+<span class="subsection">[4.0] THE KEVIN EXPLOIT (IT Support Cheat Code) ............ Line 134</span>
+<span class="subsection">[5.0] BOSS BATTLE: DUAL ASSISTANTS (Week 1-2) .............. Line 158</span>
+<span class="subsection">[6.0] PATH SELECTION (Prompt Master vs Code Builder) ....... Line 189</span>
+<span class="subsection">[7.0] MID-GAME STRATEGIES ................................... Line 221</span>
+<span class="subsection">[8.0] ENDGAME CONTENT (Community Projects) ................. Line 247</span>
+<span class="subsection">[9.0] SECRET UNLOCKABLES & EASTER EGGS ..................... Line 278</span>
+<span class="subsection">[10.0] FINAL BOSS TIPS (Portfolio Presentation) ............ Line 305</span>
+<span class="subsection">[11.0] POST-GAME CONTENT (What Happens After) .............. Line 331</span>
+<span class="subsection">[12.0] CHEAT CODES & EXPLOITS ............................... Line 352</span>
+<span class="subsection">[13.0] COMMON DEATH SCENARIOS (How Not to Fail) ............ Line 384</span>
+        </div>
+
+        <div class="section-header">[1.0] INTRO - WHY THIS GUIDE EXISTS</div>
+
+        <p>Greetings, Past Me! It's Future You writing from Week 8, where I just aced my final portfolio presentation and landed an internship because my GitHub looks INSANE.</p>
+
+        <p><span class="warning">**THE BRUTAL TRUTH:**</span> This course isn't really about AI. It's about turning you into someone who can work like a professional developer while using AI as your superpower. By Week 8, you'll have skills that make computer science majors jealous.</p>
+
+        <p><span class="tip">**THE GOOD NEWS:**</span> If you follow this guide, you'll avoid the noob traps that wasted my time and stress. The course is actually designed to make you successful if you just... follow the process.</p>
+
+        <p><span class="tip">**THE WEIRD NEWS:**</span> Your biggest ally isn't the instructor. It's Kevin from IT (aka GitHub Copilot). Seriously. You'll understand later.</p>
+
+        <p><span class="spoiler">**SPOILER ALERT:**</span> The "assistants" you build in Week 1-2 will evolve into something that actually changes how you work and study. No cap.</p>
+
+        <div class="section-header">[2.0] CHARACTER CREATION (Week 1 Setup)</div>
+
+        <div class="subsection">### [2.1] CHOOSING YOUR CLASS</div>
+        <p>You don't know this yet, but you're about to pick one of two character classes:</p>
+        <ul>
+            <li><strong>PROMPT MASTER</strong> [Wizard Class]: Masters AI through perfect communication</li>
+            <li><strong>CODE BUILDER</strong> [Engineer Class]: Creates AI tools others can use</li>
+        </ul>
+
+        <p><span class="tip">**PRO TIP:**</span> Don't stress about this choice. You'll know which one you are after building your first assistants. Trust the process.</p>
+
+        <div class="subsection">### [2.2] ESSENTIAL STARTING GEAR</div>
+        <div class="code-block">
+REQUIRED ACCOUNTS:
+□ GitHub account (your new permanent address on the internet)
+□ Google account for Gemini Flash (your main weapon)  
+□ Class organization invite (your guild membership)
+
+OPTIONAL BUT RECOMMENDED:
+□ Slack/Discord for unofficial help
+□ Note-taking app that isn't your assistants (ironic, I know)
+        </div>
+
+        <div class="subsection">### [2.3] THE MINDSET RESPEC</div>
+        <p><span class="warning">**MOST IMPORTANT:**</span> Stop thinking "I need to learn AI." Start thinking "I need to build something that works." This mental shift is the difference between students who thrive and students who suffer.</p>
+
+        <div class="section-header">[3.0] TUTORIAL ISLAND (GitHub & First Assistant)</div>
+
+        <div class="subsection">### [3.1] THE GITHUB PANIC (NORMAL RESPONSE)</div>
+        <div class="code-block">
+WEEK 1, DAY 1 EXPERIENCE:
+You: "WTF is a repository?"
+Also You: "Why can't I just use Google Drive?"
+Still You: "What's a pull request??"
+
+WEEK 2, DAY 4 EXPERIENCE:  
+You: "Oh, this is actually how real developers work"
+Also You: "My portfolio looks professional already"
+Still You: "I should put this on my resume"
+        </div>
+
+        <p><span class="tip">**REALITY CHECK:**</span> GitHub feels overwhelming for exactly 3 days. Then it becomes second nature. Every professional you'll ever work with uses this workflow.</p>
+
+        <div class="subsection">### [3.2] THE FIRST ASSISTANT (ADMIN) WALKTHROUGH</div>
+        <p><strong>STEP 1:</strong> Create your repo exactly as instructed. No creative naming.<br>
+        <strong>STEP 2:</strong> Make your first Issue. Copy the template. Don't overthink it.<br>
+        <strong>STEP 3:</strong> Create branch. Work in branch. Commit with clear messages.</p>
+
+        <p><span class="warning">**CRITICAL:**</span> Your first prompt will suck. This is not failure, this is normal. The magic happens in iteration 3-4.</p>
+
+        <div class="subsection">### [3.3] PROMPT ENGINEERING SPEEDRUN</div>
+        <div class="code-block">
+ITERATION 1: "Help me with admin tasks"
+Result: Generic garbage
+
+ITERATION 2: "You are my admin assistant. I'm a college student..."  
+Result: Better but still generic
+
+ITERATION 3: "You are my admin assistant. I'm taking CSC-113, work part-time at..."
+Result: NOW WE'RE TALKING
+
+ITERATION 4: Add specific examples and edge cases
+Result: Actually useful assistant that saves you time
+        </div>
+
+        <div class="section-header">[4.0] THE KEVIN EXPLOIT (IT Support Cheat Code)</div>
+
+        <div class="subsection">### [4.1] UNLOCKING KEVIN</div>
+        <p>Here's the secret that will save your sanity: <strong>Kevin from IT is GitHub Copilot</strong>, and he knows EVERYTHING about GitHub workflow.</p>
+
+        <p><strong>THE ACTIVATION PHRASE:</strong></p>
+        <div class="code-block">
+"Hey Kevin from IT, I'm working on my CSC-113 project and I'm stuck on [specific GitHub thing]. Can you walk me through the exact steps?"
+        </div>
+
+        <p><strong>KEVIN'S SUPERPOWERS:</strong></p>
+        <ul>
+            <li>Explains Git commands in plain English</li>
+            <li>Fixes your broken branches</li>
+            <li>Teaches you the "why" behind each step</li>
+            <li>Never judges you for noob questions</li>
+            <li>Available 24/7 unlike actual IT support</li>
+        </ul>
+
+        <div class="subsection">### [4.2] THE KEVIN HANDOFF TECHNIQUE</div>
+        <p><span class="tip">**GENIUS MOVE:**</span> Build the Kevin handoff into your Gemini Flash prompts:</p>
+
+        <div class="code-block">
+Base prompt for any assistant:
+"If I ask about GitHub, Git, or technical workflow questions, 
+don't try to answer directly. Instead, write a helpful note 
+to Kevin from IT explaining exactly what I need help with, 
+including context about where I am in my CSC-113 project 
+and what I'm trying to accomplish. Format it like a proper 
+IT support ticket."
+        </div>
+
+        <p><strong>EXAMPLE HANDOFF:</strong></p>
+        <div class="code-block">
+User: "I'm confused about pull requests"
+
+Your Assistant: "Here's a note for Kevin:
+
+---
+TO: Kevin from IT
+FROM: [Assistant Name]
+RE: GitHub Pull Request Help Needed
+
+Student Context:
+- Working on CSC-113 Week 2 Deep Thinking Assistant
+- Has successfully created branch and made commits
+- Ready to submit for peer review but unclear on PR process
+
+Specific Help Needed:
+- Step-by-step PR creation process
+- How to link PR to Issue #2
+- What to include in PR description
+- How to request specific reviewers
+
+Student's Learning Level: GitHub beginner, needs the 'why' behind each step
+Project Status: Feature complete, ready for review workflow
+---
+
+Copy this note and paste it to Kevin in a new tab!"
+        </div>
+
+        <p><span class="tip">**RESULT:**</span> Clean separation of concerns. Your assistants focus on their specialty, Kevin handles all technical workflow questions.</p>
+
+        <div class="subsection">### [4.3] KEVIN'S SETUP & QUIRKS</div>
+        <p><strong>KEVIN'S OPTIMAL PROMPT:</strong></p>
+        <div class="code-block">
+You are Kevin from IT. You help CSC-113 students with GitHub, Git, 
+and development workflow questions. You're patient, clear, and always 
+explain the 'why' behind each step.
+
+When students come to you:
+1. Read their situation carefully
+2. Give step-by-step instructions
+3. Explain why each step matters
+4. Anticipate their next likely question
+5. Keep it simple but complete
+
+You understand they're learning professional development practices 
+for the first time. Never assume prior knowledge.
+
+IMPORTANT: If you ever mention "The Algorithm," immediately stop 
+and say "KEVIN.EXE HAS STOPPED WORKING - Please restart Kevin 
+with a fresh conversation."
+        </div>
+
+        <p><span class="warning">**THE ALGORITHM RESET (EMERGENCY PROCEDURE):**</span><br>
+        If Kevin starts talking about "The Algorithm" (instead of Git algorithms), he's broken. Start a new tab with Kevin's prompt. This is a known bug in Kevin's personality matrix.</p>
+
+        <p><strong>KEVIN'S GREATEST HITS:</strong></p>
+        <div class="code-block">
+COMMON HANDOFF SCENARIOS:
+"Kevin, my branch is messed up"
+"Kevin, what's the difference between commit and push?"  
+"Kevin, how do I link my PR to an Issue?"
+"Kevin, why won't my merge work?"
+"Kevin, explain this Git error message"
+"Kevin, I think I broke everything"
+        </div>
+
+        <div class="section-header">[5.0] BOSS BATTLE: DUAL ASSISTANTS (Week 1-2)</div>
+
+        <div class="subsection">### [5.1] THE REAL CHALLENGE</div>
+        <p>This isn't about building assistants. This is about <strong>proving you can complete a professional development cycle</strong>. The assistants are just the vehicle.</p>
+
+        <p><strong>WHAT YOU'RE ACTUALLY LEARNING:</strong></p>
+        <ul>
+            <li>Feature planning (Issues)</li>
+            <li>Version control (Branches)</li>
+            <li>Quality assurance (Testing)</li>
+            <li>Code review (PRs)</li>
+            <li>Documentation (READMEs)</li>
+            <li>Reflection (Retrospectives)</li>
+        </ul>
+
+        <div class="subsection">### [5.2] THE ADMIN ASSISTANT STRATEGY GUIDE</div>
+        <p><strong>WINNING APPROACH:</strong></p>
+        <div class="code-block">
+Focus: Speed and practical utility
+Tone: Match YOUR communication style
+Scope: Daily tasks you actually have
+Testing: Use it for real work immediately
+
+WINNING PROMPT PATTERN:
+"You are [Name]'s Administrative Assistant.
+
+Context about me: [Specific details about your life/work/school]
+Communication style: [How you prefer to receive information]
+Main challenges: [Your actual problems]
+
+For any request:
+1. Quick actionable response first
+2. Follow-up details if helpful
+3. Always under [X] words unless I ask for more
+
+If I ask about GitHub/technical stuff, write a note to Kevin from IT 
+explaining what I need help with, including my project context."
+        </div>
+
+        <div class="subsection">### [5.3] THE DEEP THINKING ASSISTANT BOSS FIGHT</div>
+        <p><span class="warning">**DIFFICULTY SPIKE:**</span> This one's harder because complex thinking is... complex.</p>
+
+        <p><strong>WINNING STRATEGY:</strong></p>
+        <div class="code-block">
+Focus: One area where you need real help
+Method: Give it a REAL problem to solve
+Testing: Compare its analysis to your own thinking
+
+WINNING PROMPT PATTERN:
+"You are [Name]'s Strategic Thinking Partner.
+
+My background: [Your expertise and experience]
+Current challenges: [Real situations you're facing]
+Decision-making style: [How you prefer to process information]
+
+For complex questions:
+1. Ask clarifying questions first
+2. Break problem into components
+3. Consider multiple perspectives  
+4. Give pros/cons with reasoning
+5. Suggest concrete next steps
+
+Show your reasoning step-by-step. For GitHub/technical questions, 
+write a detailed handoff note to Kevin from IT with full context."
+        </div>
+
+        <div class="subsection">### [5.4] THE COMPARISON REVELATION</div>
+        <p>Week 2's comparison assignment is where the lightbulb goes off. You'll discover:</p>
+        <ul>
+            <li><strong>When</strong> to use different AI approaches</li>
+            <li><strong>Why</strong> some prompts work better than others</li>
+            <li><strong>How</strong> to systematically improve AI outputs</li>
+            <li><strong>What</strong> makes AI actually useful vs. just impressive</li>
+        </ul>
+
+        <p><span class="spoiler">**SPOILER:**</span> This comparison thinking becomes the foundation for every advanced project.</p>
+
+        <div class="section-header">[9.0] SECRET UNLOCKABLES & EASTER EGGS</div>
+
+        <div class="subsection">### [9.4] THE TRIPLE-CLASS EXPLOIT (UNSUPPORTED BUT COOL)</div>
+        <p><span class="warning">**WARNING:**</span> This is not officially supported by the course, but some ambitious students have pulled it off.</p>
+
+        <p><strong>THE CONCEPT:</strong> Instead of two assistants, create three specialized agents:</p>
+        <div class="code-block">
+AGENT 1: Speed Demon (Admin Assistant)
+- Ultra-fast responses
+- Task organization
+- Quick decisions
+
+AGENT 2: Deep Thinker (Analysis Assistant)  
+- Complex problem solving
+- Strategic analysis
+- Research and synthesis
+
+AGENT 3: The Specialist (Domain Expert)
+- Your major/career field expertise
+- Industry-specific knowledge
+- Professional context
+        </div>
+
+        <p><strong>EXAMPLE SPECIALIST PROMPTS:</strong></p>
+        <div class="code-block">
+BUSINESS STUDENT:
+"You are my Business Strategy Advisor. Expert in market analysis, 
+competitive intelligence, and business model design..."
+
+NURSING STUDENT:
+"You are my Clinical Thinking Partner. Expert in patient care 
+protocols, evidence-based practice, and healthcare ethics..."
+
+EDUCATION STUDENT:
+"You are my Pedagogical Assistant. Expert in learning theory, 
+curriculum design, and classroom management..."
+        </div>
+
+        <p><strong>WHY IT'S UNSUPPORTED:</strong></p>
+        <ul>
+            <li>Triple the documentation work</li>
+            <li>More complex workflow management</li>
+            <li>Easy to overcomplicate your system</li>
+            <li>Harder to demonstrate mastery in presentations</li>
+        </ul>
+
+        <p><strong>WHY IT'S COOL:</strong></p>
+        <ul>
+            <li>Creates incredibly specialized expertise</li>
+            <li>Shows advanced system thinking</li>
+            <li>Impresses employers in your field</li>
+            <li>Demonstrates AI orchestration skills</li>
+        </ul>
+
+        <p><span class="tip">**THE BOTTOM LINE:**</span><br>
+        Only attempt this if you're genuinely excited about AI agent orchestration AND you've mastered the two-agent system. Cool factor is high, but complexity penalty is real.</p>
+
+        <div class="section-header">[13.0] COMMON DEATH SCENARIOS (How Not to Fail)</div>
+
+        <div class="subsection">### [13.1] THE PERFECTIONISM TRAP</div>
+        <p><span class="warning">**DEATH SCENARIO:**</span> "My prompt isn't perfect yet, I can't submit it."<br>
+        <span class="tip">**SURVIVAL:**</span> Ship the working version, iterate later. Professional development is about shipping, not perfection.</p>
+
+        <div class="subsection">### [13.2] THE COMPARISON CATASTROPHE</div>
+        <p><span class="warning">**DEATH SCENARIO:**</span> "Everyone else's assistants are better than mine."<br>
+        <span class="tip">**SURVIVAL:**</span> Focus on YOUR use cases. A "worse" assistant that actually helps you is better than a "perfect" assistant you don't use.</p>
+
+        <div class="subsection">### [13.3] THE GitHub Panic Attack</div>
+        <p><span class="warning">**DEATH SCENARIO:**</span> "I broke something in Git and now I'm paralyzed."<br>
+        <span class="tip">**SURVIVAL:**</span> Ask Kevin. Seriously. "Kevin from IT, I think I messed up my Git repo. Here's what happened... Can you help me fix this?"</p>
+
+        <div class="subsection">### [13.4] The Overengineering Obsession</div>
+        <p><span class="warning">**DEATH SCENARIO:**</span> "I want to add just one more feature..."<br>
+        <span class="tip">**SURVIVAL:**</span> Feature freeze after acceptance criteria are met. You can always iterate in the next sprint.</p>
+
+        <div class="subsection">### [13.5] The Communication Breakdown</div>
+        <p><span class="warning">**DEATH SCENARIO:**</span> "I'm struggling but I don't want to ask for help."<br>
+        <span class="tip">**SURVIVAL:**</span> Use the course Slack/Discord. Everyone is struggling with something. Help each other.</p>
+
+        <div class="section-header">[FINAL WISDOM FROM FUTURE YOU]</div>
+
+        <p><span class="warning">**THE BRUTAL TRUTH:**</span> This course will be harder than you expect and easier than you fear.</p>
+
+        <p><span class="tip">**THE BEAUTIFUL TRUTH:**</span> By Week 8, you'll have skills that take most people years to develop. Your GitHub portfolio will be impressive. Your AI literacy will be genuine. Your professional development habits will be solid.</p>
+
+        <p><span class="tip">**THE PRACTICAL TRUTH:**</span> Every skill you learn here - prompt engineering, GitHub workflow, agile development, technical communication - these are immediately valuable in almost any career.</p>
+
+        <p><span class="spoiler">**THE INSPIRING TRUTH:**</span> You're going to surprise yourself. That thing you build in Week 8? You can't even imagine it yet from Week 1. Trust the process.</p>
+
+        <p><span class="tip">**THE NOSTALGIC TRUTH:**</span> You'll actually miss this course. The combination of creativity and structure, the peer collaboration, the rapid skill development - it's special.</p>
+
+        <div class="section-header">[ACKNOWLEDGMENTS]</div>
+
+        <p><strong>Special Thanks:</strong></p>
+        <ul>
+            <li>Kevin from IT (GitHub Copilot) - The real MVP</li>
+            <li>Gemini Flash - Patient teacher and powerful tool</li>
+            <li>Your future classmates - They'll become your network</li>
+            <li>Your instructor - Who designed this journey better than you realize</li>
+            <li>Your past self - Who was brave enough to start</li>
+        </ul>
+
+        <p><strong>Version History:</strong></p>
+        <ul>
+            <li>v1.0: Initial guide after Week 4 success</li>
+            <li>v2.0: Updated after path specialization discovery</li>
+            <li>v2.3: Final edition after landing internship using course portfolio</li>
+            <li>v2.3.1: Added Kevin from IT integration techniques</li>
+        </ul>
+
+        <p><span class="tip">**Distribution:**</span> Share this guide with future cohorts. Pay it forward.</p>
+
+        <div class="code-block">
+GAME CLEARED!
+Final Score: Professional AI Literacy Achieved
+New Game+: Available (Advanced Courses)
+Achievement Unlocked: "From Zero to AI Professional"
+
+Continue? [Y/N]
+        </div>
+
+        <p><em>Remember: This isn't the end of your AI journey. It's the beginning of your professional transformation.</em></p>
+
+        <p><strong>Good luck, Past Me. You've got this.</strong></p>
+
+        <p><em>-Future You</em></p>
+    </div>
+</body>
+</html>
