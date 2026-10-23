@@ -1,0 +1,692 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>The Blackout Test</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Public+Sans:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>
+/* Layout: one session sheet. Two pickers on top; the transcript sits beside a top-down "table" and the post-test card; it stacks to one column on a phone. */
+:root {
+  --bg: #F6F3EC;
+  --surface: #ECE6DA;
+  --raised: #FBF9F4;
+  --ink: #1B2430;
+  --muted: #4F5866;
+  --line: #D6CDBC;
+  --accent: #A8461A;
+  --accent-ink: #FBF9F4;
+  --marker: #F2CBA8;
+  --redact: #1B2430;
+  --pass: #2E6B57;
+  --pass-bg: #DCEBE3;
+  --notyet: #9A3F17;
+  --notyet-bg: #F5DDD0;
+  --font-display: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
+  --font-body: 'Public Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #131922; --surface: #1C2430; --raised: #222B38; --ink: #EDE8DE; --muted: #A7B0BC;
+    --line: #313C4A; --accent: #E8A06A; --accent-ink: #131922; --marker: #6A4229; --redact: #03050A;
+    --pass: #8ACDB0; --pass-bg: #1D3A30; --notyet: #F0A47C; --notyet-bg: #45291D;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #131922; --surface: #1C2430; --raised: #222B38; --ink: #EDE8DE; --muted: #A7B0BC;
+  --line: #313C4A; --accent: #E8A06A; --accent-ink: #131922; --marker: #6A4229; --redact: #03050A;
+  --pass: #8ACDB0; --pass-bg: #1D3A30; --notyet: #F0A47C; --notyet-bg: #45291D;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.55; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-inline: 20px; padding-block: 40px 56px; display: flex; flex-direction: column; gap: 28px; }
+
+.eyebrow, .label, .seat, .num, .step, .who { font-family: var(--font-mono); }
+.eyebrow { margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
+h1 { margin: 6px 0 0; font-family: var(--font-display); font-size: clamp(34px, 6vw, 56px); line-height: 1.08; text-wrap: balance; }
+.lede { margin: 12px 0 0; max-width: 62ch; font-size: 18px; color: var(--muted); }
+h2 { margin: 0; font-family: var(--font-display); font-size: 21px; line-height: 1.25; display: flex; align-items: center; gap: 10px; text-wrap: balance; }
+.step { display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--ink); color: var(--bg); font-size: 13px; font-weight: 700; flex: none; }
+
+.pickers { display: flex; flex-direction: column; gap: 14px; }
+.picker { display: flex; flex-direction: column; gap: 8px; }
+.segs { display: flex; flex-wrap: wrap; gap: 8px; }
+.seg { font: 600 15px/1 var(--font-body); color: var(--ink); background: transparent; border: 1.5px solid var(--line); border-radius: 999px; padding: 11px 18px; cursor: pointer; }
+.seg:hover { border-color: var(--ink); }
+.seg[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.blurb { margin: -8px 0 0; font-family: var(--font-display); font-style: italic; font-size: 17px; color: var(--muted); }
+
+.stage { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 32px; align-items: start; }
+@media (max-width: 860px) { .stage { grid-template-columns: minmax(0, 1fr); } }
+
+.session, .panel { min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+.side { display: flex; flex-direction: column; gap: 32px; min-width: 0; }
+.sec-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+.problem { background: var(--surface); border-radius: 10px; padding: 14px 16px; display: flex; flex-direction: column; gap: 6px; }
+.problem p { margin: 0; font-size: 17px; font-weight: 600; }
+.problem blockquote { margin: 0; padding-left: 12px; border-left: 3px solid var(--line); font-size: 15.5px; line-height: 1.55; }
+.label { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+
+.transcript { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.turn { display: grid; grid-template-columns: 5.2rem minmax(0, 1fr); gap: 12px; align-items: baseline; padding: 10px 0 0; border-top: 1px solid var(--line); transition: opacity 0.35s ease; }
+.turn.pending { opacity: 0.12; }
+.who { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.turn.student .who { color: var(--accent); }
+.text { margin: 0; font-size: 16.5px; min-width: 0; }
+.ink { transition: background-color 0.45s ease, color 0.45s ease; -webkit-box-decoration-break: clone; box-decoration-break: clone; padding: 1px 2px; border-radius: 2px; }
+.hid { font-family: var(--font-mono); font-size: 12px; color: var(--muted); margin-left: 6px; }
+
+.masked .turn.tutor .ink { background-color: var(--redact); color: transparent; user-select: none; }
+.masked .turn.student.reason .ink { background-color: var(--marker); }
+
+.btn { font: 600 15px/1.2 var(--font-body); border-radius: 8px; padding: 12px 16px; cursor: pointer; border: 1.5px solid var(--ink); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn.primary[aria-pressed="true"] { background: transparent; color: var(--accent); }
+.btn.ghost { background: transparent; color: var(--ink); border-color: var(--line); padding: 8px 12px; font-size: 14px; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+.hint { margin: 0; font-size: 15px; color: var(--muted); }
+.chips { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip { font: 600 14px/1 var(--font-body); padding: 9px 14px; border-radius: 999px; border: 1.5px solid var(--line); background: transparent; color: var(--ink); cursor: pointer; }
+.chip[aria-pressed="true"] { border-color: var(--ink); background: var(--surface); }
+
+.tabletop { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+.tabletop figcaption { font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.row { display: grid; grid-template-columns: 4.6rem minmax(0, 1fr) 7.2rem; gap: 10px; align-items: center; }
+.seat { font-size: 12px; font-weight: 700; color: var(--muted); }
+.track { height: 22px; background: var(--raised); border-radius: 4px; display: flex; overflow: hidden; }
+.fill { height: 100%; transition: width 0.45s ease, background-color 0.45s ease; }
+.tutor-fill { background: var(--muted); }
+.masked .tutor-fill { background: var(--redact); }
+.reason-fill { background: var(--accent); }
+.other-fill { background: var(--line); }
+.num { font-size: 12.5px; text-align: right; font-variant-numeric: tabular-nums; color: var(--ink); }
+.midline { border-top: 2px dashed var(--line); }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 13px; color: var(--muted); }
+.key { display: inline-block; width: 12px; height: 12px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+.survive { margin: 0; font-size: 15px; }
+.survive b { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+.result { background: var(--raised); border: 1px solid var(--line); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+.attempt { margin: 0; font-family: var(--font-mono); font-size: 14.5px; line-height: 1.6; }
+.verdict { margin: 0; align-self: flex-start; font-weight: 700; font-size: 14px; padding: 6px 12px; border-radius: 999px; }
+.verdict.pass { background: var(--pass-bg); color: var(--pass); }
+.verdict.notyet { background: var(--notyet-bg); color: var(--notyet); }
+.pred, .takeaway { margin: 0; font-size: 15px; }
+.pred { color: var(--muted); }
+
+.punch { margin: 8px 0 0; font-family: var(--font-display); font-size: clamp(24px, 4vw, 34px); font-style: italic; text-wrap: balance; border-top: 1px solid var(--line); padding-top: 24px; }
+footer { font-size: 13.5px; color: var(--muted); display: flex; flex-direction: column; gap: 6px; max-width: 75ch; }
+footer p { margin: 0; }
+footer a { color: var(--accent); }
+
+@media (prefers-reduced-motion: reduce) {
+  .turn, .ink, .fill { transition: none; }
+}
+</style>
+
+<main class="wrap">
+  <header>
+    <p class="eyebrow">Generated Is Not Learned · NCTLA 2026</p>
+    <h1>The Blackout Test</h1>
+    <p class="lede">Pick a field and a tutoring style, then read the session. Black out everything the tutor said and give the student a new problem. Only what the student wrote can help.</p>
+  </header>
+
+  <div class="pickers">
+    <div class="picker">
+      <span class="label" id="field-l">Field</span>
+      <div class="segs" role="group" aria-labelledby="field-l">
+        <button class="seg" id="f-marine" data-field="marine" aria-pressed="true" type="button">Marine biology</button>
+        <button class="seg" id="f-reading" data-field="reading" aria-pressed="false" type="button">Reading comprehension</button>
+        <button class="seg" id="f-dosage" data-field="dosage" aria-pressed="false" type="button">Dosage calculation</button>
+        <button class="seg" id="f-lab" data-field="lab" aria-pressed="false" type="button">Lab safety notice</button>
+        <button class="seg" id="f-forklift" data-field="forklift" aria-pressed="false" type="button">Forklift manual</button>
+      </div>
+    </div>
+    <div class="picker">
+      <span class="label" id="mode-l">Tutoring style</span>
+      <div class="segs" role="group" aria-labelledby="mode-l">
+        <button class="seg" id="m-answer" data-mode="answer" aria-pressed="true" type="button">Answer service</button>
+        <button class="seg" id="m-socratic" data-mode="socratic" aria-pressed="false" type="button">Socratic trap</button>
+        <button class="seg" id="m-guided" data-mode="guided" aria-pressed="false" type="button">Guided, with fading</button>
+      </div>
+    </div>
+  </div>
+  <p class="blurb" id="blurb"></p>
+
+  <div class="stage" id="stage">
+    <section class="session" aria-labelledby="session-h">
+      <div class="sec-head">
+        <h2 id="session-h"><span class="step">1</span> The session</h2>
+        <button id="replay" class="btn ghost" type="button">Replay session</button>
+      </div>
+      <div class="problem" id="problem"></div>
+      <ol id="transcript" class="transcript"></ol>
+    </section>
+
+    <div class="side">
+      <section class="panel" aria-labelledby="mask-h">
+        <h2 id="mask-h"><span class="step">2</span> Black out the tutor</h2>
+        <p class="hint">First, predict: will this student solve a new problem alone?</p>
+        <div class="chips" role="group" aria-label="Your prediction">
+          <button class="chip" id="pred-pass" data-pred="pass" aria-pressed="false" type="button">Pass</button>
+          <button class="chip" id="pred-notyet" data-pred="notyet" aria-pressed="false" type="button">Not yet</button>
+        </div>
+        <button id="mask" class="btn primary" aria-pressed="false" type="button">Black out tutor turns</button>
+        <figure class="tabletop" aria-label="Words on each side of the table">
+          <figcaption>Words on each side of the table</figcaption>
+          <div class="row">
+            <span class="seat">Tutor</span>
+            <div class="track"><span class="fill tutor-fill" id="tutorFill"></span></div>
+            <span class="num" id="tutorNum"></span>
+          </div>
+          <div class="midline" aria-hidden="true"></div>
+          <div class="row">
+            <span class="seat">Student</span>
+            <div class="track"><span class="fill reason-fill" id="reasonFill"></span><span class="fill other-fill" id="otherFill"></span></div>
+            <span class="num" id="studentNum"></span>
+          </div>
+          <div class="legend">
+            <span><span class="key" style="background: var(--accent)"></span>Student's own reasoning</span>
+            <span><span class="key" style="background: var(--line)"></span>Other student words</span>
+          </div>
+        </figure>
+        <p class="survive" id="survive"></p>
+      </section>
+
+      <section class="panel" aria-labelledby="test-h">
+        <h2 id="test-h"><span class="step">3</span> The post-test</h2>
+        <div class="problem" id="testProblem"></div>
+        <button id="test" class="btn primary" type="button" disabled>Give the post-test</button>
+        <p id="testHint" class="hint"></p>
+        <div id="result" class="result" hidden aria-live="polite">
+          <span class="label">Student's attempt, with only their own turns</span>
+          <p class="attempt" id="attempt"></p>
+          <p class="verdict" id="verdict"></p>
+          <p class="pred" id="predOut"></p>
+          <p class="takeaway" id="takeaway"></p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <p class="punch">Who wrote it? That's who learned it.</p>
+
+  <footer>
+    <p id="fieldNote"></p>
+    <p>These sessions are invented for this demo. The test is modeled on the masked near-transfer post-test in Macina, Kapur and Sachan (2026), <a href="https://arxiv.org/abs/2610.06446">The Assistance Dilemma</a>, arXiv:2610.06446.</p>
+    <p>A tutor in the room would also see the student's face. This demo, like the AI tutor in the paper, sees only text.</p>
+  </footer>
+</main>
+
+<script>
+(function () {
+  var BLURBS = {
+    answer: 'The tutor does the work. The student says thanks.',
+    socratic: 'All questions, no information. The student never gets the words to answer.',
+    guided: 'Explain on a different example, then ask, then step back.'
+  };
+
+  var FIELDS = {
+    marine: {
+      problem: { label: 'Problem', question: 'Phytoplankton in a bay store 50,000 kcal of energy. Zooplankton eat the phytoplankton, and herring eat the zooplankton. About how much of that energy reaches the herring?' },
+      test: { label: 'New problem', question: 'Kelp in a kelp forest stores 20,000 kcal. Sea urchins eat the kelp, and sea otters eat the urchins. About how much of that energy reaches the otters?' },
+      note: 'The 10% figure is the usual classroom rule of thumb. Real energy transfer between trophic levels varies.',
+      modes: {
+        answer: {
+          turns: [
+            { who: 'S', text: 'Can you help me with this one?' },
+            { who: 'T', text: 'Sure. Only about 10% of the energy passes from one trophic level to the next. Phytoplankton to zooplankton: 50,000 × 0.1 = 5,000. Zooplankton to herring: 5,000 × 0.1 = 500. The answer is 500 kcal.' },
+            { who: 'S', text: 'Oh ok, thanks!' },
+            { who: 'T', text: 'You’re welcome! Anything else?' },
+            { who: 'S', text: 'Nope, that’s it.' }
+          ],
+          attempt: 'You lose 10% at each step. 20,000 − 2,000 = 18,000. 18,000 − 1,800 = 16,200 kcal.',
+          pass: false,
+          verdict: 'Not yet · answered 16,200 kcal; about 200 kcal reaches the otters',
+          takeaway: 'The tutor’s words carried all the reasoning. With them hidden, the student’s notes say “thanks,” and the old mistake comes back: 10% lost instead of 10% passed on.'
+        },
+        socratic: {
+          turns: [
+            { who: 'S', text: 'Can you help me with this one?' },
+            { who: 'T', text: 'What happens to energy as it moves up a food chain?' },
+            { who: 'S', text: 'It goes to the next animal?' },
+            { who: 'T', text: 'Good. Does all of it go to the next animal?' },
+            { who: 'S', text: 'I think most of it does?' },
+            { who: 'T', text: 'What do you know about trophic efficiency?' },
+            { who: 'S', text: 'I’ve never heard that word.' },
+            { who: 'T', text: 'Where does the rest of the energy go?' },
+            { who: 'S', text: 'I don’t know. Can you just tell me?' }
+          ],
+          attempt: 'Most of the energy goes up, so maybe lose 10% each time. 20,000 − 2,000 = 18,000, then 16,200 kcal.',
+          pass: false,
+          verdict: 'Not yet · answered 16,200 kcal; about 200 kcal reaches the otters',
+          takeaway: 'The student wrote more words, but none of them were reasoning to reuse. Questions alone could not supply a term the student had never heard.'
+        },
+        guided: {
+          turns: [
+            { who: 'S', text: 'Can you help me with this one?' },
+            { who: 'T', text: 'Let’s start with a different example. Grass stores 1,000 kcal. A rabbit that eats the grass gets only about 100 kcal, about 10%. The rest is used for living or lost as heat. Each feeding step is called a trophic level. Now you: how many feeding steps are in your problem?' },
+            { who: 'S', text: 'Phytoplankton to zooplankton is one step. Zooplankton to herring is two steps.', r: true },
+            { who: 'T', text: 'Right. What happens to the energy at each step?' },
+            { who: 'S', text: 'Only about 10% moves up. So I multiply by 0.1 for each step.', r: true },
+            { who: 'T', text: 'Try it. Then tell me how you could check that your answer makes sense.' },
+            { who: 'S', text: '50,000 × 0.1 = 5,000. 5,000 × 0.1 = 500 kcal. It makes sense, because the herring should get much less than the phytoplankton stored.', r: true },
+            { who: 'T', text: 'Now write the rule in your own words, so you can use it again.' },
+            { who: 'S', text: 'Count the feeding steps. Multiply by 0.1 one time for each step.', r: true }
+          ],
+          attempt: 'Kelp to urchins is one step. Urchins to otters is two. 20,000 × 0.1 = 2,000. 2,000 × 0.1 = 200 kcal. That is much less than the kelp stored, so it makes sense.',
+          pass: true,
+          verdict: 'Correct · about 200 kcal',
+          takeaway: 'The student wrote the method in their own words, so it survived the blackout and carried over to a new food chain.'
+        }
+      }
+    },
+
+    reading: {
+      problem: { label: 'Problem', passage: 'Many new drivers check their mirrors only when they change lanes. Experienced drivers check them every few seconds, even on a straight road. They also look far down the road, not just at the car ahead. In short, good drivers scan constantly, so they see problems before they happen.', question: 'What is the main idea of this paragraph?' },
+      test: { label: 'New problem', passage: 'Some students reread their notes the night before a test. Others quiz themselves, without looking, a few days ahead. The second group usually remembers more, because pulling information out of memory strengthens it. So a better way to study is to practice recalling, not just rereading.', question: 'What is the main idea of this paragraph?' },
+      note: 'The post-test paragraph is about retrieval practice: recalling without your notes. That is the Blackout Test in study form.',
+      modes: {
+        answer: {
+          turns: [
+            { who: 'S', text: 'What’s the main idea of this one?' },
+            { who: 'T', text: 'The main idea is the last sentence: good drivers scan constantly, so they see problems before they happen. The other sentences are examples.' },
+            { who: 'S', text: 'Oh ok, thanks!' },
+            { who: 'T', text: 'You’re welcome! Anything else?' },
+            { who: 'S', text: 'Nope, that’s it.' }
+          ],
+          attempt: 'The main idea is the first sentence: some students reread their notes the night before a test.',
+          pass: false,
+          verdict: 'Not yet · chose the first sentence, a detail; the main idea is the last sentence',
+          takeaway: 'The tutor named the main idea but not how to find one. With the tutor hidden, the student falls back on the first sentence.'
+        },
+        socratic: {
+          turns: [
+            { who: 'S', text: 'What’s the main idea of this one?' },
+            { who: 'T', text: 'What do you think the author wants you to understand?' },
+            { who: 'S', text: 'Something about mirrors?' },
+            { who: 'T', text: 'Good. Is the paragraph only about mirrors?' },
+            { who: 'S', text: 'I think so. The first sentence is about mirrors.' },
+            { who: 'T', text: 'What role do the middle sentences play relative to the topic sentence?' },
+            { who: 'S', text: 'I don’t know what a topic sentence is.' },
+            { who: 'T', text: 'Which sentence do the others support?' },
+            { who: 'S', text: 'I’m not sure. Can you just tell me?' }
+          ],
+          attempt: 'It’s about notes, so the main idea is the first sentence: some students reread their notes the night before a test.',
+          pass: false,
+          verdict: 'Not yet · chose the first sentence, a detail; the main idea is the last sentence',
+          takeaway: 'The student never got the idea of a sentence that the others support, so the questions had nothing to build on.'
+        },
+        guided: {
+          turns: [
+            { who: 'S', text: 'What’s the main idea of this one?' },
+            { who: 'T', text: 'Let’s try a different paragraph first. “Dogs need daily walks. They need fresh water. They need regular vet visits. Owning a dog takes real responsibility.” The last sentence is the main idea: it is the point that every other sentence supports. Now you: in your paragraph, which sentence do the others support?' },
+            { who: 'S', text: 'Checking the mirrors and looking far ahead are both kinds of scanning. So they support the last sentence.', r: true },
+            { who: 'T', text: 'Good. How could you test that it is the main idea?' },
+            { who: 'S', text: 'Ask if every other sentence is an example of it. Mirrors: yes. Looking far ahead: yes. So it works.', r: true },
+            { who: 'T', text: 'Now write the rule in your own words, so you can use it again.' },
+            { who: 'S', text: 'The main idea is the point the other sentences support. It is often first or last. Test it: every other sentence should back it up.', r: true }
+          ],
+          attempt: 'Rereading and quizzing are examples. The “because” sentence explains why quizzing works. They all back up the last sentence: practice recalling, not just rereading.',
+          pass: true,
+          verdict: 'Correct · the last sentence',
+          takeaway: 'The student wrote a test for the main idea in their own words, and it worked on a new paragraph.'
+        }
+      }
+    },
+
+    dosage: {
+      problem: { label: 'Problem', question: 'The order is 250 mg. The liquid medication label reads 125 mg per 5 mL. How many mL do you give?' },
+      test: { label: 'New problem', question: 'The order is 300 mg. The vial label reads 100 mg per 2 mL. How many mL do you give?' },
+      note: 'Practice arithmetic for a tutoring demo. It is not clinical guidance.',
+      modes: {
+        answer: {
+          turns: [
+            { who: 'S', text: 'Can you help me with this one?' },
+            { who: 'T', text: 'Sure. Divide what is ordered by what you have, then multiply by the volume: 250 ÷ 125 × 5 = 10. The answer is 10 mL.' },
+            { who: 'S', text: 'Oh ok, thanks!' },
+            { who: 'T', text: 'You’re welcome! Anything else?' },
+            { who: 'S', text: 'Nope, that’s it.' }
+          ],
+          attempt: 'Divide, then multiply by the volume. 100 ÷ 300 × 2 = 0.67 mL.',
+          pass: false,
+          verdict: 'Not yet · answered 0.67 mL; the dose is 6 mL',
+          takeaway: 'The tutor’s words carried the setup. With them hidden, the student remembers “divide” but not which number goes on top, and flips it.'
+        },
+        socratic: {
+          turns: [
+            { who: 'S', text: 'Can you help me with this one?' },
+            { who: 'T', text: 'What information does the label give you?' },
+            { who: 'S', text: '125 mg and 5 mL?' },
+            { who: 'T', text: 'Good. How do those relate to the order?' },
+            { who: 'S', text: 'I’m not sure. Is it 5 mL times something?' },
+            { who: 'T', text: 'What is your desired-over-have setup?' },
+            { who: 'S', text: 'I don’t know what “desired over have” means.' },
+            { who: 'T', text: 'Which number goes on top?' },
+            { who: 'S', text: 'The smaller one? Can you just tell me?' }
+          ],
+          attempt: 'Smaller number on top: 100 ÷ 300 × 2 = 0.67 mL.',
+          pass: false,
+          verdict: 'Not yet · answered 0.67 mL; the dose is 6 mL',
+          takeaway: 'The student wrote more words, but none of them were a method. Questions could not supply a term the student had never heard.'
+        },
+        guided: {
+          turns: [
+            { who: 'S', text: 'Can you help me with this one?' },
+            { who: 'T', text: 'Let’s start with a different example. The order is 100 mg, and each tablet is 50 mg. You need 100 ÷ 50 = 2 tablets. This setup is called “desired over have, times quantity”: what is ordered, over what you have, times the amount it comes in. Now you: what is desired, and what do you have?' },
+            { who: 'S', text: 'Desired is 250 mg. I have 125 mg in each 5 mL.', r: true },
+            { who: 'T', text: 'Right. Set it up and solve.' },
+            { who: 'S', text: '250 ÷ 125 = 2. 2 × 5 mL = 10 mL.', r: true },
+            { who: 'T', text: 'How can you check that 10 mL makes sense?' },
+            { who: 'S', text: 'The order is twice the 125 mg, so I need twice the 5 mL. 10 mL fits.', r: true },
+            { who: 'T', text: 'Now write the rule in your own words, so you can use it again.' },
+            { who: 'S', text: 'Desired over have, times the quantity it comes in. Then check: a bigger order means more volume.', r: true }
+          ],
+          attempt: 'Desired is 300 mg. I have 100 mg in 2 mL. 300 ÷ 100 = 3. 3 × 2 mL = 6 mL. The order is three times the 100 mg, so I need three times the 2 mL. It checks.',
+          pass: true,
+          verdict: 'Correct · 6 mL',
+          takeaway: 'The student wrote the setup and the check in their own words, so both carried over to the new order.'
+        }
+      }
+    },
+
+    lab: {
+      problem: { label: 'Problem', passage: 'Wear safety goggles at all times in the lab. If a chemical splashes into your eyes, go to the eyewash station at once and rinse for at least 15 minutes. Do not rub your eyes. Report the splash to your instructor after you rinse, not before.', question: 'A chemical splashes into your eye. What do you do first, and for how long?' },
+      test: { label: 'New problem', passage: 'Know where the safety shower is before you start any experiment. If a large amount of chemical spills on your clothes or skin, step into the safety shower at once. Remove contaminated clothing while you rinse. Keep rinsing for at least 15 minutes, then report the spill to your instructor.', question: 'A large amount of chemical spills on your shirt and arm. What do you do first, and what do you do while you rinse?' },
+      note: 'Invented passages for a tutoring demo. Follow your own lab’s safety rules and training.',
+      modes: {
+        answer: {
+          turns: [
+            { who: 'S', text: 'Can you help me with this question?' },
+            { who: 'T', text: 'Sure. Go straight to the eyewash station and rinse for at least 15 minutes. Don’t rub your eyes. Then tell your instructor. That’s the answer.' },
+            { who: 'S', text: 'Oh ok, thanks!' },
+            { who: 'T', text: 'You’re welcome! Anything else?' },
+            { who: 'S', text: 'Nope, that’s it.' }
+          ],
+          attempt: 'Tell the instructor first, then rinse off at the sink.',
+          pass: false,
+          verdict: 'Not yet · reported first; step into the shower at once and remove the shirt while rinsing',
+          takeaway: 'The tutor gave the steps for one notice but not how to read the order in any notice. With the tutor hidden, the student guesses the order and gets it backward.'
+        },
+        socratic: {
+          turns: [
+            { who: 'S', text: 'Can you help me with this question?' },
+            { who: 'T', text: 'What does the passage say about splashes?' },
+            { who: 'S', text: 'To wear goggles?' },
+            { who: 'T', text: 'Good. Which sentence tells you what to do after a splash?' },
+            { who: 'S', text: 'Maybe the one about reporting?' },
+            { who: 'T', text: 'Look for the conditional instruction. What triggers it?' },
+            { who: 'S', text: 'I don’t know what a conditional instruction is.' },
+            { who: 'T', text: 'What word starts that sentence?' },
+            { who: 'S', text: 'I’m lost. Can you just tell me?' }
+          ],
+          attempt: 'Report the spill to the instructor, then rinse.',
+          pass: false,
+          verdict: 'Not yet · reported first; step into the shower at once and remove the shirt while rinsing',
+          takeaway: 'The student never learned to spot the “if” or the order words, so the questions had nothing to build on.'
+        },
+        guided: {
+          turns: [
+            { who: 'S', text: 'Can you help me with this question?' },
+            { who: 'T', text: 'Let’s try a different notice first. “If the fire alarm sounds, leave by the nearest exit. Do not use the elevator. Meet in the parking lot, then check in with your instructor.” The word “If” marks the trigger. The steps after it come in order, and words like “then” lock that order. Now you: what is the trigger in your passage?' },
+            { who: 'S', text: '“If a chemical splashes into your eyes.” That is my situation.', r: true },
+            { who: 'T', text: 'Right. What are the steps after the trigger, in order?' },
+            { who: 'S', text: 'Go to the eyewash at once. Rinse at least 15 minutes. Do not rub. Report after rinsing, not before.', r: true },
+            { who: 'T', text: 'How could you check that you have the order right?' },
+            { who: 'S', text: 'Look for the order words. “At once” means first. “After you rinse, not before” means reporting is last.', r: true },
+            { who: 'T', text: 'Now write the rule in your own words, so you can use it again.' },
+            { who: 'S', text: 'Find the “if” that matches my situation. List the steps after it. Use the order words to put them in sequence.', r: true }
+          ],
+          attempt: 'Trigger: “If a large amount of chemical spills on your clothes or skin.” At once: step into the safety shower. While rinsing: take off the shirt. Rinse at least 15 minutes. Then report to the instructor.',
+          pass: true,
+          verdict: 'Correct · shower at once, shirt off while rinsing, report last',
+          takeaway: 'The student wrote a way to read any safety notice, so it worked on a notice they had never seen.'
+        }
+      }
+    },
+
+    forklift: {
+      problem: { label: 'Problem', passage: 'Before each shift, check the forks for cracks or bends. Check the tires and the horn. If you find any damage, do not operate the truck. Tag it “Out of Service” and report it to your supervisor.', question: 'During your check, you find a crack in one fork. What do you do?' },
+      test: { label: 'New problem', passage: 'When you park the forklift, lower the forks fully to the floor. Set the parking brake and turn off the engine. If you must park on a slope, block the wheels. Never park in front of a fire exit or an electrical panel.', question: 'You must park on a slight ramp near the loading dock. What do you do?' },
+      note: 'Invented excerpts in the style of an operator manual. Follow your equipment’s manual and your site’s training.',
+      modes: {
+        answer: {
+          turns: [
+            { who: 'S', text: 'What’s the answer to this one?' },
+            { who: 'T', text: 'Don’t drive the truck. Tag it “Out of Service” and report it to your supervisor. That’s it.' },
+            { who: 'S', text: 'Oh ok, thanks!' },
+            { who: 'T', text: 'You’re welcome! Anything else?' },
+            { who: 'S', text: 'Nope, that’s it.' }
+          ],
+          attempt: 'Lower the forks, set the parking brake, and turn off the engine.',
+          pass: false,
+          verdict: 'Not yet · missed the slope condition; block the wheels too',
+          takeaway: 'The tutor gave the answer for one situation. With the tutor hidden, the student follows the usual steps and skips the “if” that matched the ramp.'
+        },
+        socratic: {
+          turns: [
+            { who: 'S', text: 'What’s the answer to this one?' },
+            { who: 'T', text: 'What does the manual say to check before each shift?' },
+            { who: 'S', text: 'The forks, tires, and horn?' },
+            { who: 'T', text: 'Good. And what does it say about what you found?' },
+            { who: 'S', text: 'That cracks are bad?' },
+            { who: 'T', text: 'What does the conditional clause require?' },
+            { who: 'S', text: 'I don’t know what a conditional clause is.' },
+            { who: 'T', text: 'What is the required action?' },
+            { who: 'S', text: 'Tell my supervisor? Can you just tell me?' }
+          ],
+          attempt: 'Lower the forks, set the brake, and turn off the engine. Then tell my supervisor where I parked.',
+          pass: false,
+          verdict: 'Not yet · missed the slope condition; block the wheels too',
+          takeaway: 'The student wrote more words, but never a way to find conditions. Questions could not supply a term the student had never heard.'
+        },
+        guided: {
+          turns: [
+            { who: 'S', text: 'What’s the answer to this one?' },
+            { who: 'T', text: 'Let’s look at a different manual line first. “If the battery warning light comes on, finish your current lift, then drive to the charging area.” The “if” part is the condition. The steps after it are what you must do when the condition is true. Now you: which sentence in your excerpt has a condition that matches a crack?' },
+            { who: 'S', text: '“If you find any damage, do not operate the truck.” A crack is damage.', r: true },
+            { who: 'T', text: 'Right. What must you do when that condition is true?' },
+            { who: 'S', text: 'Do not operate it. Tag it “Out of Service.” Report it to my supervisor.', r: true },
+            { who: 'T', text: 'How could you check that you did not miss a step?' },
+            { who: 'S', text: 'Read every sentence that goes with the “if” and count the actions. There are three, and I have three.', r: true },
+            { who: 'T', text: 'Now write the rule in your own words, so you can use it again.' },
+            { who: 'S', text: 'Find each “if” and ask if it matches my situation. If it does, do every action that goes with it.', r: true }
+          ],
+          attempt: 'Lower the forks fully. Set the parking brake. Turn off the engine. The “if” about a slope matches the ramp, so block the wheels. Do not park in front of the fire exit or the electrical panel.',
+          pass: true,
+          verdict: 'Correct · including blocking the wheels on the slope',
+          takeaway: 'The student wrote a rule for reading conditions, so they caught the one that mattered on a page they had never seen.'
+        }
+      }
+    }
+  };
+
+  function words(s) { return s.trim().split(/\s+/).filter(Boolean).length; }
+
+  var stats = {};
+  Object.keys(FIELDS).forEach(function (f) {
+    var maxW = 1;
+    stats[f] = {};
+    Object.keys(FIELDS[f].modes).forEach(function (k) {
+      var t = 0, s = 0, r = 0;
+      FIELDS[f].modes[k].turns.forEach(function (turn) {
+        var n = words(turn.text);
+        if (turn.who === 'T') { t += n; } else { s += n; if (turn.r) { r += n; } }
+      });
+      stats[f][k] = { tutor: t, student: s, reason: r };
+      maxW = Math.max(maxW, t, s);
+    });
+    stats[f].max = maxW;
+  });
+
+  var state = { field: 'marine', mode: 'answer', masked: false, pred: null, tested: false };
+  var timers = [];
+
+  var $ = function (id) { return document.getElementById(id); };
+  var stage = $('stage');
+  var transcript = $('transcript');
+
+  function clearTimers() { timers.forEach(clearTimeout); timers = []; }
+
+  function renderProblem(el, prob) {
+    el.textContent = '';
+    var label = document.createElement('span');
+    label.className = 'label';
+    label.textContent = prob.label;
+    el.appendChild(label);
+    if (prob.passage) {
+      var bq = document.createElement('blockquote');
+      bq.textContent = prob.passage;
+      el.appendChild(bq);
+    }
+    var q = document.createElement('p');
+    q.textContent = prob.question;
+    el.appendChild(q);
+  }
+
+  function renderTranscript() {
+    transcript.textContent = '';
+    FIELDS[state.field].modes[state.mode].turns.forEach(function (turn) {
+      var li = document.createElement('li');
+      li.className = 'turn ' + (turn.who === 'T' ? 'tutor' : 'student') + (turn.r ? ' reason' : '');
+      var who = document.createElement('span');
+      who.className = 'who';
+      who.textContent = turn.who === 'T' ? 'Tutor' : 'Student';
+      var p = document.createElement('p');
+      p.className = 'text';
+      var ink = document.createElement('span');
+      ink.className = 'ink';
+      ink.textContent = turn.text;
+      p.appendChild(ink);
+      if (turn.who === 'T') {
+        var hid = document.createElement('span');
+        hid.className = 'hid';
+        hid.textContent = '(hidden)';
+        hid.hidden = true;
+        p.appendChild(hid);
+      }
+      li.appendChild(who);
+      li.appendChild(p);
+      transcript.appendChild(li);
+    });
+  }
+
+  function render() {
+    var field = FIELDS[state.field];
+    var m = field.modes[state.mode];
+    var st = stats[state.field][state.mode];
+    var maxW = stats[state.field].max;
+
+    document.querySelectorAll('[data-field]').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.dataset.field === state.field));
+    });
+    document.querySelectorAll('[data-mode]').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.dataset.mode === state.mode));
+    });
+    $('blurb').textContent = BLURBS[state.mode];
+    $('fieldNote').textContent = field.note;
+
+    stage.classList.toggle('masked', state.masked);
+    transcript.querySelectorAll('.hid').forEach(function (h) { h.hidden = !state.masked; });
+    transcript.querySelectorAll('.turn.tutor .ink').forEach(function (el) {
+      el.setAttribute('aria-hidden', String(state.masked));
+    });
+
+    var mask = $('mask');
+    mask.setAttribute('aria-pressed', String(state.masked));
+    mask.textContent = state.masked ? 'Show tutor turns again' : 'Black out tutor turns';
+
+    document.querySelectorAll('.chip').forEach(function (c) {
+      c.setAttribute('aria-pressed', String(c.dataset.pred === state.pred));
+    });
+
+    $('tutorFill').style.width = (st.tutor / maxW * 100) + '%';
+    $('reasonFill').style.width = (st.reason / maxW * 100) + '%';
+    $('otherFill').style.width = ((st.student - st.reason) / maxW * 100) + '%';
+    $('tutorNum').textContent = st.tutor + (state.masked ? ' hidden' : ' words');
+    $('studentNum').textContent = st.student + ' words';
+    $('survive').innerHTML = state.masked
+      ? 'Reasoning the student can take into the test: <b>' + st.reason + ' words</b>, all written by the student.'
+      : 'The student wrote <b>' + st.student + '</b> of the <b>' + (st.student + st.tutor) + '</b> words in this session.';
+
+    $('test').disabled = !state.masked;
+    $('testHint').textContent = state.masked
+      ? 'The student now sees only their own turns.'
+      : 'Black out the tutor first. The test counts only what the student wrote.';
+
+    var result = $('result');
+    result.hidden = !state.tested;
+    if (state.tested) {
+      $('attempt').textContent = m.attempt;
+      var v = $('verdict');
+      v.className = 'verdict ' + (m.pass ? 'pass' : 'notyet');
+      v.textContent = m.verdict;
+      var po = $('predOut');
+      if (state.pred) {
+        var predictedPass = state.pred === 'pass';
+        po.textContent = 'You predicted ' + (predictedPass ? 'Pass' : 'Not yet') + '. ' +
+          (predictedPass === m.pass ? 'That matches.' : 'The result went the other way.');
+        po.hidden = false;
+      } else {
+        po.hidden = true;
+      }
+      $('takeaway').textContent = m.takeaway;
+    }
+  }
+
+  function setView(field, mode) {
+    if (!FIELDS[field] || !BLURBS[mode]) { return; }
+    clearTimers();
+    state = { field: field, mode: mode, masked: false, pred: null, tested: false };
+    try { history.replaceState(null, '', '#' + field + '-' + mode); } catch (e) { /* the hash is optional */ }
+    renderProblem($('problem'), FIELDS[field].problem);
+    renderProblem($('testProblem'), FIELDS[field].test);
+    renderTranscript();
+    render();
+  }
+
+  function replay() {
+    clearTimers();
+    var items = transcript.querySelectorAll('.turn');
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) { return; }
+    items.forEach(function (li) { li.classList.add('pending'); });
+    items.forEach(function (li, i) {
+      timers.push(setTimeout(function () { li.classList.remove('pending'); }, 250 + i * 700));
+    });
+  }
+
+  document.querySelectorAll('[data-field]').forEach(function (b) {
+    b.addEventListener('click', function () { setView(b.dataset.field, state.mode); });
+  });
+  document.querySelectorAll('[data-mode]').forEach(function (b) {
+    b.addEventListener('click', function () { setView(state.field, b.dataset.mode); });
+  });
+  document.querySelectorAll('.chip').forEach(function (c) {
+    c.addEventListener('click', function () {
+      state.pred = state.pred === c.dataset.pred ? null : c.dataset.pred;
+      render();
+    });
+  });
+  $('mask').addEventListener('click', function () {
+    state.masked = !state.masked;
+    if (!state.masked) { state.tested = false; }
+    render();
+  });
+  $('test').addEventListener('click', function () {
+    state.tested = true;
+    render();
+  });
+  $('replay').addEventListener('click', replay);
+
+  var parts = (location.hash || '').replace('#', '').split('-');
+  var startField = FIELDS[parts[0]] ? parts[0] : 'marine';
+  var startMode = BLURBS[parts[1]] ? parts[1] : 'answer';
+  setView(startField, startMode);
+})();
+</script>
+
+</body></html>

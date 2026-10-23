@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{color-scheme:light dark}body{margin:0}</style>
+<title>Tutor Prompts</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Layout: one reading column; each role is a section with its prompt as the copyable centre. */
+:root {
+  --bg: #F6F3EC; --surface: #FFFFFF; --fg: #1A1F27; --muted: #4E5866; --line: #D9D3C7;
+  --thinking: #8F5A00; --bot: #0B6784; --cut: #B23A1A; --code-bg: #EFEADF;
+  --display: "Nunito Sans", "Helvetica Neue", Arial, sans-serif;
+  --body: "Nunito Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono: "JetBrains Mono", "Courier New", monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #12171F; --surface: #1A212B; --fg: #F3EFE6; --muted: #B4BCC8; --line: #323C4A;
+  --thinking: #F5B544; --bot: #62C9E8; --cut: #FF8E6E; --code-bg: #0E1319; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #12171F; --surface: #1A212B; --fg: #F3EFE6; --muted: #B4BCC8; --line: #323C4A;
+  --thinking: #F5B544; --bot: #62C9E8; --cut: #FF8E6E; --code-bg: #0E1319; color-scheme: dark; }
+body { background: var(--bg); color: var(--fg); font: 400 17px/1.6 var(--body); }
+.wrap { max-width: 760px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 40px 64px; display: flex; flex-direction: column; gap: 40px; }
+header { display: flex; flex-direction: column; gap: 12px; }
+.eyebrow { font: 700 12px/1.4 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0; }
+h1 { font: 800 clamp(30px, 6vw, 44px)/1.1 var(--display); margin: 0; text-wrap: balance; }
+h1 span { color: var(--thinking); }
+h2 { font: 800 26px/1.2 var(--display); margin: 0; text-wrap: balance; }
+h3 { font: 800 20px/1.3 var(--display); margin: 0; }
+p { margin: 0; }
+.lede { color: var(--muted); max-width: 62ch; }
+.question { border-left: 4px solid var(--thinking); padding: 4px 0 4px 16px; font: 700 20px/1.4 var(--display); }
+.how { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.how p { color: var(--muted); }
+.how b { color: var(--fg); }
+nav ol { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+nav a { display: inline-block; padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; color: var(--fg); text-decoration: none; font: 600 14px/1.4 var(--body); }
+nav a:hover, nav a:focus-visible { border-color: var(--thinking); }
+.role { display: flex; flex-direction: column; gap: 16px; padding-top: 32px; border-top: 1px solid var(--line); scroll-margin-top: 16px; }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px 24px; margin: 0; }
+.facts dt { font: 700 11px/1.4 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--thinking); }
+.facts dd { margin: 4px 0 0; }
+.prompt { position: relative; background: var(--code-bg); border: 1px solid var(--line); border-radius: 10px; min-width: 0; }
+.prompt pre { margin: 0; padding: 16px 16px 16px 16px; padding-right: 84px; font: 500 14px/1.6 var(--mono); white-space: pre-wrap; overflow-wrap: anywhere; }
+.copy { position: absolute; top: 10px; right: 10px; font: 700 13px/1 var(--body); padding: 8px 12px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); cursor: pointer; }
+.copy:hover { border-color: var(--bot); }
+.copy:focus-visible, summary:focus-visible, nav a:focus-visible { outline: 2px solid var(--bot); outline-offset: 2px; }
+.copy.done { color: var(--bot); border-color: var(--bot); }
+.sub { color: var(--muted); font-weight: 600; }
+details { border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; background: var(--surface); display: flex; flex-direction: column; gap: 10px; }
+details[open] { padding-bottom: 14px; }
+details[open] .prompt { margin-top: 10px; }
+summary { cursor: pointer; font-weight: 700; }
+.watch { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.watch h4 { font: 700 11px/1.4 var(--mono); letter-spacing: .12em; text-transform: uppercase; margin: 0 0 6px; }
+.watch .good { color: var(--bot); } .watch .risk { color: var(--cut); }
+.watch ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; }
+.pattern { display: flex; flex-direction: column; gap: 8px; font: 500 14px/1.6 var(--mono); }
+.pattern .use { color: var(--thinking); } .pattern .avoid { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--cut); }
+footer { color: var(--muted); font-size: 15px; border-top: 1px solid var(--line); padding-top: 24px; display: flex; flex-direction: column; gap: 8px; }
+footer a { color: var(--bot); }
+@media (prefers-reduced-motion: no-preference) { .copy { transition: color .15s, border-color .15s; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<p class="eyebrow">NCTLA · 23 October 2026 · Generated Is Not Learned</p>
+<h1>Five prompts that keep the thinking <span>with the learner</span></h1>
+<p class="lede">Andrew Norris, Fayetteville Technical Community College. Each prompt gives an AI tool one job and leaves the reasoning to the student. Copy one, replace the words in [brackets], and run it with the student beside you.</p>
+<p class="question">What did the student actually have to think about?</p>
+</header>
+<div class="how">
+<p><b>Start with the first line.</b> Each prompt opens with who the student is and what the tool must stay inside: “I am a first-year English student in ENG 111. Stay within my own claim about the American Dream.” Without it, the tool guesses.</p>
+<p><b>Use it with a tutor.</b> Every prompt works better with a person watching the student work. Tutors already lead a student to an answer without giving it.</p>
+<p><b>Check what comes back.</b> The tool can be wrong, and it sounds right either way. Never trust, always verify.</p>
+<p><b>End with transfer.</b> Close the AI, give a similar problem, and see what the student can still do.</p>
+</div>
+<nav aria-label="The five prompts"><ol><li><a href="#p-guided">1. Coach who steps back</a></li><li><a href="#p-vocab">2. Question generator</a></li><li><a href="#p-visual">3. Contrast generator</a></li><li><a href="#p-error">4. Error analyst</a></li><li><a href="#p-teachback">5. Practice simulator</a></li><li><a href="#transfer">Transfer check</a></li></ol></nav>
+<section class="role" id="p-guided">
+<p class="eyebrow">Role 1 of 5 · Coach who steps back</p>
+<h2>Guided learning, with the help fading</h2>
+<dl class="facts"><div><dt>Use when</dt><dd>The learner is new to the topic.</dd></div><div><dt>Principle</dt><dd>Worked example, then fading: show one, do one with blanks, do one alone.</dd></div><div><dt>Why it works</dt><dd>It explains first, then pulls back, then asks for reasoning.</dd></div></dl>
+<div class="prompt"><button type="button" class="copy" data-target="p3" aria-label="Copy this prompt">Copy</button><pre id="p3"># Teach me [topic] step by step
+- I am a [level] student in [course]. Stay within [scope].
+- I am new to [topic]. Use plain words. Define each new term one time.
+- Show one worked example first. Explain each step.
+- Then give me a similar problem with some steps blank. Wait for my answer.
+- Then give me one problem to do alone. Do not help until I ask.
+- When I am stuck, give one hint. Do not give the answer.
+- Ask me to explain my reasoning before you tell me if I am correct.</pre></div><details><summary>Filled in: weight-based dosage calculation</summary><div class="prompt"><button type="button" class="copy" data-target="p1" aria-label="Copy this prompt">Copy</button><pre id="p1"># Teach me weight-based dosage calculation (mg/kg, with a pounds-to-kilograms step) step by step
+- I am a first-semester nursing student in Nursing Fundamentals. Stay within oral doses calculated by body weight; no IV drip rates yet.
+- I am new to weight-based dosage calculation (mg/kg, with a pounds-to-kilograms step). Use plain words. Define each new term one time.
+- Show one worked example first. Explain each step.
+- Then give me a similar problem with some steps blank. Wait for my answer.
+- Then give me one problem to do alone. Do not help until I ask.
+- When I am stuck, give one hint. Do not give the answer.
+- Ask me to explain my reasoning before you tell me if I am correct.</pre></div></details><details><summary>Filled in: z-scores, MAT 152</summary><div class="prompt"><button type="button" class="copy" data-target="p2" aria-label="Copy this prompt">Copy</button><pre id="p2"># Teach me z-scores in introductory statistics step by step
+- I am a first-year student in MAT 152, Statistical Methods. Stay within z-scores for one data set; no hypothesis tests yet.
+- I am new to z-scores in introductory statistics. Use plain words. Define each new term one time.
+- Show one worked example first. Explain each step.
+- Then give me a similar problem with some steps blank. Wait for my answer.
+- Then give me one problem to do alone. Do not help until I ask.
+- When I am stuck, give one hint. Do not give the answer.
+- Ask me to explain my reasoning before you tell me if I am correct.</pre></div></details><div class="watch"><div><h4 class="good">Good</h4><ul><li>It explains before it asks, so no Socratic trap.</li><li>It asks for the fading by name.</li><li>It asks for reasoning before it says right or wrong.</li></ul></div><div><h4 class="risk">Watch for</h4><ul><li>After a few turns, the tool can drift back to telling.</li><li>The student can still type “just give me the answer.”</li><li>The worked example can be wrong. Check it.</li></ul></div></div>
+</section><section class="role" id="p-vocab">
+<p class="eyebrow">Role 2 of 5 · Question generator</p>
+<h2>Vocabulary map</h2>
+<dl class="facts"><div><dt>Use when</dt><dd>The learner does not know what to ask.</dd></div><div><dt>Principle</dt><dd>Activate what they know. Name what they do not know.</dd></div><div><dt>Why it works</dt><dd>It turns unknown unknowns into a list they bring to you.</dd></div></dl>
+<div class="prompt"><button type="button" class="copy" data-target="p6" aria-label="Copy this prompt">Copy</button><pre id="p6"># List the terms I do not know yet about [topic]
+- I am a [level] student in [course]. Stay within [scope].
+- I am a beginner in [topic].
+- List 10 terms that an expert uses and a beginner may not know.
+- Give each term a one-sentence definition.
+- Mark the 3 terms to learn first.</pre></div><details><summary>Filled in: first-year nursing</summary><div class="prompt"><button type="button" class="copy" data-target="p4" aria-label="Copy this prompt">Copy</button><pre id="p4"># List the terms I do not know yet about patient assessment
+- I am a first-semester nursing student in Nursing Fundamentals. Stay within terms used in a basic head-to-toe assessment.
+- I am a beginner in patient assessment.
+- List 10 terms that an expert uses and a beginner may not know.
+- Give each term a one-sentence definition.
+- Mark the 3 terms to learn first.</pre></div></details><details><summary>Filled in: literary analysis, ENG 111</summary><div class="prompt"><button type="button" class="copy" data-target="p5" aria-label="Copy this prompt">Copy</button><pre id="p5"># List the terms I do not know yet about literary analysis of The Great Gatsby
+- I am a first-year English student in ENG 111. Stay within terms for writing a literary analysis essay.
+- I am a beginner in literary analysis of The Great Gatsby.
+- List 10 terms that an expert uses and a beginner may not know.
+- Give each term a one-sentence definition.
+- Mark the 3 terms to learn first.</pre></div></details><div class="watch"><div><h4 class="good">Good</h4><ul><li>Fast and low risk.</li><li>It gives the session an agenda.</li><li>It helps the student who does not know what to ask.</li></ul></div><div><h4 class="risk">Watch for</h4><ul><li>A definition can be wrong or too technical.</li><li>A list is not understanding. It can become one more thing to reread.</li><li>Ten terms can swamp a beginner.</li></ul></div></div>
+</section><section class="role" id="p-visual">
+<p class="eyebrow">Role 3 of 5 · Contrast generator</p>
+<h2>Two diagrams, explained back</h2>
+<dl class="facts"><div><dt>Use when</dt><dd>The idea has parts, steps, or flow.</dd></div><div><dt>Principle</dt><dd>Contrasting cases: the learner finds the difference and explains it.</dd></div><div><dt>Why it works</dt><dd>The tool draws. The learner compares and explains.</dd></div></dl>
+<div class="prompt"><button type="button" class="copy" data-target="p9" aria-label="Copy this prompt">Copy</button><pre id="p9"># Draw [process or idea] as a diagram
+- I am a [level] student in [course]. Stay within [scope].
+- Show each part or step as a labeled box.
+- Use arrows to show order or cause.
+- Then draw a second version with one step wrong.
+- Do not explain either diagram.
+- Ask me which version is right, and why. Then tell me which parts of my explanation are wrong.</pre></div><details><summary>Filled in: ER triage, nursing</summary><div class="prompt"><button type="button" class="copy" data-target="p7" aria-label="Copy this prompt">Copy</button><pre id="p7"># Draw the normal ER triage process as a diagram
+- I am a first-semester nursing student in Nursing Fundamentals. Stay within the steps from arrival to the triage level; not treatment.
+- Show each part or step as a labeled box.
+- Use arrows to show order or cause.
+- Then draw a second version with one step wrong.
+- Do not explain either diagram.
+- Ask me which version is right, and why. Then tell me which parts of my explanation are wrong.</pre></div></details><details><summary>Filled in: blood flow through the heart</summary><div class="prompt"><button type="button" class="copy" data-target="p8" aria-label="Copy this prompt">Copy</button><pre id="p8"># Draw the path of blood through the heart as a diagram
+- I am a first-year student in BIO 168, Anatomy and Physiology I. Stay within the four chambers and four valves; not the electrical system.
+- Show each part or step as a labeled box.
+- Use arrows to show order or cause.
+- Then draw a second version with one step wrong.
+- Do not explain either diagram.
+- Ask me which version is right, and why. Then tell me which parts of my explanation are wrong.</pre></div></details><div class="watch"><div><h4 class="good">Good</h4><ul><li>Comparing is where the thinking happens.</li><li>The student explains. The tool does not.</li><li>It works for any process or flow.</li></ul></div><div><h4 class="risk">Watch for</h4><ul><li>Some tools draw badly. Text diagrams get messy.</li><li>The “right” diagram can be wrong too.</li><li>Check both before the student sees them.</li></ul></div></div>
+</section><section class="role" id="p-error">
+<p class="eyebrow">Role 4 of 5 · Error analyst</p>
+<h2>Find the error</h2>
+<dl class="facts"><div><dt>Use when</dt><dd>The learner can almost do it.</dd></div><div><dt>Principle</dt><dd>Learning from errors: find it, show why, repair it.</dd></div><div><dt>Why it works</dt><dd>AI output becomes a candidate to argue with, not an answer key.</dd></div></dl>
+<div class="prompt"><button type="button" class="copy" data-target="p15" aria-label="Copy this prompt">Copy</button><pre id="p15"># Write a short solution to [problem] that has one error
+- I am a [level] student in [course]. Stay within [scope].
+- Use an error that beginners often make.
+- Do not tell me where the error is.
+- When I find it, ask me to show why it is an error.
+- When I cannot find it, give one hint at a time.</pre></div><p class="sub">Or, to check the learner’s own work:</p><div class="prompt"><button type="button" class="copy" data-target="p10" aria-label="Copy this prompt">Copy</button><pre id="p10"># Find the first place I went off track
+- I am a [level] student in [course]. Stay within [scope].
+- Here is my work on [problem].
+- Find the first step where my reasoning goes wrong.
+- Do not fix it. Ask me one question that helps me find it.</pre></div><details><summary>Filled in: weight-based dosage calculation</summary><div class="prompt"><button type="button" class="copy" data-target="p11" aria-label="Copy this prompt">Copy</button><pre id="p11"># Write a short solution to a weight-based dosage problem (mg/kg, with a pounds-to-kilograms step) that has one error
+- I am a first-semester nursing student in Nursing Fundamentals. Stay within oral doses calculated by body weight; no IV drip rates yet.
+- Use an error that beginners often make.
+- Do not tell me where the error is.
+- When I find it, ask me to show why it is an error.
+- When I cannot find it, give one hint at a time.</pre></div><div class="prompt"><button type="button" class="copy" data-target="p12" aria-label="Copy this prompt">Copy</button><pre id="p12"># Find the first place I went off track
+- I am a first-semester nursing student in Nursing Fundamentals. Stay within oral doses calculated by body weight; no IV drip rates yet.
+- Here is my work on a weight-based dosage problem (mg/kg, with a pounds-to-kilograms step).
+- Find the first step where my reasoning goes wrong.
+- Do not fix it. Ask me one question that helps me find it.</pre></div></details><details><summary>Filled in: a z-score, MAT 152</summary><div class="prompt"><button type="button" class="copy" data-target="p13" aria-label="Copy this prompt">Copy</button><pre id="p13"># Write a short solution to a z-score problem for one test result that has one error
+- I am a first-year student in MAT 152, Statistical Methods. Stay within z-scores for one data set; no hypothesis tests yet.
+- Use an error that beginners often make.
+- Do not tell me where the error is.
+- When I find it, ask me to show why it is an error.
+- When I cannot find it, give one hint at a time.</pre></div><div class="prompt"><button type="button" class="copy" data-target="p14" aria-label="Copy this prompt">Copy</button><pre id="p14"># Find the first place I went off track
+- I am a first-year student in MAT 152, Statistical Methods. Stay within z-scores for one data set; no hypothesis tests yet.
+- Here is my work on a z-score problem for one test result.
+- Find the first step where my reasoning goes wrong.
+- Do not fix it. Ask me one question that helps me find it.</pre></div></details><div class="watch"><div><h4 class="good">Good</h4><ul><li>The output becomes a claim to test.</li><li>It targets the errors beginners make.</li><li>Steps 1 to 4 of the session rule, in one prompt.</li></ul></div><div><h4 class="risk">Watch for</h4><ul><li>The tool may plant two errors, or none.</li><li>A weak student can learn the error. End by stating the right method.</li><li>Dosage: label the work as practice, never as a reference.</li></ul></div></div>
+</section><section class="role" id="p-teachback">
+<p class="eyebrow">Role 5 of 5 · Practice simulator</p>
+<h2>Teach it back</h2>
+<dl class="facts"><div><dt>Use when</dt><dd>The learner thinks they have it.</dd></div><div><dt>Principle</dt><dd>Self-explanation: only the learner’s own words count.</dd></div><div><dt>Why it works</dt><dd>Their words stay theirs. The tool only checks and asks.</dd></div></dl>
+<div class="prompt"><button type="button" class="copy" data-target="p18" aria-label="Copy this prompt">Copy</button><pre id="p18"># Check my explanation of [topic]
+- I am a [level] student in [course]. Stay within [scope].
+- I will explain [topic] in my own words.
+- Do not rewrite my explanation.
+- Tell me which parts are correct and which parts are not.
+- Ask me one question about the weakest part.</pre></div><details><summary>Filled in: heart valves, BIO 168</summary><div class="prompt"><button type="button" class="copy" data-target="p16" aria-label="Copy this prompt">Copy</button><pre id="p16"># Check my explanation of how the heart valves keep blood moving one way
+- I am a first-year student in BIO 168, Anatomy and Physiology I. Stay within the four heart valves and what each one does.
+- I will explain how the heart valves keep blood moving one way in my own words.
+- Do not rewrite my explanation.
+- Tell me which parts are correct and which parts are not.
+- Ask me one question about the weakest part.</pre></div></details><details><summary>Filled in: the American Dream in Gatsby, ENG 111</summary><div class="prompt"><button type="button" class="copy" data-target="p17" aria-label="Copy this prompt">Copy</button><pre id="p17"># Check my explanation of how The Great Gatsby treats the American Dream
+- I am a first-year English student in ENG 111. Stay within my own claim about the American Dream; no outside sources.
+- I will explain how The Great Gatsby treats the American Dream in my own words.
+- Do not rewrite my explanation.
+- Tell me which parts are correct and which parts are not.
+- Ask me one question about the weakest part.</pre></div></details><div class="watch"><div><h4 class="good">Good</h4><ul><li>The student does the explaining.</li><li>It shows gaps the student cannot see.</li><li>It works between sessions.</li></ul></div><div><h4 class="risk">Watch for</h4><ul><li>The tool may rewrite the explanation anyway.</li><li>It can praise a weak answer. Tell it to be strict.</li><li>The student must type a real explanation. That takes effort.</li></ul></div></div>
+</section>
+<section class="role" id="transfer">
+<p class="eyebrow">One more · End of session</p>
+<h2>The transfer check</h2>
+<p>Use it at the end of a session. Then close the AI and let the student try.</p>
+<div class="prompt"><button type="button" class="copy" data-target="p20" aria-label="Copy this prompt">Copy</button><pre id="p20">After helping with this problem, create one new problem that uses the same underlying skill but has different surface details. Do not provide the solution until the student attempts it.</pre></div>
+</section>
+<section class="role">
+<p class="eyebrow">The pattern behind all five</p>
+<div class="pattern"><p class="use">ASK → ATTEMPT → HINT → RETRY → EXPLAIN → TRANSFER</p><p class="avoid">ASK → GENERATE → COPY → SUBMIT</p></div>
+<p>Generated is not learned. Whoever writes the reasoning keeps it.</p>
+</section>
+<footer>
+<p><a href="./">All session materials</a></p>
+<p>The Blackout Test, the live demo from the session: <a href="blackout-test.html#dosage-answer">try it yourself</a>.</p>
+<p>The study behind the test: Macina, Kapur and Sachan (2026), <i>The Assistance Dilemma</i>, <a href="https://arxiv.org/abs/2610.06446">arXiv:2610.06446</a>.</p>
+</footer>
+</div>
+<script>
+document.addEventListener('click', function (ev) {
+  var b = ev.target.closest('.copy'); if (!b) return;
+  var pre = document.getElementById(b.dataset.target);
+  function done(ok) { b.textContent = ok ? 'Copied' : 'Selected'; b.classList.add('done'); setTimeout(function () { b.textContent = 'Copy'; b.classList.remove('done'); }, 1600); }
+  function select() { var r = document.createRange(); r.selectNodeContents(pre); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); done(false); }
+  try { navigator.clipboard.writeText(pre.textContent).then(function () { done(true); }, select); } catch (e) { select(); }
+});
+</script>
+</body>
+</html>
