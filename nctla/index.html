@@ -32,6 +32,12 @@ a.card:focus-visible { outline: 2px solid var(--bot); outline-offset: 2px; }
 .card b { font: 800 19px/1.3 var(--sans); }
 .card b::after { content: " →"; color: var(--thinking); }
 .card span { color: var(--muted); font-size: 15px; }
+.speaker { display: flex; flex-direction: column; gap: 16px; }
+.speaker h2 { font: 800 24px/1.2 var(--sans); margin: 0; }
+.speaker p { margin: 0; color: var(--muted); }
+figure { margin: 0; display: flex; flex-direction: column; gap: 8px; }
+figure img { width: 100%; height: auto; border-radius: 12px; display: block; }
+figcaption { color: var(--muted); font-size: 15px; }
 footer { color: var(--muted); font-size: 15px; border-top: 1px solid var(--line); padding-top: 20px; display: flex; flex-direction: column; gap: 6px; }
 footer a { color: var(--bot); }
 </style>
@@ -49,6 +55,12 @@ footer a { color: var(--bot); }
 <li><a class="card" href="blackout-test.html#dosage-answer"><b>The Blackout Test</b><span>The live demo: black out the tutor, then see what the student can still do.</span></a></li>
 <li><a class="card" href="slides.pdf"><b>Slides</b><span>The session deck, as a PDF.</span></a></li>
 </ul>
+<section class="speaker" aria-labelledby="speaker-h">
+<h2 id="speaker-h">About the speaker</h2>
+<figure><img src="norris-bench.jpg" width="1200" height="905" alt="Andrew Norris in an FTCC T-shirt, smiling, seated on a granite memorial bench on the Fayetteville Technical Community College campus" loading="lazy"><figcaption>Mr. Norris</figcaption></figure>
+<p>Teaching computer programming at FTCC since 2015, capstone project leader since 2016, and AI instructor since 2023. Tutoring happens at the Friday Programming Help Lab: one-on-one help for students in the department, about 12 Fridays a semester.</p>
+<figure><img src="norris-esther.jpg" width="1200" height="779" alt="A selfie of Andrew Norris on the grass while a white and tan dog licks his ear" loading="lazy"><figcaption>With Esther</figcaption></figure>
+</section>
 <footer>
 <p>The study behind the Blackout Test: Macina, Kapur and Sachan (2026), <i>The Assistance Dilemma</i>, <a href="https://arxiv.org/abs/2610.06446">arXiv:2610.06446</a>.</p>
 <p>Andrew Norris · <a href="mailto:norrisa@faytechcc.edu">norrisa@faytechcc.edu</a> · <a href="/">norrisaftcc.github.io</a></p>
