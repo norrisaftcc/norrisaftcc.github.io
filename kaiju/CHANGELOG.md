@@ -4,6 +4,10 @@ The version is in `src/version.js`. It shows on the setup page as the edition an
 
 - **0.1.x** for the spike and fixes, **0.2.x** after Hex and the City, and so on: the middle number moves with each feature PR, the last with each fix.
 
+## 0.3.1: exit to title
+
+- The settings dialog has **Exit to title** during play [UI-11]. It goes back to setup with the monster, mission and seed still chosen, so the same map can be replayed with another monster. On the web there is no terminal to stop; before this, the only way out of a game was to reach the shore and withdraw.
+
 ## 0.3.0: variants, other looks for the same rules (#20)
 
 - Four looks over the four monsters: Meow'thprrtep (the first, cat-headed Squamous drawing), Mekkasaurus Prime (Radiosaur in steel, on a battery), the Alien Colossus and Gekido-Oh (with a preset build).

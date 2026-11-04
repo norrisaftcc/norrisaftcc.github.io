@@ -837,6 +837,7 @@ async function play(before, events, cmd) {
     }
   }
   game.busy = false;
+  refreshExit();
 }
 
 async function cutaway(scene) {
@@ -975,7 +976,29 @@ function onEnd(what) {
 function renderSettings() {
   const radios = (name, list, names, current) => list.map((v) => `<label class="choice${v === current ? " on" : ""}"><input type="radio" name="${name}" value="${v}"${v === current ? " checked" : ""}><span class="choice-name">${names[v]}</span></label>`).join("");
   $("settings-body").innerHTML = `<fieldset class="question"><legend>Theme</legend>${radios("theme", S.THEMES, { system: "As the system says", light: "Light: newsprint", dark: "Dark: ink" }, S.settings.theme)}</fieldset>`
-    + `<fieldset class="question"><legend>Cutaways</legend>${radios("cutaway", S.CUTAWAYS, S.CUTAWAY_NAMES, S.settings.cutaway)}</fieldset>`;
+    + `<fieldset class="question"><legend>Cutaways</legend>${radios("cutaway", S.CUTAWAYS, S.CUTAWAY_NAMES, S.settings.cutaway)}</fieldset>`
+    + (document.body.dataset.screen === "play" ? `<fieldset class="question"><legend>This game</legend><div id="exit-group">${exitButton()}</div></fieldset>` : "");
+}
+
+// Exit to title [UI-11]: the end screen's "change" path, from the middle of a game. It waits while
+// a turn plays, because the playing loop still writes to the view and the log.
+function exitButton() {
+  const sub = game.busy ? "Wait for the turn to finish" : "Keeps the monster, mission and seed";
+  return `<button type="button" class="btn act" data-ui="exit"${game.busy ? " disabled" : ""}>`
+    + `<span class="act-top"><span class="act-name">Exit to title</span></span><span class="act-sub">${sub}</span></button>`;
+}
+
+function refreshExit() {
+  const group = $("exit-group");
+  if (group) group.innerHTML = exitButton();
+}
+
+function exitToTitle() {
+  if (game.busy || document.body.dataset.screen !== "play") return;
+  const d = $("settings");
+  if (d.close) d.close();
+  else d.removeAttribute("open");
+  onEnd("change");
 }
 
 function openSettings() {
@@ -1050,6 +1073,7 @@ function boot() {
       if (what === "confirm") confirm();
       else if (what === "cancel") cancel();
       else if (what === "settings") openSettings();
+      else if (what === "exit") exitToTitle();
       else if (what === "theme") S.cycleTheme();
       else if (what === "log") {
         const tile = $("log-tile");

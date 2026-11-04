@@ -1,7 +1,7 @@
-Kaiju Dashboard 0.3.0, a playable copy.
+Kaiju Dashboard 0.3.1, a playable copy.
 
 Source: https://github.com/norrisaftcc/the-hedge, folder kaiju/,
-commit 103af20 (main). The copy holds the files a browser needs:
+commit 53791b5 (main). The copy holds the files a browser needs:
 index.html, art.html, style.css, src/, CHANGELOG.md.
 Tests, tools, docs and playtests stay in the source repository.
 
