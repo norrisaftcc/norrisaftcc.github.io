@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kaiju Dashboard Art</title>
+<!-- A gallery of every drawing in src/art, in every damage state, for eyes and screenshots. -->
+<style>
+  :root {
+    --paper: #f2ead3; --ink: #1b1712; --muted: #6b6253; --accent: #7a2e1c; --faint: #d8cfb4;
+    --t-open: #d9cf9e; --t-road: #b7ae98; --t-park: #a9c27a; --t-forest: #6f9a5a; --t-shore: #9fcfc4;
+    --t-water: #4f86a6; --t-mountain: #a4917a; --t-rubble: #b9a58c; --t-edge: #8d8268;
+    --sky-top: #e9c77c; --sky-mid: #f1d99a; --sky-low: #f6e8bf; --sky-sun: #fff4d2; --far: #b9ad8f;
+    --s-face: #ddd2b5; --s-side: #a99d80; --s-roof: #6f6656; --s-glass: #39495a; --s-light: #f2d36b;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #14120f; --ink: #e9e0c9; --muted: #9c927f; --accent: #d0704e; --faint: #2b2721;
+      --t-open: #4a4430; --t-road: #3d3a33; --t-park: #3d5230; --t-forest: #2a4228; --t-shore: #2f5552;
+      --t-water: #1d3a4f; --t-mountain: #4e4438; --t-rubble: #4d4236; --t-edge: #1a1712;
+      --sky-top: #0e1428; --sky-mid: #1a2340; --sky-low: #2f3555; --sky-sun: #e8e2c4; --far: #262b3c;
+      --s-face: #8f8771; --s-side: #625b4b; --s-roof: #3a352c; --s-glass: #f2d36b; --s-light: #ffde7a;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #14120f; --ink: #e9e0c9; --muted: #9c927f; --accent: #d0704e; --faint: #2b2721;
+    --t-open: #4a4430; --t-road: #3d3a33; --t-park: #3d5230; --t-forest: #2a4228; --t-shore: #2f5552;
+    --t-water: #1d3a4f; --t-mountain: #4e4438; --t-rubble: #4d4236; --t-edge: #1a1712;
+    --sky-top: #0e1428; --sky-mid: #1a2340; --sky-low: #2f3555; --sky-sun: #e8e2c4; --far: #262b3c;
+    --s-face: #8f8771; --s-side: #625b4b; --s-roof: #3a352c; --s-glass: #f2d36b; --s-light: #ffde7a;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 16px; background: var(--paper); color: var(--ink); font: 15px/1.4 Georgia, serif; }
+  header { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+  h1 { margin: 0; font-size: 22px; font-variant: small-caps; letter-spacing: 0.04em; }
+  h2 { font-size: 17px; font-variant: small-caps; letter-spacing: 0.05em; border-bottom: 3px double var(--muted); padding-bottom: 2px; margin: 28px 0 10px; }
+  h3 { font-size: 14px; margin: 14px 0 6px; color: var(--muted); font-weight: normal; font-style: italic; }
+  button { font: 14px Georgia, serif; padding: 10px 14px; min-height: 44px; border: 1px solid var(--muted); background: transparent; color: var(--ink); border-radius: 6px; cursor: pointer; }
+  .row { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; }
+  figure { margin: 0; text-align: center; }
+  figcaption { font-size: 12px; color: var(--muted); }
+  .portrait { width: 120px; height: 120px; }
+  .silhouette { width: 70px; height: 112px; }
+  .figure { width: 200px; height: 200px; }
+  .backdrop { width: 400px; max-width: 100%; height: auto; }
+  .tok { width: 64px; height: 64px; }
+  .tok-small { width: 28px; height: 28px; }
+  .tile { width: 70px; height: 70px; }
+  .stage { position: relative; width: 400px; max-width: 100%; }
+  .stage > .actor { position: absolute; bottom: 2%; width: 50%; }
+  .stage > .actor svg { width: 100%; height: auto; display: block; }
+  .stage .left { left: 0; } .stage .right { right: 0; }
+  .board { width: 100%; max-width: 560px; height: auto; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Kaiju Dashboard: the art</h1>
+  <button id="theme" type="button">Theme: system</button>
+</header>
+<main id="gallery"></main>
+<script type="module">
+  import { DEFS, STATES } from "./src/art/defs.js";
+  import * as K from "./src/art/kaiju.js";
+  import * as U from "./src/art/units.js";
+  import * as T from "./src/art/terrain.js";
+
+  // The four base kaiju, then the variants' looks, each in every state.
+  const KAIJU = K.LOOK_IDS;
+  const UNITS = ["infantry", "tank", "artillery", "helicopter", "jet", "missile", "gun", "maser", "scientist"];
+  const TERRAIN = ["open", "road", "park", "forest", "shore", "water", "mountain", "rubble"];
+  const STRUCTURES = { low: 1, mid: 2, tower: 3, pylon: 1, plant: 2, lab: 2, leyline: 1, bunker: 2, wall: 3 };
+  const all = (s) => ({ head: s, arms: s, body: s, legs: s, aux: s });
+  const mixed = { head: "hurt", arms: "crippled", body: "bad", legs: "intact", aux: "hurt" };
+  const fig = (svg, cap) => `<figure>${svg}<figcaption>${cap}</figcaption></figure>`;
+  const tokenSvg = (inner, cls = "tok", r = 24) => `<svg class="${cls}" viewBox="${-r} ${-r} ${2 * r} ${2 * r}">${inner}</svg>`;
+  const safe = (f) => { try { return f(); } catch (e) { return `<p>${e.message}</p>`; } };
+
+  let html = DEFS;
+  html += `<h2>Kaiju and their variants</h2>`;
+  for (const id of KAIJU) {
+    html += `<h3>${id}${K.KAIJU_IDS.includes(id) ? "" : " (variant)"}</h3>` + safe(() => {
+      let out = `<div class="row">`;
+      for (const s of STATES) out += fig(K.portrait(id, { parts: all(s) }), s);
+      out += fig(K.portrait(id, { parts: mixed }), "mixed");
+      for (const s of STATES) out += fig(K.silhouette(id, { parts: all(s) }), s);
+      out += fig(K.silhouette(id, { parts: mixed }), "mixed");
+      out += `</div><div class="row">`;
+      out += fig(K.figure(id), "figure") + fig(K.figure(id, { parts: all("hurt") }), "hurt") + fig(K.figure(id, { parts: all("bad") }), "bad");
+      out += fig(K.figure(id, { flip: true, parts: all("crippled") }), "crippled, flipped");
+      out += fig(tokenSvg(K.token(id) + K.facingNotch()), "token");
+      out += fig(tokenSvg(K.token(id) + `<g transform="rotate(120)">${K.facingNotch()}</g>`, "tok-small"), "28 px, facing 120");
+      out += `</div>`;
+      return out;
+    });
+  }
+
+  html += `<h2>Defense forces</h2>`;
+  for (const type of UNITS) {
+    html += `<h3>${type}</h3>` + safe(() => {
+      let out = `<div class="row">`;
+      out += fig(tokenSvg(U.token(type), "tok", 18), "token");
+      out += fig(tokenSvg(U.token(type), "tok-small", 18), "small");
+      out += fig(U.figure(type, { count: 1 }), "1") + fig(U.figure(type, { count: 3 }), "3");
+      out += fig(U.figure(type, { count: 5, flip: true }), "5, flipped");
+      return out + `</div>`;
+    });
+  }
+
+  html += `<h2>Terrain</h2>` + safe(() => {
+    let out = `<div class="row">`;
+    for (const t of TERRAIN) out += fig(`<svg class="tile" viewBox="-26 -26 52 52">${T.hexTile(t)}</svg>`, t);
+    out += `</div><h3>structures, by height, and damaged</h3><div class="row">`;
+    for (const [s, h] of Object.entries(STRUCTURES)) {
+      out += fig(`<svg class="tile" viewBox="-26 -26 52 52">${T.hexTile("open")}${T.structure(s, h)}</svg>`, s);
+      out += fig(`<svg class="tile" viewBox="-26 -26 52 52">${T.hexTile("open")}${T.structure(s, h, { damaged: true })}</svg>`, s + ", damaged");
+    }
+    out += `</div>`;
+    return out;
+  });
+
+  html += `<h3>a patch of board</h3>` + safe(() => {
+    const size = 24, w = Math.sqrt(3) * size;
+    const map = [
+      "~~~,,..ff^^^",
+      "~~,,.=..f^^^",
+      "~,,..=12.f^^",
+      ",,.\"\"=.3T.f^",
+      ",..\"Y=2.P..f",
+      "..L.:=1..T..",
+    ];
+    const structs = { "1": ["low", 1], "2": ["mid", 2], "3": ["tower", 3], T: ["pylon", 1], P: ["plant", 2], L: ["lab", 2], Y: ["leyline", 1] };
+    const glyph = { "~": "water", ",": "shore", ".": "open", "f": "forest", "^": "mountain", "=": "road", "\"": "park", ":": "rubble" };
+    let out = "";
+    map.forEach((row, r) => [...row].forEach((g, c) => {
+      const x = w * (c + 0.5 * (r & 1)) + w / 2, y = size * 1.5 * r + size;
+      const s = structs[g];
+      out += `<g transform="translate(${x.toFixed(1)},${y.toFixed(1)})">${T.hexTile(s ? (g === "Y" ? "park" : "open") : glyph[g])}${s ? T.structure(s[0], s[1], { damaged: c === 6 }) : ""}</g>`;
+    }));
+    out += `<g transform="translate(${(w * 4 + w / 2 + w / 2).toFixed(1)},${(size * 1.5 * 5 + size).toFixed(1)})">${K.token("radiosaur")}<g transform="rotate(-60)">${K.facingNotch()}</g></g>`;
+    out += `<g transform="translate(${(w * 7 + w / 2).toFixed(1)},${(size * 1.5 * 2 + size).toFixed(1)})">${U.token("tank")}</g>`;
+    out += `<g transform="translate(${(w * 3 + w / 2).toFixed(1)},${(size * 1.5 * 0 + size).toFixed(1)})">${U.token("helicopter")}</g>`;
+    out += `<g transform="translate(${(w * 6 + w).toFixed(1)},${(size * 1.5 * 3 + size).toFixed(1)})">${U.token("infantry")}</g>`;
+    const pad = 3; // room for the outer hexes' strokes
+    return `<svg class="board" viewBox="${-pad} ${-pad} ${(w * 12.5 + 2 * pad).toFixed(0)} ${(size * 1.5 * 6 + size / 2 + 2 * pad).toFixed(0)}">${out}</svg>`;
+  });
+
+  html += `<h2>Backdrops</h2>` + safe(() => {
+    let out = `<div class="row">`;
+    for (const t of TERRAIN) out += fig(T.backdrop(t), t);
+    for (const [s] of Object.entries(STRUCTURES)) out += fig(T.backdrop("open", { structure: s }), "open + " + s);
+    return out + `</div>`;
+  });
+
+  html += `<h2>A cutaway, assembled</h2>` + safe(() => {
+    const scene = (bd, a, b) => `<div class="stage">${bd}<div class="actor left">${a}</div><div class="actor right">${b}</div></div>`;
+    let out = `<div class="row">`;
+    out += scene(T.backdrop("road", { structure: "mid" }), K.figure("radiosaur"), U.figure("tank", { flip: true, count: 3 }));
+    out += scene(T.backdrop("shore"), K.figure("thalassor", { parts: mixed }), K.figure("squamous", { flip: true }));
+    out += scene(T.backdrop("mountain", { structure: "wall" }), K.figure("dairengo"), U.figure("maser", { flip: true, count: 1 }));
+    out += scene(T.backdrop("park", { structure: "leyline" }), U.figure("scientist", { count: 2 }), K.figure("squamous", { flip: true, parts: all("hurt") }));
+    // Each variant against the kaiju it replaces.
+    const pairs = [["radiosaur", "mekkasaurus"], ["thalassor", "colossus"], ["squamous", "meowthprrtep"], ["dairengo", "gekido"]];
+    const bds = ["road", "shore", "park", "mountain"];
+    pairs.forEach(([base, look], i) => {
+      if (K.LOOK_IDS.includes(look)) out += scene(T.backdrop(bds[i]), K.figure(base), K.figure(look, { flip: true }));
+    });
+    return out + `</div>`;
+  });
+
+  document.getElementById("gallery").innerHTML = html;
+
+  const order = ["system", "light", "dark"];
+  let theme = "system";
+  try { theme = localStorage.getItem("kaiju-theme") || "system"; } catch (e) { /* private window */ }
+  const button = document.getElementById("theme");
+  function apply() {
+    if (theme === "system") document.documentElement.removeAttribute("data-theme");
+    else document.documentElement.setAttribute("data-theme", theme);
+    button.textContent = "Theme: " + theme;
+  }
+  button.addEventListener("click", () => {
+    theme = order[(order.indexOf(theme) + 1) % order.length];
+    try { localStorage.setItem("kaiju-theme", theme); } catch (e) { /* private window */ }
+    apply();
+  });
+  const fromUrl = new URLSearchParams(location.search).get("theme");
+  if (order.includes(fromUrl)) theme = fromUrl;
+  apply();
+</script>
+</body>
+</html>

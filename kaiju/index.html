@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="Kaiju Dashboard: a turn-based tactical game. Command one giant monster through short missions on a hex map.">
+<title>Kaiju Dashboard</title>
+<!-- The page: setup, play and end screens as framed tiles. Everything is drawn by src/ui/main.js. -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-screen="setup">
+<main>
+
+<section id="setup" class="screen setup">
+  <header class="masthead">
+    <div class="mast-rule"><span>Newsreel</span><span>Extra</span></div>
+    <h1 class="mast-title">Kaiju Dashboard</h1>
+    <p class="mast-sub">Choose a monster. Mutate it. Send it somewhere it is not wanted.</p>
+    <button type="button" class="btn icon mast-theme" id="theme-setup" data-ui="theme" title="Theme" aria-label="Theme: light, dark or system">
+      <svg viewBox="0 0 24 24" aria-hidden="true" width="20" height="20"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/></svg>
+      <span class="tb-label">system</span>
+    </button>
+  </header>
+
+  <section class="tile" aria-labelledby="t-monster">
+    <h2 class="tile-title" id="t-monster">The monster</h2>
+    <div id="monsters" class="cards monsters" role="radiogroup" aria-labelledby="t-monster"></div>
+    <div id="looks" class="looks"></div>
+  </section>
+
+  <div class="setup-pair">
+    <section class="tile" aria-labelledby="t-mutations">
+      <h2 class="tile-title" id="t-mutations">Mutations</h2>
+      <p id="points" class="points"></p>
+      <div id="mutations" class="mutations"></div>
+    </section>
+
+    <section class="tile" aria-labelledby="t-mission">
+      <h2 class="tile-title" id="t-mission">The mission</h2>
+      <div id="missions" class="cards missions" role="radiogroup" aria-labelledby="t-mission"></div>
+      <div id="question"></div>
+      <div class="seed-row">
+        <label for="seed">Seed</label>
+        <input id="seed" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" maxlength="12">
+        <button type="button" class="btn" id="reseed">New seed</button>
+      </div>
+    </section>
+  </div>
+
+  <div class="deploy-bar">
+    <p id="summary" class="summary" aria-live="polite"></p>
+    <button type="button" class="btn primary big" id="deploy">Deploy</button>
+  </div>
+</section>
+
+<section id="play" class="screen play" hidden>
+  <h1 class="sr-only">Kaiju Dashboard: the battle</h1>
+  <header id="topbar" class="topbar"></header>
+  <div class="play-grid">
+    <section class="tile map-tile" id="map-tile" aria-labelledby="t-map">
+      <h2 class="tile-title" id="t-map">Map</h2>
+      <div id="board" class="board"></div>
+      <div id="hint" class="hint" aria-live="polite"></div>
+      <div id="cutaway" class="cutaway" hidden></div>
+    </section>
+    <div class="side">
+      <div id="sheet" class="tile sheet" role="dialog" aria-label="Forecast" hidden></div>
+      <section class="tile status-tile" aria-labelledby="t-status">
+        <h2 class="tile-title" id="t-status">Status</h2>
+        <div id="status" class="status"></div>
+        <p id="inspect" class="inspect" aria-live="polite"></p>
+      </section>
+      <section class="tile actions-tile" aria-labelledby="t-actions">
+        <h2 class="tile-title" id="t-actions">Actions</h2>
+        <div id="actions" class="actions"></div>
+      </section>
+      <section class="tile log-tile" id="log-tile" aria-labelledby="t-log">
+        <h2 class="tile-title" id="t-log">Log</h2>
+        <button type="button" class="btn log-toggle" data-ui="log" aria-expanded="false" aria-controls="log"><span class="log-toggle-word">Open</span> <span class="log-count" id="log-count">0</span></button>
+        <ol id="log" class="log" aria-live="polite"></ol>
+      </section>
+    </div>
+  </div>
+</section>
+
+<section id="end" class="screen end" hidden>
+  <div id="end-body" class="end-body"></div>
+</section>
+
+</main>
+
+<dialog id="settings" class="tile settings" aria-labelledby="t-settings">
+  <h2 class="tile-title" id="t-settings">Settings</h2>
+  <div id="settings-body"></div>
+  <div class="sheet-buttons"><button type="button" class="btn primary" id="settings-close">Close</button></div>
+</dialog>
+
+<script type="module" src="src/ui/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+// The four starters, and the numbers the rules use for every kaiju.
+// Every kaiju has the same part slots: head, arms, body, legs, aux. hitTable weights roll randint(1, sum).
+// plural: the part's name takes a plural verb, for the log.
+
+const atk = (id, name, ap, energy, kind, uses, pattern, range, damage, accuracy, effects = {}) => ({
+  id, name, ap, energy, kind, uses, pattern, range, damage, accuracy, effects,
+});
+
+export const KAIJU = {
+  radiosaur: {
+    id: "radiosaur",
+    name: "Radiosaur",
+    epithet: "the atomic tyrannosaurus",
+    blurb: "A reptile the height of a church, warm to the touch from fifty feet. It eats what it crushes and drinks what the power company makes.",
+    ap: 6,
+    armor: 2,
+    parts: {
+      head: { name: "Head", hp: 6 },
+      arms: { name: "Forelimbs", hp: 5, plural: true },
+      body: { name: "Body", hp: 16 },
+      legs: { name: "Legs", hp: 8, plural: true },
+      aux: { name: "Tail", hp: 6 },
+    },
+    hitTable: [["legs", 3], ["body", 4], ["arms", 2], ["head", 1], ["aux", 2]],
+    energy: { max: 10, start: 3, rule: "eat" },
+    hunger: { max: 10, start: 3 },
+    attacks: [
+      atk("bite", "Bite", 2, 0, "melee", "head", "single", 1, [3, 5], 85),
+      atk("tail", "Tail sweep", 2, 0, "melee", "aux", "rear", 1, [2, 3], 80),
+      atk("breath", "Atomic breath", 3, 4, "special", "head", "line", 4, [4, 6], 90),
+    ],
+    passives: ["reactorBelly"],
+    forbid: [],
+  },
+  thalassor: {
+    id: "thalassor",
+    name: "Thalassor",
+    epithet: "the Atlantean colossus",
+    blurb: "A statue of green bronze that walked out of the sea. It is slow, it is patient, and the tide comes with it.",
+    ap: 5,
+    armor: 2,
+    parts: {
+      head: { name: "Crowned head", hp: 6 },
+      arms: { name: "Arms", hp: 7, plural: true },
+      body: { name: "Torso", hp: 18 },
+      legs: { name: "Legs", hp: 10, plural: true },
+      aux: { name: "Trident", hp: 5 },
+    },
+    hitTable: [["legs", 3], ["body", 5], ["arms", 2], ["head", 1], ["aux", 1]],
+    energy: { max: 8, start: 4, rule: "water" },
+    hunger: { max: 12, start: 2 },
+    attacks: [
+      atk("fist", "Fist", 2, 0, "melee", "arms", "single", 1, [3, 6], 85),
+      atk("trident", "Trident cast", 2, 1, "ranged", "aux", "single", 3, [3, 4], 75),
+      atk("surge", "Tidal surge", 3, 4, "special", "arms", "cone", 3, [3, 4], 90, { waterBonus: 1 }),
+    ],
+    passives: ["stoneBody"],
+    forbid: [],
+  },
+  squamous: {
+    id: "squamous",
+    name: "The Squamous One",
+    epithet: "from the City of Angles",
+    blurb: "Something from a city whose corners do not add up. It is fed by fear, and it is rarely hungry for long.",
+    ap: 6,
+    armor: 0,
+    parts: {
+      head: { name: "Crown", hp: 5 },
+      arms: { name: "Feelers", hp: 6, plural: true },
+      body: { name: "Mantle", hp: 18 },
+      legs: { name: "Footing", hp: 8 },
+      aux: { name: "The Eye", hp: 5 },
+    },
+    hitTable: [["legs", 2], ["body", 4], ["arms", 3], ["head", 1], ["aux", 2]],
+    energy: { max: 10, start: 2, rule: "panic" },
+    hunger: { max: 10, start: 4 },
+    attacks: [
+      atk("grab", "Tentacle grab", 2, 0, "melee", "arms", "single", 2, [4, 6], 85, { pull: true }),
+      atk("gaze", "The gaze", 2, 2, "special", "aux", "cone", 3, [0, 0], 100, { panic: 2 }),
+      atk("angle", "Wrong angle", 1, 3, "special", "legs", "teleport", 3, [0, 0], 100),
+    ],
+    passives: ["regen", "eldritch"],
+    forbid: ["regen"],
+  },
+  dairengo: {
+    id: "dairengo",
+    name: "Dai-Rengō",
+    epithet: "the sentai giant robot",
+    blurb: "Five vehicles that become one robot when the situation calls for it. The situation has called.",
+    ap: 5,
+    armor: 2,
+    parts: {
+      head: { name: "Cockpit", hp: 6 },
+      arms: { name: "Arms", hp: 6, plural: true },
+      body: { name: "Chassis", hp: 15 },
+      legs: { name: "Legs", hp: 8, plural: true },
+      aux: { name: "Thrusters", hp: 5, plural: true },
+    },
+    hitTable: [["legs", 3], ["body", 4], ["arms", 3], ["head", 1], ["aux", 1]],
+    energy: { max: 12, start: 12, rule: "battery" },
+    hunger: null,
+    attacks: [
+      atk("punch", "Rocket punch", 2, 1, "ranged", "arms", "single", 3, [3, 4], 80),
+      atk("sword", "Beam sword", 2, 1, "melee", "arms", "single", 1, [3, 5], 85),
+      atk("finish", "Final formation", 4, 6, "special", "body", "single", 1, [9, 12], 95, { oncePerMission: true }),
+    ],
+    passives: ["noHunger", "thrusters"],
+    forbid: ["regen", "gut"],
+  },
+};
+
+export const PART_SLOTS = ["head", "arms", "body", "legs", "aux"];
+
+// Numbers every kaiju shares. Penalties are by part state.
+export const RULES = {
+  headAccuracy: { intact: 0, hurt: 10, bad: 20, crippled: 30 },
+  armsMelee: { intact: 0, hurt: 0, bad: 1, crippled: 2 },
+  legsAp: { intact: 0, hurt: 1, bad: 2, crippled: 3 },
+  eldritchAccuracy: 10,
+  coverAccuracy: 10,
+  coverDamage: 1,
+  rangedPerHex: 5,
+  accuracyMin: 5,
+  accuracyMax: 95,
+  rearBonus: 1,
+  crushAp: 1,
+  stompAp: 1,
+  stompDamage: [3, 4],
+  eatAp: 1,
+  eatStructureHunger: 3,
+  eatEnergy: 3,
+  roarAp: 1,
+  roarRadius: 3,
+  roarPressure: 0,
+  panicBroken: 2,
+  hungryAt: 0.7,
+  hungryAp: 1,
+  berserkDrop: 4,
+  batteryDrain: 1,
+  batteryCharge: 4,
+  batteryEmptyAp: 2,
+  waterShallow: 2,
+  waterDeep: 3,
+  reactorBlastEnergy: 5,
+  reactorEatEnergy: 6,
+  panicEnergy: 1,
+  heal: 1,
+  retreatBelow: 0.25,
+};
+
+export const SCORE = { objective: 500, perTurnLeft: 20, perPart: 50 };
