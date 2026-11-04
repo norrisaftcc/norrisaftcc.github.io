@@ -46,6 +46,11 @@
   .note { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 0.8rem 1rem; }
   .links li { margin-bottom: 0.9rem; }
   .links small { display: block; color: var(--muted); }
+  pre { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 0.8rem 1rem; overflow-x: auto; margin: 0 0 1rem; }
+  pre code { background: none; padding: 0; font-size: 0.85rem; line-height: 1.5; white-space: pre; overflow-wrap: normal; }
+  .file { font: 700 0.85rem var(--mono); color: var(--accent); margin: 1.2rem 0 0.3rem; }
+  .go-inline { font: 700 1rem var(--mono); color: var(--accent); }
+  .sub { color: var(--muted); }
   footer { margin-top: 3rem; color: var(--muted); font-size: 0.9rem; border-top: 1px solid var(--line); padding-top: 1rem; }
 </style>
 </head>
@@ -110,6 +115,8 @@
     <li>Put one tool you already use in a repo. Write its README, with the AI-use lines.</li>
     <li><a href="https://github.com/skills/introduction-to-github">GitHub Skills “Introduction to GitHub”</a>
       <small>It is bot-driven, and it creates a public repo.</small></li>
+    <li><a href="#pages">A public page with GitHub Pages</a>
+      <small>Two files: <code>_config.yml</code> and <code>index.md</code>. The steps are below.</small></li>
     <li>A GitHub Projects board for your job hunt: To do, Applied, Follow up, Done.
       <small>On GitHub, open your profile, then Projects, then New project.</small></li>
     <li><a href="https://github.com/norrisaftcc/phishing-triage">Your own copy of phishing-triage</a>
@@ -117,6 +124,63 @@
     <li><a href="https://github.com/norrisaftcc/xss-fix-lab">Fix a security bug: xss-fix-lab</a>
       <small>Copy it as a public repo and fix the one line. If code scanning shows an alert, read it first. Code scanning is free only on public repos.</small></li>
   </ul>
+
+  <h2 id="pages">Make a public page: GitHub Pages, the short version</h2>
+  <p>GitHub Pages turns files in a repo into a website. You write Markdown, a plain-text format. GitHub builds the page with a theme and publishes it. Two files are enough: <code>_config.yml</code> holds your name, one line about you, and the theme. <code>index.md</code> is the page.</p>
+  <ol>
+    <li>Create a <strong>public</strong> repo named <code>your-username.github.io</code>, with your GitHub username. On a free account, Pages works only with public repos.</li>
+    <li>Add file, Create new file, <code>_config.yml</code>. Paste the first block below. Change the title and description. Commit.</li>
+    <li>Add file, Create new file, <code>index.md</code>. Paste the second block. Change every line to your own. Commit.</li>
+    <li>Open Settings, then Pages. Check that Source is Deploy from a branch, branch <code>main</code>, folder <code>/ (root)</code>.</li>
+    <li>Wait a few minutes. The Actions tab shows a run named “pages build and deployment”. Then open <code>https://your-username.github.io</code>.</li>
+  </ol>
+  <p class="note"><strong>Everything here is public:</strong> the page, the repo, and every old version of every file. Put in only what you would print on a flyer. No phone number, no street address. Keep your full résumé in a private repo, and send it as a PDF.</p>
+  <p class="file">_config.yml</p>
+  <pre><code>title: Jordan Reyes
+description: Network Technology student · Fayetteville, NC
+remote_theme: pages-themes/hacker@v0.2.0
+plugins:
+  - jekyll-remote-theme
+</code></pre>
+  <p class="file">index.md</p>
+  <pre><code>*Jordan Reyes is a fictional student. Change every line to your own.*
+
+## Summary
+
+Second-year Network Technology student. I work at a campus help desk as a work-study student. At home, I run a small lab to practice networking and Linux.
+
+## Certifications
+
+- CompTIA A+ (2025)
+- CompTIA Network+ (in progress)
+
+## Experience
+
+**Help desk technician (work-study)**, campus IT help desk, 2025 to now
+
+- Answer tickets for password resets, printers, and Wi-Fi access.
+- Map network printers for two campus computer labs.
+- Write fix steps for common tickets, and keep them in a repo with history.
+
+## Skills
+
+| Area | Skills |
+|---|---|
+| Help desk | Tickets, account resets, Windows 10/11, Active Directory basics |
+| Network | Subnetting, VLANs, DHCP and DNS, Cisco IOS basics, Packet Tracer |
+| Tools | Wireshark, Ubuntu Server basics, Git and GitHub |
+
+## Projects
+
+- **sanitized-lab-configs**: my lab switch and router configs. I remove passwords, keys, and public IP addresses before each commit.
+- **phishing-triage**: a checklist and a small script to review a suspicious email. Adapted from the ITCC kit. AI-assisted; the README says how.
+
+## Contact
+
+Résumé available on request.
+</code></pre>
+  <p><a class="go-inline" href="pages-sample/">See how these two files look as a public page →</a><br>
+    <small class="sub">The same text in the same theme (Hacker). Your page shows your title and description in the header.</small></p>
 
   <h2 id="demo">From the talk</h2>
   <ul class="links">
