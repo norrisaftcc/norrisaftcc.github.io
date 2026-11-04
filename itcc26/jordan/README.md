@@ -38,6 +38,6 @@ So the page has only things that are OK for a stranger to read.
 
 - Jordan Reyes is a fictional student. The page says so at the top.
 - `sanitized-lab-configs` is a fictional project. It has no link.
-- The `phishing-triage` link goes to `https://github.com/norrisaftcc/phishing-triage`.
+- The `phishing-triage` link goes to `https://github.com/norrisaftcc/talk-itcc-phishing-triage`.
 - The `phishing-triage` project is adapted from the ITCC kit and is AI-assisted. The page labels it.
 - The "Back to the ITCC talk page" link goes to `../`, the talk page.
