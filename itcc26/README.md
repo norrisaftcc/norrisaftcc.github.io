@@ -19,7 +19,7 @@ This folder lives in the `norrisaftcc.github.io` repo, like `nctla/`. GitHub Pag
 1. Merge the change to `main`.
 2. Wait for the Actions run "pages build and deployment" to finish. It can take a few minutes.
 3. Open https://norrisaftcc.github.io/itcc26 and https://norrisaftcc.github.io/itcc26/jordan/ on a phone and on a lab PC.
-4. After the talk, export the deck as PDF, save it here as `slides.pdf`, and remove "coming after the talk" from `index.html`.
+4. `slides.pdf` is the deck without speaker notes. To update it, export again with notes off and replace the file.
 
 Do not turn on Pages for a separate repo named `itcc26`. A project site with that name would take over this address.
 
