@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jordan Reyes (fictional student)</title>
+<meta name="description" content="Jordan Reyes is a fictional Network Technology student, made for the ITCC GitHub talk.">
+<style>
+  :root {
+    --bg: #ffffff;
+    --text: #1a1a1a;
+    --muted: #595959;
+    --rule: #dddddd;
+    --link: #0b5cad;
+    --chip: #f2f4f7;
+    --note-bg: #fff3cd;
+    --note-border: #b8860b;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #111418;
+      --text: #e8e8e8;
+      --muted: #a0a6ad;
+      --rule: #2c3238;
+      --link: #6fb3ff;
+      --chip: #1c2127;
+      --note-bg: #2b2410;
+      --note-border: #c9a227;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.55;
+  }
+  main {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 40px 16px 56px;
+  }
+  h1 { font-size: 2rem; margin: 0; line-height: 1.2; }
+  .place { color: var(--muted); margin: 4px 0 0; }
+  h2 {
+    font-size: 1.05rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    margin: 36px 0 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--rule);
+  }
+  p { margin: 0 0 10px; }
+  ul { margin: 0; padding-left: 20px; }
+  li { margin: 4px 0; }
+  a { color: var(--link); }
+  .skills { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .skills li { background: var(--chip); padding: 4px 10px; border-radius: 6px; margin: 0; font-size: 0.95rem; }
+  .project { margin: 0 0 16px; }
+  .project a { font-weight: 600; word-break: break-word; }
+  .contact { background: var(--chip); padding: 14px 16px; border-radius: 8px; }
+  .note { background: var(--note-bg); border: 2px solid var(--note-border); border-radius: 8px; padding: 10px 14px; margin: 0 0 24px; font-weight: 600; }
+  .back { margin: 0 0 16px; }
+  footer { margin-top: 40px; color: var(--muted); font-size: 0.85rem; }
+</style>
+</head>
+<body>
+<main>
+  <p class="back"><a href="../">Back to the ITCC talk page</a></p>
+  <p class="note">Jordan Reyes is a fictional student for the ITCC GitHub talk.</p>
+
+  <header>
+    <h1>Jordan Reyes</h1>
+    <p class="place">Fayetteville, NC</p>
+  </header>
+
+  <section>
+    <h2>Summary</h2>
+    <p>I am a second-year Network Technology student at a community college. I work at a campus help desk as a work-study student. At home, I run a small lab to practice networking and Linux.</p>
+  </section>
+
+  <section>
+    <h2>Certifications</h2>
+    <ul>
+      <li>CompTIA A+ (earned 2025)</li>
+      <li>CompTIA Network+ (in progress)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Skills</h2>
+    <ul class="skills">
+      <li>Help desk tickets</li>
+      <li>Password and account resets</li>
+      <li>Windows 10/11</li>
+      <li>Active Directory basics</li>
+      <li>Ubuntu Server basics</li>
+      <li>Subnetting</li>
+      <li>VLANs</li>
+      <li>DHCP and DNS</li>
+      <li>Cisco IOS basics</li>
+      <li>Packet Tracer</li>
+      <li>Wireshark</li>
+      <li>Hardware upgrades</li>
+      <li>Git and GitHub</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Projects</h2>
+    <div class="project">
+      <strong>sanitized-lab-configs</strong> (fictional, no link)
+      <p>Copies of my lab switch and router configs. I remove passwords, keys, and public IP addresses before each commit. The README lists what I remove.</p>
+    </div>
+    <div class="project">
+      <a href="https://github.com/norrisaftcc/phishing-triage">phishing-triage</a> (adapted from the ITCC kit; AI-assisted, see README)
+      <p>A checklist and a small script to review a suspicious email: headers, links, and sender domain. I adapted it for a cybersecurity club exercise. It uses only sample emails.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p class="contact">Résumé available on request. LinkedIn: on request.</p>
+  </section>
+
+  <footer>This page is public. My phone number and address are not on it on purpose.</footer>
+</main>
+</body>
+</html>
